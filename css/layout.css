@@ -1,0 +1,23 @@
+.container {
+  max-width: 575px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column-full {
+  flex-basis: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+}

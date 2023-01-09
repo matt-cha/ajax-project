@@ -1,0 +1,85 @@
+.bg-color-blue {
+  background-color: #a4e9f7;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.align-items-left {
+  text-align: left;
+  align-items: left;
+  justify-content: left;
+}
+
+.margin-zero {
+  margin: 0;
+}
+
+.padding-halfrem {
+  padding: 0.5rem;
+}
+
+.border-radius-all {
+  border-radius: 0.25rem;
+}
+
+.width-auto {
+  width: auto;
+}
+
+.display-block {
+  display: block;
+}
+
+.background-image {
+  background-image: url("/images/sunnyday.bmp");
+}
+
+.flex-grow-test {
+  flex-grow: ;
+}
+
+.flex-grow-test2 {
+  flex-grow: 1;
+}
+
+.margin-right-home {
+  margin-right: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(248, 248, 248, 0.35);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.border-none {
+  border: none;
+}
+
+.darkblue-font-color {
+  color: #18a2b8;
+}
+
+.border-solid-darkblue {
+  border: solid #18a2b8;
+}
+
+.navbar-font-size {
+  font-size: x-large;
+}
+
+.fa-house:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: black;
+  cursor: pointer;
+}
