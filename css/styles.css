@@ -24,10 +24,6 @@
   border-radius: 0.25rem;
 }
 
-.width-auto {
-  width: auto;
-}
-
 .display-block {
   display: block;
 }
@@ -70,10 +66,6 @@
   border: solid #18a2b8;
 }
 
-.navbar-font-size {
-  font-size: x-large;
-}
-
 .fa-house:hover {
   background-color: black;
   cursor: pointer;
@@ -82,4 +74,12 @@
 .search-button:hover {
   background-color: black;
   cursor: pointer;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.search-height {
+  height: 1.5rem;
 }
