@@ -81,8 +81,8 @@
 }
 
 .search-card {
-  width: 300px;
-  height: 500px;
+  width: 350px;
+  height: 550px;
   background-color: white;
   border-radius: 0.5rem;
   margin-top: 4rem;
@@ -106,4 +106,69 @@
 .img-frame {
   width: 100%;
   height: auto;
+}
+
+.villager-search-for-text-margin {
+  padding-left: 2rem;
+}
+
+.thought-margin {
+  padding-left: 0.25rem;
+}
+
+.thought-image {
+  width: 25%;
+}
+
+.text-red {
+  color: rgb(251, 106, 106);
+}
+
+.column-half {
+  flex-basis: 50%;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart-like {
+  margin-right: 0.5rem;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.villager-search-for-text-padding-right {
+  padding-right: 2rem;
+}
+
+.margin-inner-search {
+  margin: 0.5rem 0;
+}
+
+.column-one-fourth {
+  flex-basis: calc(100% / 4);
+}
+
+.column-three-fourth {
+  flex-basis: calc(3/4 * 100%);
+}
+
+.column-40p {
+  flex-basis: calc(40/100 * 100%);
+}
+
+.column-60p {
+  flex-basis: calc(60/100 * 100%);
+}
+
+.margin-birthday {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-right: 0.5rem;
 }
