@@ -21,7 +21,7 @@
 }
 
 .border-radius-all {
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 .display-block {
@@ -32,9 +32,13 @@
   background-image: url("/images/sunnyday.bmp");
 }
 
-.margin-right-home {
-  margin-right: 0.5rem;
-  margin-top: 0.2rem;
+.margin-home {
+  margin: 0.75rem;
+  width: 1.5rem;
+}
+
+.search-margin {
+  margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .overlay {
@@ -82,8 +86,8 @@
 
 .search-card {
   width: 350px;
-  height: 550px;
-  background-color: white;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.89);
   border-radius: 0.5rem;
   margin-top: 4rem;
 }
@@ -99,7 +103,7 @@
 
 .search-img {
   object-fit: contain;
-  width: 75%;
+  width: 82.5%;
   height: auto;
 }
 
@@ -112,12 +116,8 @@
   padding-left: 2rem;
 }
 
-.thought-margin {
-  padding-left: 0.25rem;
-}
-
 .thought-image {
-  width: 25%;
+  width: 22.5%;
 }
 
 .text-red {
@@ -134,8 +134,19 @@
   align-items: center;
 }
 
+.centered-left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 2rem;
+}
+
 .heart-like {
   margin-right: 0.5rem;
+}
+
+.heart-like:hover {
+  color: red;
 }
 
 .text-align-right {
@@ -144,10 +155,6 @@
 
 .villager-search-for-text-padding-right {
   padding-right: 2rem;
-}
-
-.margin-inner-search {
-  margin: 0.5rem 0;
 }
 
 .column-one-fourth {
@@ -171,4 +178,13 @@
   align-items: center;
   display: flex;
   padding-right: 0.5rem;
+}
+
+.header-div {
+  max-width: 320px;
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
 }
