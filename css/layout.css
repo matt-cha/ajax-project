@@ -16,6 +16,10 @@
   flex-basis: 100%;
 }
 
+.column-half {
+  flex-basis: calc(100% /2);
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;

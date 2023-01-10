@@ -32,14 +32,6 @@
   background-image: url("/images/sunnyday.bmp");
 }
 
-.flex-grow-test {
-  flex-grow: ;
-}
-
-.flex-grow-test2 {
-  flex-grow: 1;
-}
-
 .margin-right-home {
   margin-right: 0.5rem;
   margin-top: 0.2rem;
@@ -58,6 +50,10 @@
   border: none;
 }
 
+.house-font-size {
+  font-size: 1.5rem;
+}
+
 .darkblue-font-color {
   color: #18a2b8;
 }
@@ -67,7 +63,7 @@
 }
 
 .fa-house:hover {
-  background-color: black;
+  color: black;
   cursor: pointer;
 }
 
@@ -81,5 +77,33 @@
 }
 
 .search-height {
-  height: 1.5rem;
+  height: 2rem;
+}
+
+.search-card {
+  width: 300px;
+  height: 500px;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+}
+
+.align-items-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-height {
+  height: 3rem;
+}
+
+.search-img {
+  object-fit: contain;
+  width: 75%;
+  height: auto;
+}
+
+.img-frame {
+  width: 100%;
+  height: auto;
 }
