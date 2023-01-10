@@ -16,6 +16,11 @@
   margin: 0;
 }
 
+.margin-lr-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .padding-halfrem {
   padding: 0.5rem;
 }
@@ -35,10 +40,6 @@
 .margin-home {
   margin: 0.75rem;
   width: 1.5rem;
-}
-
-.search-margin {
-  margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
 .overlay {
@@ -124,6 +125,10 @@
   color: rgb(251, 106, 106);
 }
 
+.text-red-bg {
+  background-color: rgb(251, 106, 106);
+}
+
 .column-half {
   flex-basis: 50%;
 }
@@ -146,7 +151,7 @@
 }
 
 .heart-like:hover {
-  color: red;
+  color: rgb(251, 106, 106);
 }
 
 .text-align-right {
@@ -177,14 +182,26 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  padding-right: 0.5rem;
 }
 
-.header-div {
-  max-width: 320px;
+.header {
+  max-width: 450px;
   display: flex;
+  align-items: center;
 }
 
 .flex-grow-1 {
   flex-grow: 1;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center-only {
+  align-items: center;
+}
+
+.justify-content-right {
+  justify-content: right;
 }

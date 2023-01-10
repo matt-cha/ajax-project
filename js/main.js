@@ -7,22 +7,15 @@ xhrVillagers.addEventListener('load', function () {
   console.log('xhrVillagers.status:', xhrVillagers.status);
   console.log('xhrVillagers.response:', xhrVillagers.response);
 
-  var keys = Object.keys(xhrVillagers.response);
-
-  for (var i = 0; i < keys.length; i++) {
+  for (var key in xhrVillagers.response) {
     var target = {};
-    var name = xhrVillagers.response[keys[i]].name['name-USen'];
-    var hobby = xhrVillagers.response[keys[i]].hobby;
-    var personality = xhrVillagers.response[keys[i]].personality;
-    var icon = xhrVillagers.response[keys[i]].icon_uri;
-    var image = xhrVillagers.response[keys[i]].image_uri;
-    var saying = xhrVillagers.response[keys[i]].saying;
-    target.birthdayString = xhrVillagers.response[keys[i]]['birthday-string'];
-    target.hobby = xhrVillagers.response[keys[i]].hobby;
-    target.personality = xhrVillagers.response[keys[i]].personality;
-    target.icon = xhrVillagers.response[keys[i]].icon_uri;
-    target.image = xhrVillagers.response[keys[i]].image_uri;
-    target.saying = xhrVillagers.response[keys[i]].saying;
+    var name = xhrVillagers.response[key].name['name-USen'];
+    target.birthdayString = xhrVillagers.response[key]['birthday-string'];
+    target.hobby = xhrVillagers.response[key].hobby;
+    target.personality = xhrVillagers.response[key].personality;
+    target.icon = xhrVillagers.response[key].icon_uri;
+    target.image = xhrVillagers.response[key].image_uri;
+    target.saying = xhrVillagers.response[key].saying;
 
     villagerData[name] = target;
 
@@ -40,7 +33,6 @@ function saveForm(event) {
   formValues.name = $newVillagerSearched.elements.name.value;
 
   var villagerNamesList = Object.keys(villagerData);
-  var incorrectName = 'not found';
   for (var i = 0; i < villagerNamesList.length; i++) {
     if (formValues.name === villagerNamesList[i]) {
       console.log('match');
@@ -57,7 +49,7 @@ function saveForm(event) {
       data.entries.unshift(formValues);
       document.querySelector('.navbar-form').reset();
       renderVillagerSearch();
-// reset the search  rednered after
+      // reset the search  rednered after
       break;
     } else if (formValues.name !== villagerNamesList[i]) {
       renderNotFound();
@@ -89,5 +81,17 @@ function renderVillagerSearch(entry) {
 function renderNotFound(entry) {
   $searchImage.setAttribute('src', '/images/sad.png');
   $name.textContent = 'No villager was found!';
+}
+var clicks = 0;
+var $heart = document.querySelector('.heart-like');
+$heart.addEventListener('click', heartClicked);
+function heartClicked(event) {
+  clicks++;
+  if (clicks % 2 !== 0) {
+    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+  } else {
+    $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+
+  }
 }
  */
