@@ -6,12 +6,6 @@
   display: flex;
 }
 
-.align-items-left {
-  text-align: left;
-  align-items: left;
-  justify-content: left;
-}
-
 .margin-zero {
   margin: 0;
 }
@@ -21,16 +15,8 @@
   margin-right: 10px;
 }
 
-.padding-halfrem {
-  padding: 0.5rem;
-}
-
 .border-radius-all {
   border-radius: 0.5rem;
-}
-
-.display-block {
-  display: block;
 }
 
 .background-image {
@@ -87,7 +73,7 @@
 
 .search-card {
   width: 350px;
-  height: 600px;
+  height: 625px;
   background-color: rgba(255, 255, 255, 0.89);
   border-radius: 0.5rem;
   margin-top: 4rem;
@@ -178,12 +164,6 @@
   flex-basis: calc(60/100 * 100%);
 }
 
-.margin-birthday {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
 .header {
   max-width: 450px;
   display: flex;
@@ -204,4 +184,20 @@
 
 .justify-content-right {
   justify-content: right;
+}
+
+.hidden {
+  display: none;
+}
+
+.fade-out {
+  transition: opacity 3s ease-in-out;
+}
+
+.transparent {
+  color: transparent;
+}
+
+* {
+  font-family: sans-serif;
 }

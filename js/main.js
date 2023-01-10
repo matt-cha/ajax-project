@@ -1,11 +1,10 @@
-/* var $villagerName = document.querySelector('.villager-name');
 var xhrVillagers = new XMLHttpRequest();
 var villagerData = {};
 xhrVillagers.open('GET', 'http://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
-  console.log('xhrVillagers.status:', xhrVillagers.status);
-  console.log('xhrVillagers.response:', xhrVillagers.response);
+/*   console.log('xhrVillagers.status:', xhrVillagers.status);
+  console.log('xhrVillagers.response:', xhrVillagers.response); */
 
   for (var key in xhrVillagers.response) {
     var target = {};
@@ -20,7 +19,7 @@ xhrVillagers.addEventListener('load', function () {
     villagerData[name] = target;
 
   }
-  console.log('villagerData:', villagerData);
+  /*   console.log('villagerData:', villagerData); */
 
 });
 xhrVillagers.send();
@@ -29,13 +28,14 @@ var $newVillagerSearched = document.querySelector('.navbar-form');
 $newVillagerSearched.addEventListener('submit', saveForm);
 function saveForm(event) {
   event.preventDefault();
+
   var formValues = {};
   formValues.name = $newVillagerSearched.elements.name.value;
 
   var villagerNamesList = Object.keys(villagerData);
   for (var i = 0; i < villagerNamesList.length; i++) {
     if (formValues.name === villagerNamesList[i]) {
-      console.log('match');
+
       formValues.entryId = data.nextEntryId;
       formValues.hobby = villagerData[villagerNamesList[i]].hobby;
       formValues.personality = villagerData[villagerNamesList[i]].personality;
@@ -49,7 +49,6 @@ function saveForm(event) {
       data.entries.unshift(formValues);
       document.querySelector('.navbar-form').reset();
       renderVillagerSearch();
-      // reset the search  rednered after
       break;
     } else if (formValues.name !== villagerNamesList[i]) {
       renderNotFound();
@@ -76,22 +75,34 @@ function renderVillagerSearch(entry) {
   $hobbyText.textContent = data.entries[0].hobby;
   $personalityText.textContent = data.entries[0].personality;
   $sayingText.textContent = data.entries[0].saying;
+  $heart.classList.remove('hidden');
+  $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
 }
 
 function renderNotFound(entry) {
   $searchImage.setAttribute('src', '/images/sad.png');
+  $icon.setAttribute('src', '/images/thought.png');
   $name.textContent = 'No villager was found!';
+  $name.classList.add('text-red');
+  $birthday.textContent = '';
+  $hobbyText.textContent = '';
+  $personalityText.textContent = '';
+  $sayingText.textContent = '';
+  $heart.classList.add('hidden');
+  $textHeart.className = 'text-heart transparent';
 }
 var clicks = 0;
 var $heart = document.querySelector('.heart-like');
+var $textHeart = document.querySelector('.text-heart');
 $heart.addEventListener('click', heartClicked);
 function heartClicked(event) {
   clicks++;
   if (clicks % 2 !== 0) {
     $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+    $textHeart.className = 'text-heart text-red fade-out';
   } else {
     $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+    $textHeart.className = 'text-heart transparent';
 
   }
 }
- */
