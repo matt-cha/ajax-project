@@ -107,6 +107,10 @@
   width: 22.5%;
 }
 
+.resident-icon {
+  width: 15%;
+}
+
 .text-red {
   color: rgb(251, 106, 106);
 }
@@ -213,4 +217,30 @@
   background-color: rgba(255, 255, 255, 0.89);
   border-radius: 0.5rem;
   margin-top: 4rem;
+}
+
+.residents-padding-left {
+  padding-left: 4.3rem;
+}
+
+.residents-icon-padding-left {
+  padding-left: 4rem;
+}
+
+.residents-main-image {
+  width: 60%;
+  object-fit: contain;
+  height: auto;
+}
+
+.residents-right-arrow {
+  padding-right: 4.5rem;
+}
+
+.align-items-right {
+  align-items: right;
+}
+
+.arrows-margin-top {
+  margin-top: 0.2rem;
 }
