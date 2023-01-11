@@ -242,11 +242,19 @@
 }
 
 .resident-main-desktop {
-  width: 15%;
+  width: 75%;
   object-fit: contain;
   height: auto;
 }
 
 .resident-icon-desktop {
-  width: 3.5%;
+  width: 20%;
+}
+
+.residents-padding-left-desktop {
+  padding-left: 2.1rem;
+}
+
+.residents-icon-padding-left-desktop {
+  padding-left: 1.9rem;
 }

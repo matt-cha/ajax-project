@@ -121,15 +121,17 @@ function likedCheck(event) {
   }
 }
 var $searchView = document.querySelector('.search-view');
-var $villageView = document.querySelector('.village-view');
+var $villageViewMobile = document.querySelector('.village-view-mobile');
+var $villageViewDesktop = document.querySelector('.village-view-desktop');
 var $home = document.querySelector('.fa-house');
 $home.addEventListener('click', goHome);
 function goHome(event) {
-  $villageView.classList.remove('hidden');
+  $villageViewMobile.classList.remove('hidden');
+  $villageViewDesktop.classList.remove('hidden');
   $searchView.classList.add('hidden');
 }
 
 function searchForAVillager(event) {
-  $villageView.classList.add('hidden');
+  $villageViewMobile.classList.add('hidden');
   $searchView.classList.remove('hidden');
 }

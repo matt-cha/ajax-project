@@ -40,8 +40,15 @@
   flex-basis: calc(60/100 * 100%);
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
+  }
+}
+ */
+
+@media screen and (min-width: 768px) {
+  .village-view-mobile {
+    display: none;
   }
 }
