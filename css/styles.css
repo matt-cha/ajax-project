@@ -1,3 +1,7 @@
+.container {
+  max-width: 1500px;
+}
+
 .bg-color-blue {
   background-color: #a4e9f7;
 }
@@ -152,22 +156,6 @@
   padding-right: 2rem;
 }
 
-.column-one-fourth {
-  flex-basis: calc(100% / 4);
-}
-
-.column-three-fourth {
-  flex-basis: calc(3/4 * 100%);
-}
-
-.column-40p {
-  flex-basis: calc(40/100 * 100%);
-}
-
-.column-60p {
-  flex-basis: calc(60/100 * 100%);
-}
-
 .header {
   max-width: 450px;
   display: flex;
@@ -243,4 +231,22 @@
 
 .arrows-margin-top {
   margin-top: 0.2rem;
+}
+
+.village-card-desktop {
+  width: 1400px;
+  height: 625px;
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+}
+
+.resident-main-desktop {
+  width: 15%;
+  object-fit: contain;
+  height: auto;
+}
+
+.resident-icon-desktop {
+  width: 3.5%;
 }

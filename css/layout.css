@@ -20,6 +20,26 @@
   flex-basis: calc(100% /2);
 }
 
+.column-one-fourth {
+  flex-basis: calc(100% / 4);
+}
+
+.column-three-fourth {
+  flex-basis: calc(3/4 * 100%);
+}
+
+.column-one-fifth {
+  flex-basis: calc(100% / 5);
+}
+
+.column-40p {
+  flex-basis: calc(40/100 * 100%);
+}
+
+.column-60p {
+  flex-basis: calc(60/100 * 100%);
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;
