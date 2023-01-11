@@ -28,7 +28,7 @@ var $newVillagerSearched = document.querySelector('.navbar-form');
 $newVillagerSearched.addEventListener('submit', saveForm);
 function saveForm(event) {
   event.preventDefault();
-
+  searchForAVillager();
   var formValues = {};
   formValues.name = $newVillagerSearched.elements.name.value;
 
@@ -116,9 +116,20 @@ function likedCheck(event) {
   var currentVillagerLiked = $name.textContent;
   if (data.liked.includes(currentVillagerLiked)) {
     $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
-
   } else {
     $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
-
   }
+}
+var $searchView = document.querySelector('.search-view');
+var $villageView = document.querySelector('.village-view');
+var $home = document.querySelector('.fa-house');
+$home.addEventListener('click', goHome);
+function goHome(event) {
+  $villageView.classList.remove('hidden');
+  $searchView.classList.add('hidden');
+}
+
+function searchForAVillager(event) {
+  $villageView.classList.add('hidden');
+  $searchView.classList.remove('hidden');
 }
