@@ -206,3 +206,11 @@
   margin-top: 16px;
   margin-bottom: 16px;
 }
+
+.village-card-mobile {
+  width: 350px;
+  height: 625px;
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+}

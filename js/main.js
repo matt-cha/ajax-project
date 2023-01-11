@@ -19,8 +19,8 @@ xhrVillagers.addEventListener('load', function () {
     villagerData[name] = target;
 
   }
-/*   console.log('villagerData:', villagerData);
- */
+  /*   console.log('villagerData:', villagerData); */
+
 });
 xhrVillagers.send();
 
