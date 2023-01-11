@@ -19,8 +19,8 @@ xhrVillagers.addEventListener('load', function () {
     villagerData[name] = target;
 
   }
-  /*   console.log('villagerData:', villagerData); */
-
+/*   console.log('villagerData:', villagerData);
+ */
 });
 xhrVillagers.send();
 
@@ -42,7 +42,6 @@ function saveForm(event) {
       formValues.icon = villagerData[villagerNamesList[i]].icon;
       formValues.image = villagerData[villagerNamesList[i]].image;
       formValues.birthdayString = villagerData[villagerNamesList[i]].birthdayString;
-
       formValues.saying = villagerData[villagerNamesList[i]].saying;
 
       data.nextEntryId++;
@@ -76,7 +75,9 @@ function renderVillagerSearch(entry) {
   $personalityText.textContent = data.entries[0].personality;
   $sayingText.textContent = data.entries[0].saying;
   $heart.classList.remove('hidden');
-  $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+  $heart.className = 'heart-like fa-regular fa-heart centered house-font-size margin-16px';
+  $textHeart.textContent = '';
+  likedCheck();
 }
 
 function renderNotFound(entry) {
@@ -91,18 +92,33 @@ function renderNotFound(entry) {
   $heart.classList.add('hidden');
   $textHeart.className = 'text-heart transparent';
 }
-var clicks = 0;
+
 var $heart = document.querySelector('.heart-like');
 var $textHeart = document.querySelector('.text-heart');
 $heart.addEventListener('click', heartClicked);
 function heartClicked(event) {
-  clicks++;
-  if (clicks % 2 !== 0) {
-    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+  var currentVillagerLiked = $name.textContent;
+  if (data.liked.includes(currentVillagerLiked)) {
+
+    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+    $textHeart.textContent = 'Villager has already been added!';
     $textHeart.className = 'text-heart text-red fade-out';
+
+  } else {
+    data.liked.push(currentVillagerLiked);
+    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+    $textHeart.textContent = 'Villager has been added!';
+    $textHeart.className = 'text-heart text-red fade-out ';
+  }
+}
+
+function likedCheck(event) {
+  var currentVillagerLiked = $name.textContent;
+  if (data.liked.includes(currentVillagerLiked)) {
+    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+
   } else {
     $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
-    $textHeart.className = 'text-heart transparent';
 
   }
 }

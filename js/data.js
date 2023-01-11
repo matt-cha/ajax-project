@@ -1,9 +1,11 @@
 /* exported data */
+/* exported villagerLikedData */
 var data = {
   view: 'search-view',
   entries: [],
   villagerNumber: 1,
-  nextEntryId: 1
+  nextEntryId: 1,
+  liked: []
 };
 
 window.addEventListener('beforeunload', jsonStringify);
