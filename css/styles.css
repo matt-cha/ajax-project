@@ -1,0 +1,208 @@
+.bg-color-blue {
+  background-color: #a4e9f7;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.margin-zero {
+  margin: 0;
+}
+
+.margin-lr-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.border-radius-all {
+  border-radius: 0.5rem;
+}
+
+.background-image {
+  background-image: url("/images/sunnyday.bmp");
+}
+
+.margin-home {
+  margin: 0.75rem;
+  width: 1.5rem;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(248, 248, 248, 0.35);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.border-none {
+  border: none;
+}
+
+.house-font-size {
+  font-size: 1.5rem;
+}
+
+.darkblue-font-color {
+  color: #18a2b8;
+}
+
+.border-solid-darkblue {
+  border: solid #18a2b8;
+}
+
+.fa-house:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.search-height {
+  height: 2rem;
+}
+
+.search-card {
+  width: 350px;
+  height: 625px;
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+}
+
+.align-items-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-height {
+  height: 3rem;
+}
+
+.search-img {
+  object-fit: contain;
+  width: 82.5%;
+  height: auto;
+}
+
+.img-frame {
+  width: 100%;
+  height: auto;
+}
+
+.villager-search-for-text-margin {
+  padding-left: 2rem;
+}
+
+.thought-image {
+  width: 22.5%;
+}
+
+.text-red {
+  color: rgb(251, 106, 106);
+}
+
+.text-red-bg {
+  background-color: rgb(251, 106, 106);
+}
+
+.column-half {
+  flex-basis: 50%;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-left {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.heart-like {
+  margin-right: 0.5rem;
+}
+
+.heart-like:hover {
+  color: rgb(251, 106, 106);
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.villager-search-for-text-padding-right {
+  padding-right: 2rem;
+}
+
+.column-one-fourth {
+  flex-basis: calc(100% / 4);
+}
+
+.column-three-fourth {
+  flex-basis: calc(3/4 * 100%);
+}
+
+.column-40p {
+  flex-basis: calc(40/100 * 100%);
+}
+
+.column-60p {
+  flex-basis: calc(60/100 * 100%);
+}
+
+.header {
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center-only {
+  align-items: center;
+}
+
+.justify-content-right {
+  justify-content: right;
+}
+
+.hidden {
+  display: none;
+}
+
+.fade-out {
+  transition: opacity 3s ease-in-out;
+}
+
+.transparent {
+  font-size: 0;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+.margin-16px {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}

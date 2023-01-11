@@ -4,16 +4,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+
 </head>
-<body>
-  <header>
+<body class="background-image">
+  <header class="bg-color-blue navbar-height">
+    <form class="navbar-form height-search-bar header">
+      <i class="fa-solid fa-house darkblue-font-color margin-home house-font-size"></i>
+      <input
+        name="name"
+        required
+        class="flex-grow-1 border-radius-all border-none search-height border-solid-darkblue display-inline-block"
+        placeholder=" Search for a villager!"
+      >
+      <button type="submit" class="margin-lr-10 search-height search-button darkblue-font-color bg-color-blue border-radius-all border-solid-darkblue">
+        Search
+      </button>
+    </form>
   </header>
-  <main>
+
+
+  <main class="">
+    <div class="container ">
+
+      <div class="search-view">
+        <div class="row">
+          <div class="column-full display-flex align-items-center ">
+
+            <div class="search-card ">
+              <div class="row">
+                <div class="column-full villager-search-for-text-margin">
+                  <h2>Villager Search</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="column-full img-frame display-flex align-items-center ">
+                  <img src="/images/hello.png" class="search-image search-img  margin-zero border-radius-all align-items-center display-flex">
+                </div>
+              </div>
+              <div class="row ">
+                <div class="column-60p display-flex  centered-left ">
+                  <img src="/images/thought.png" class="icon thought-image " >
+
+                  <p class="villager-name margin-zero text-red ">No villagers yet!</p>
+                </div>
+                <div class="column-40p birthday text-align-right villager-search-for-text-padding-right display-flex align-items-center-only justify-content-right">
+                  <p class=" birthday  align-items-center-only text-align-right"></p>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="column-half villager-search-for-text-margin">
+                  <p class="">Hobby:</p>
+                </div>
+                <div class="column-half text-align-right villager-search-for-text-padding-right">
+                  <p class="hobby-text "></p>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="column-half villager-search-for-text-margin">
+                  <p class="">Personality:</p>
+                </div>
+                <div class="column-half text-align-right villager-search-for-text-padding-right">
+                  <p class="personality-text "></p>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="column-one-fourth villager-search-for-text-margin">
+                  <p class="">Saying:</p>
+                </div>
+                <div class="column-three-fourth text-align-right villager-search-for-text-padding-right">
+                  <p class="saying-text
+
+                  "></p>
+                </div>
+              </div>
+              <div class="row ">
+                <div class="column-three-fourth display-flex villager-search-for-text-margin">
+                  <i class="hidden heart-like fa-regular fa-heart centered house-font-size"></i>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="column-full display-flex villager-search-for-text-margin">
+                  <p class="text-heart transparent">Villager added!</p>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
