@@ -98,8 +98,11 @@ var $textHeart = document.querySelector('.text-heart');
 $heart.addEventListener('click', heartClicked);
 function heartClicked(event) {
   var currentVillagerLiked = $name.textContent;
-  if (data.liked.includes(currentVillagerLiked)) {
+  if (data.liked.length === 10) {
+    $textHeart.textContent = 'There are already 10 villagers!';
+    $textHeart.className = 'text-heart text-red fade-out ';
 
+  } else if (data.liked.includes(currentVillagerLiked)) {
     $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
     $textHeart.textContent = 'Villager has already been added!';
     $textHeart.className = 'text-heart text-red fade-out';
@@ -114,11 +117,13 @@ function heartClicked(event) {
 
 function likedCheck(event) {
   var currentVillagerLiked = $name.textContent;
+
   if (data.liked.includes(currentVillagerLiked)) {
     $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
   } else {
     $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
   }
+
 }
 var $searchView = document.querySelector('.search-view');
 var $villageViewMobile = document.querySelector('.village-view-mobile');
@@ -133,5 +138,40 @@ function goHome(event) {
 
 function searchForAVillager(event) {
   $villageViewMobile.classList.add('hidden');
+  $villageViewDesktop.classList.add('hidden');
   $searchView.classList.remove('hidden');
 }
+/* var $residentOneImage = document.querySelector('.resident-one-image');
+var $residentOneIcon = document.querySelector('.resident-one-icon');
+var $residentOneName = document.querySelector('.resident-one-name');
+var $residentTwoImage = document.querySelector('.resident-two-image');
+var $residentTwoIcon = document.querySelector('.resident-two-icon');
+var $residentTwoName = document.querySelector('.resident-two-name');
+var $residentThreeImage = document.querySelector('.resident-three-image');
+var $residentThreeIcon = document.querySelector('.resident-three-icon');
+var $residentThreeName = document.querySelector('.resident-three-name');
+var $residentFourImage = document.querySelector('.resident-four-image');
+var $residentFourIcon = document.querySelector('.resident-four-icon');
+var $residentFourName = document.querySelector('.resident-four-name');
+var $residentFiveImage = document.querySelector('.resident-five-image');
+var $residentFiveIcon = document.querySelector('.resident-five-icon');
+var $residentFiveName = document.querySelector('.resident-five-name');
+var $residentSixImage = document.querySelector('.resident-six-image');
+var $residentSixIcon = document.querySelector('.resident-six-icon');
+var $residentSixName = document.querySelector('.resident-six-name');
+var $residentSevenImage = document.querySelector('.resident-seven-image');
+var $residentSevenIcon = document.querySelector('.resident-seven-icon');
+var $residentSevenName = document.querySelector('.resident-seven-name');
+var $residentEightImage = document.querySelector('.resident-eight-image');
+var $residentEightIcon = document.querySelector('.resident-eight-icon');
+var $residentEightName = document.querySelector('.resident-eight-name');
+var $residentNineImage = document.querySelector('.resident-nine-image');
+var $residentNineIcon = document.querySelector('.resident-nine-icon');
+var $residentNineName = document.querySelector('.resident-nine-name');
+var $residentTenImage = document.querySelector('.resident-ten-image');
+var $residentTenIcon = document.querySelector('.resident-ten-icon');
+var $residentTenName = document.querySelector('.resident-ten-name');
+function renderVillage(entry) {
+
+}
+ */

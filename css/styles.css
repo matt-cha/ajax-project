@@ -39,6 +39,9 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .border-none {
@@ -257,4 +260,45 @@
 
 .residents-icon-padding-left-desktop {
   padding-left: 1.9rem;
+}
+
+.residents-main-image-slide {
+  width: 210px;
+  object-fit: contain;
+  height: 210px;
+}
+
+.modal-villager-card {
+  width: 350px;
+  height: 625px;
+  background-color: rgba(255, 255, 255, 0.89);
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  margin-top: 0;
+}
+
+.resident-icon-mobile-slide {
+  width: 42.9px;
+  height: 42.9px;
+}
+
+.window {
+  width: 210px;
+  height: 515px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.slider {
+  transition: 2s;
+}
+
+.first-slide {
+  margin-left: 0;
+}
+
+.second-slide {
+  margin-left: -210px;
 }
