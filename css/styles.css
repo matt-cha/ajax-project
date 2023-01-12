@@ -1,5 +1,5 @@
 .container {
-  max-width: 1500px;
+  max-width: 2000px;
   width: 100vw;
   height: 100vh;
 }
@@ -28,7 +28,6 @@
 .background-image {
   background-image: url("/images/sunnyday.bmp");
   object-fit: fill;
-  height: 100%;
   width: 100%;
 }
 
@@ -339,5 +338,3 @@ query select for the SLIDER
     display: none;
   }
 }
-
-/* display none for the buttons */
