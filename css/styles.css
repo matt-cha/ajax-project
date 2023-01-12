@@ -1,5 +1,7 @@
 .container {
   max-width: 1500px;
+  width: 100vw;
+  height: 100vh;
 }
 
 .bg-color-blue {
@@ -25,6 +27,9 @@
 
 .background-image {
   background-image: url("/images/sunnyday.bmp");
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
 }
 
 .margin-home {
@@ -302,3 +307,37 @@
 .second-slide {
   margin-left: -210px;
 }
+
+.third-slide {
+  margin-left: -420px;
+}
+
+.fourth-slide {
+  margin-left: -630px;
+}
+
+.fifth-slide {
+  margin-left: -840px;
+}
+
+/* -add event listeners to the arrows
+query select for the SLIDER
+-click, function arrrow lcicked
+-right arrow,  */
+
+@media screen and (min-width: 1280px) {
+  .village-card-mobile {
+    width: 1200px;
+  }
+
+  .window {
+    width: 1050px;
+  }
+
+  .mobile-slider-left,
+  .mobile-slider-right {
+    display: none;
+  }
+}
+
+/* display none for the buttons */

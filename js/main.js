@@ -141,6 +141,54 @@ function searchForAVillager(event) {
   $villageViewDesktop.classList.add('hidden');
   $searchView.classList.remove('hidden');
 }
+
+var $slider = document.querySelector('.slider');
+var $leftArrow = document.querySelector('.mobile-slider-left');
+var $rightArrow = document.querySelector('.mobile-slider-right');
+$leftArrow.addEventListener('click', arrowClicked);
+$rightArrow.addEventListener('click', arrowClicked);
+
+/* function arrowClicked(event) {
+  console.log($slider);
+
+  if (event.target.classList.contains('mobile-slider-right')) {
+
+    if ($slider.classList.contains('first-slide')) {
+
+      $slider.classList.remove('first-slide');
+      $slider.classList.add('second-slide');
+    }
+  }
+} */
+function arrowClicked(event) {
+
+  if (event.target.classList.contains('mobile-slider-right')) {
+
+    if ($slider.classList.contains('first-slide')) {
+
+      $slider.classList.remove('first-slide');
+      $slider.classList.add('second-slide');
+    } else if ($slider.classList.contains('second-slide')) {
+      $slider.classList.remove('second-slide');
+      $slider.classList.add('third-slide');
+    } else if ($slider.classList.contains('third-slide')) {
+      $slider.classList.remove('third-slide');
+      $slider.classList.add('fourth-slide');
+    } else if ($slider.classList.contains('fourth-slide')) {
+      $slider.classList.remove('fourth-slide');
+      $slider.classList.add('fifth-slide');
+    } else if ($slider.classList.contains('fifth-slide')) {
+      $slider.classList.remove('fifth-slide');
+      $slider.classList.add('first-slide');
+    }
+  } else if (event.target.classList.contains('mobile-slider-left')) {
+    if ($slider.classList.contains('first-slide')) {
+
+      $slider.classList.remove('first-slide');
+      $slider.classList.add('fifth-slide');
+    }
+  }
+}
 /* var $residentOneImage = document.querySelector('.resident-one-image');
 var $residentOneIcon = document.querySelector('.resident-one-icon');
 var $residentOneName = document.querySelector('.resident-one-name');
@@ -175,3 +223,9 @@ function renderVillage(entry) {
 
 }
  */
+
+// use loop to append data for one image,icon, name and repeat for lengt of the liekd array
+
+/* var $search = document.querySelector('[data-view="search"]'); */
+/* console.log('line:213 $search::: ', $search); */
+// give view sWap function a value to go to specific things. make thigns modular;
