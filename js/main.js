@@ -203,16 +203,17 @@ function renderSlide(firstVillager, secondVillager) {
   $resColImg.setAttribute('class', 'column-full resident');
   var $resMainImg = document.createElement('img');
   $resMainImg.setAttribute('src', firstVillager.image);
-  $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+  $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
   $resMainImg.setAttribute('villager-name', firstVillager.name);
   var $resColIcon = document.createElement('div');
   $resColIcon.setAttribute('class', 'column-full display-flex');
   var $resIcon = document.createElement('img');
   $resIcon.setAttribute('src', firstVillager.icon);
-  $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide');
+  $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide clickable');
   $resIcon.setAttribute('villager-name', firstVillager.name);
   var $p = document.createElement('p');
   $p.textContent = firstVillager.name;
+  /*   $p.setAttribute('class', 'clickable'); */
 
   $slidesRow.appendChild($resColImg);
   $resColImg.appendChild($resMainImg);
@@ -225,13 +226,13 @@ function renderSlide(firstVillager, secondVillager) {
     $resColImgBelow.setAttribute('class', 'column-full resident');
     var $resMainImgBelow = document.createElement('img');
     $resMainImgBelow.setAttribute('src', secondVillager.image);
-    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
     $resMainImgBelow.setAttribute('villager-name', secondVillager.name);
     var $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     var $resIconBelow = document.createElement('img');
     $resIconBelow.setAttribute('src', secondVillager.icon);
-    $resIconBelow.setAttribute('class', 'icon  resident-icon-mobile-slide');
+    $resIconBelow.setAttribute('class', 'icon  resident-icon-mobile-slide clickable');
     $resIconBelow.setAttribute('villager-name', secondVillager.name);
     var $pBelow = document.createElement('p');
     $pBelow.textContent = secondVillager.name;
@@ -361,7 +362,7 @@ var $individualPersonality = document.querySelector('.individual-personality');
 var $individualSaying = document.querySelector('.individual-saying');
 
 function openVillagerCard(event) {
-  if (event.target.matches('img')) {
+  if (event.target.matches('.clickable')) {
     $overlay.classList.remove('hidden');
     for (var i = 0; i < data.liked.length; i++) {
       if (event.target.getAttribute('villager-name') === data.liked[i].name) {
