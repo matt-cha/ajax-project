@@ -132,6 +132,7 @@ var $home = document.querySelector('.fa-house');
 $home.addEventListener('click', goHome);
 
 function goHome(event) {
+  toggleNoEntries();
   viewSwap($villageSlide);
 }
 function searchForAVillager(event) {
@@ -268,18 +269,31 @@ function renderSlide(firstVillager, secondVillager) {
   return $slidesRow;
 }
 
-var villagerList10Max = data.liked;
-function createSlides(villagerList10Max) {
-  for (var i = 0; i < villagerList10Max.length; i += 2) {
-    $sliderCol.appendChild(renderSlide(villagerList10Max[i], villagerList10Max[i + 1]));
+function createSlides(likedVillagers) {
+
+  $sliderCol.replaceChildren();
+  for (var i = 0; i < data.liked.length; i += 2) {
+    $sliderCol.appendChild(renderSlide(data.liked[i], data.liked[i + 1]));
   }
 }
 var $sliderCol = document.querySelector('.slider');
 document.addEventListener('DOMContentLoaded', generateDomTree);
 
 function generateDomTree(event) {
-  createSlides(villagerList10Max);
+  createSlides(data.liked);
+  toggleNoEntries();
 }
+var $noLikedMessage = document.querySelector('.no-liked-message');
+
+function toggleNoEntries(event) {
+  if (data.liked.length === 0) {
+    $noLikedMessage.classList.remove('hidden');
+
+  } else {
+    $noLikedMessage.classList.add('hidden');
+  }
+}
+
 var $overlay = document.querySelector('.overlay');
 var $xButton = document.querySelector('.fa-x');
 $xButton.addEventListener('click', closeIndividualCard);
@@ -325,7 +339,6 @@ $removeVillagerButton.addEventListener('click', trashModalButtons);
 $cancelRemoveVillagerButton.addEventListener('click', trashModalButtons);
 function trashModalButtons(event) {
 
-  var formJsonString = JSON.stringify(data);
   if (event.target.classList.contains('remove-villager')) {
 
     $overlayTrash.classList.add('hidden');
@@ -333,9 +346,8 @@ function trashModalButtons(event) {
     for (var i = 0; i < data.liked.length; i++) {
       if ($individualName.textContent === data.liked[i].name) {
 
-        formJsonString = JSON.stringify(data);
-        localStorage.setItem('form-values', formJsonString);
         data.liked.splice(i, 1);
+        generateDomTree();
       }
 
     }

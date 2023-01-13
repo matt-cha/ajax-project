@@ -42,6 +42,7 @@
                 <div class="row">
                   <div class="column-full villager-search-for-text-margin">
                     <h2>Villager Search</h2>
+
                   </div>
                 </div>
                 <div class="row">
@@ -99,12 +100,13 @@
         </div>
 
         <div data-view="village-slide" class="village-view-mobile view slidetesting hidden"> <!-- SLIDE -->
-          <div class="row">
+          <div class="row"> <!-- SLIDE -->
             <div class="column-full display-flex align-items-center desktop-view-test">
               <div class="village-card-mobile ">
                 <div class="row">
                   <div class="column-three-fourth residents-padding-left">
                     <h2 class="">Residents</h2>
+                    <p class="no-liked-message text-red hidden">No villagers have been added!</p>
                   </div>
                 </div>
                 <div class="row window">
@@ -378,7 +380,7 @@ modal test enmd -->
     <div class="overlay-trash hidden">
       <div class="row">
         <div class="column-full">
-          <div class="trash-modal">
+          <div class="trash-modal modal-confirm-padding">
             <div class="row">
               <div class="column-full">
                 <p>Are you sure you want to remove this villager?</p>
@@ -386,18 +388,19 @@ modal test enmd -->
             </div>
             <div class="row">
               <div class="column-full">
-                <button class="remove-villager">Remove</button>
+                <button type="button" class="remove-villager long-button">REMOVE</button>
               </div>
             </div>
             <div class="row">
               <div class="column-full">
-                <button class="cancel-remove-villager">Cancel</button>
+                <button class="cancel-remove-villager long-button">CANCEL</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
 
   </main>
 
