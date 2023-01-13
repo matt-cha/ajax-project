@@ -42,6 +42,7 @@
                 <div class="row">
                   <div class="column-full villager-search-for-text-margin">
                     <h2>Villager Search</h2>
+
                   </div>
                 </div>
                 <div class="row">
@@ -99,16 +100,19 @@
         </div>
 
         <div data-view="village-slide" class="village-view-mobile view slidetesting hidden"> <!-- SLIDE -->
-          <div class="row">
+          <div class="row"> <!-- SLIDE -->
             <div class="column-full display-flex align-items-center desktop-view-test">
               <div class="village-card-mobile ">
                 <div class="row">
                   <div class="column-three-fourth residents-padding-left">
                     <h2 class="">Residents</h2>
+
                   </div>
                 </div>
                 <div class="row window">
+                  <p class="no-liked-message text-red hidden">No villagers have been added!</p>
                   <div class="column-full img-frame display-flex  slider first-slide">
+
                     <!-- s
                     <divww class="row slides">
                       <div class="column-full resident-one-top">
@@ -220,9 +224,9 @@ s -->
           </div>
           <!-- END SLIDE TEST -->
 
-
+          <!-- modal test1 popup for villager card when cliced
           <div class="villager-individual" data-view="villager-card">
-            <div class="row">  <!-- popup for villager card when cliced -->
+            <div class="row">
               <div class="column-full display-flex align-items-center">
                 <div class="overlay hidden display-flex">
                   <div class="">
@@ -278,15 +282,14 @@ s -->
                             </div>
                           </div>
                           <div class="row ">
-                            <div class="column-three-fourth display-flex villager-search-for-text-margin">
+                            <div class="column-half display-flex villager-search-for-text-margin">
                               <i class=" heart-like fa-solid text-red fa-heart centered house-font-size"></i>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="column-full display-flex villager-search-for-text-margin">
-                              <p class="text-heart transparent">Villager added!</p>
+                            <div class="column-half display-flex justify-content-right villager-search-for-text-padding-right">
+                              <i class=" fa-solid fa-trash centered house-font-size"></i>
                             </div>
                           </div>
+
                         </div>
                       </div>
                     </div>
@@ -295,12 +298,112 @@ s -->
               </div>
             </div>
           </div>
-
+modal test enmd -->
 
         </div>
       </div>
 
+    </div> <!-- end of container -->
+    <div class="villager-individual" data-view="villager-card"> <!-- start of new modal testing? -->
+      <div class="row">
+        <div class="column-full display-flex align-items-center">
+          <div class="overlay hidden display-flex">
+            <div class="">
+              <div class="row">
+                <div class="column-full display-flex align-items-center ">
+                  <div class="modal-villager-card ">
+                    <div class="row">
+                      <div class="column-half villager-search-for-text-margin">
+                        <h2>Resident</h2>
+                      </div>
+                      <div
+                        class="column-half display-flex text-align-right justify-content-right villager-search-for-text-padding-right">
+                        <i class="fa-solid fa-x house-font-size centered "></i>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="column-full img-frame display-flex align-items-center ">
+                        <img src="/images/hello.png"
+                          class="search-image search-img individual-main-img margin-zero border-radius-all align-items-center display-flex">
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="column-60p display-flex  centered-left ">
+                        <img src="/images/thought.png" class="icon thought-image individual-icon-img">
+                        <p class="villager-name individual-name margin-zero ">No villagers yet!</p>
+                      </div>
+                      <div
+                        class="column-40p birthday text-align-right villager-search-for-text-padding-right display-flex align-items-center-only justify-content-right">
+                        <p class=" birthday individual-birthday align-items-center-only text-align-right"></p>
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="column-half villager-search-for-text-margin">
+                        <p class="">Hobby:</p>
+                      </div>
+                      <div class="column-half text-align-right villager-search-for-text-padding-right">
+                        <p class="hobby-text individual-hobby"></p>
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="column-half villager-search-for-text-margin">
+                        <p class="">Personality:</p>
+                      </div>
+                      <div class="column-half text-align-right villager-search-for-text-padding-right">
+                        <p class="personality-text individual-personality"></p>
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="column-one-fourth villager-search-for-text-margin">
+                        <p class="">Saying:</p>
+                      </div>
+                      <div class="column-three-fourth text-align-right villager-search-for-text-padding-right">
+                        <p class="saying-text individual-saying"></p>
+                      </div>
+                    </div>
+                    <div class="row ">
+                      <div class="column-half display-flex villager-search-for-text-margin">
+                        <i class=" heart-like fa-solid text-red fa-heart centered house-font-size"></i>
+                      </div>
+                      <div class="column-half display-flex justify-content-right villager-search-for-text-padding-right">
+                        <i class=" fa-solid fa-trash centered house-font-size"></i>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="overlay-trash hidden">
+      <div class="row">
+        <div class="column-full">
+          <div class="trash-modal modal-confirm-padding">
+            <div class="row">
+              <div class="column-full">
+                <p>Are you sure you want to remove this villager?</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column-full">
+                <button type="button" class="remove-villager long-button">REMOVE</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column-full">
+                <button class="cancel-remove-villager long-button">CANCEL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </main>
 
 

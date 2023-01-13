@@ -132,6 +132,8 @@ var $home = document.querySelector('.fa-house');
 $home.addEventListener('click', goHome);
 
 function goHome(event) {
+  toggleNoEntries();
+  generateDomTree();
   viewSwap($villageSlide);
 }
 function searchForAVillager(event) {
@@ -248,15 +250,15 @@ function renderSlide(firstVillager, secondVillager) {
     $resColImgBelow.setAttribute('class', 'column-full ');
     $resMainImgBelow = document.createElement('img');
     $resMainImgBelow.setAttribute('src', 'images/hello.png');
-    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    $resMainImgBelow.setAttribute('class', 'visibility-hidden res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
     $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     $resIconBelow = document.createElement('img');
     $resIconBelow.setAttribute('src', 'images/thought.png');
-    $resIconBelow.setAttribute('class', 'icon resident-icon-mobile-slide');
+    $resIconBelow.setAttribute('class', 'visibility-hidden icon resident-icon-mobile-slide');
     $pBelow = document.createElement('p');
     $pBelow.textContent = 'Add another villager!';
-    $pBelow.setAttribute('class', 'res-p-below');
+    $pBelow.setAttribute('class', 'visibility-hidden res-p-below');
 
     $slidesRow.appendChild($resColImgBelow);
     $resColImgBelow.appendChild($resMainImgBelow);
@@ -268,83 +270,31 @@ function renderSlide(firstVillager, secondVillager) {
   return $slidesRow;
 }
 
-/*   if ((data.liked.length + 2) % 2 === 0) { //old
-    var $slidesRow = document.createElement('div');
+function createSlides(likedVillagers) {
 
-    $slidesRow.setAttribute('class', 'row slides');
-    var $resColImg = document.createElement('div');
-    $resColImg.setAttribute('class', 'column-full resident-one-top');
-    var $resMainImg = document.createElement('img');
-    $resMainImg.setAttribute('src', entry.image);
-    $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
-    var $resColIcon = document.createElement('div');
-    $resColIcon.setAttribute('class', 'column-full display-flex');
-    var $resIcon = document.createElement('img');
-    $resIcon.setAttribute('src', entry.icon);
-    $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide');
-    var $p = document.createElement('p');
-    $p.textContent = entry.name;
-
-    $slidesRow.appendChild($resColImg);
-    $resColImg.appendChild($resMainImg);
-    $slidesRow.appendChild($resColIcon);
-    $resColIcon.appendChild($resIcon);
-    $resColIcon.appendChild($p);
-
-    var $resColImgBelow = document.createElement('div');
-    $resColImgBelow.setAttribute('class', 'column-full resident-one-top');
-    var $resMainImgBelow = document.createElement('img');
-    $resMainImgBelow.setAttribute('src', entry.image);
-    $resMainImgBelow.setAttribute('class', 'visibility-hidden res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
-    var $resColIconBelow = document.createElement('div');
-    $resColIconBelow.setAttribute('class', 'visibility-hidden res-icon-below column-full display-flex');
-    var $resIconBelow = document.createElement('img');
-    $resIconBelow.setAttribute('src', entry.icon);
-    $resIconBelow.setAttribute('class', 'icon visibility-hidden resident-icon-mobile-slide');
-    var $pBelow = document.createElement('p');
-    $pBelow.textContent = entry.name;
-    $pBelow.setAttribute('class', 'res-p-below');
-
-    $slidesRow.appendChild($resColImgBelow);
-    $resColImgBelow.appendChild($resMainImgBelow);
-    $slidesRow.appendChild($resColIconBelow);
-    $resColIconBelow.appendChild($resIconBelow);
-    $resColIconBelow.appendChild($pBelow);
-
-    $slidesRow.appendChild($resColImgBelow);
-    $resColImgBelow.appendChild($resMainImgBelow);
-    $slidesRow.appendChild($resColIconBelow);
-    $resColIconBelow.appendChild($resIconBelow);
-    $resColIconBelow.appendChild($pBelow);
-  } else if ((data.liked.length + 2) % 2 !== 0) {
-
-    var $resMainImgBelowToChange = document.querySelector('.res-img-below');
-    $resMainImgBelowToChange.setAttribute('src', entry.image);
-    $resMainImgBelowToChange.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
-    var $resColIconToChange = document.querySelector('div');
-    $resColIconToChange.setAttribute('class', 'column-full display-flex');
-    var $resIconToChange = document.querySelector('.res-icon-below');
-    $resIconToChange.setAttribute('src', entry.icon);
-    $resIconToChange.setAttribute('class', 'icon resident-icon-mobile-slide');
-    var $pToChange = document.querySelector('res-p-below');
-    $pToChange.textContent = entry.name;
-
-  }
-  return $slidesRow;
-}
- */
-var villagerList10Max = data.liked;
-function createSlides(villagerList10Max) {
-  for (var i = 0; i < villagerList10Max.length; i += 2) {
-    $sliderCol.appendChild(renderSlide(villagerList10Max[i], villagerList10Max[i + 1]));
+  $sliderCol.replaceChildren();
+  for (var i = 0; i < data.liked.length; i += 2) {
+    $sliderCol.appendChild(renderSlide(data.liked[i], data.liked[i + 1]));
   }
 }
 var $sliderCol = document.querySelector('.slider');
 document.addEventListener('DOMContentLoaded', generateDomTree);
 
 function generateDomTree(event) {
-  createSlides(villagerList10Max);
+  createSlides(data.liked);
+  toggleNoEntries();
 }
+var $noLikedMessage = document.querySelector('.no-liked-message');
+
+function toggleNoEntries(event) {
+  if (data.liked.length === 0) {
+    $noLikedMessage.classList.remove('hidden');
+
+  } else {
+    $noLikedMessage.classList.add('hidden');
+  }
+}
+
 var $overlay = document.querySelector('.overlay');
 var $xButton = document.querySelector('.fa-x');
 $xButton.addEventListener('click', closeIndividualCard);
@@ -375,5 +325,35 @@ function openVillagerCard(event) {
         $individualSaying.textContent = data.liked[i].saying;
       }
     }
+  }
+}
+var $overlayTrash = document.querySelector('.overlay-trash');
+var $trash = document.querySelector('.fa-trash');
+$trash.addEventListener('click', openRemoveModal);
+function openRemoveModal(event) {
+  $overlayTrash.classList.remove('hidden');
+}
+
+var $removeVillagerButton = document.querySelector('.remove-villager');
+var $cancelRemoveVillagerButton = document.querySelector('.cancel-remove-villager');
+$removeVillagerButton.addEventListener('click', trashModalButtons);
+$cancelRemoveVillagerButton.addEventListener('click', trashModalButtons);
+function trashModalButtons(event) {
+
+  if (event.target.classList.contains('remove-villager')) {
+
+    $overlayTrash.classList.add('hidden');
+    $overlay.classList.add('hidden');
+    for (var i = 0; i < data.liked.length; i++) {
+      if ($individualName.textContent === data.liked[i].name) {
+
+        data.liked.splice(i, 1);
+        generateDomTree();
+      }
+
+    }
+
+  } else if (event.target.classList.contains('cancel-remove-villager')) {
+    $overlayTrash.classList.add('hidden');
   }
 }
