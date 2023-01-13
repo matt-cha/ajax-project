@@ -133,6 +133,7 @@ $home.addEventListener('click', goHome);
 
 function goHome(event) {
   toggleNoEntries();
+  generateDomTree();
   viewSwap($villageSlide);
 }
 function searchForAVillager(event) {
