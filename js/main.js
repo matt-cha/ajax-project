@@ -149,8 +149,6 @@ $heart.addEventListener('click', heartClicked);
 
 function heartClicked(event) {
 
-  /*   var currentVillagerLiked = $name.textContent; */
-
   if (data.liked.length >= 10) {
     $textHeart.textContent = 'There are already 10 villagers!';
     $textHeart.className = 'text-heart text-red fade-out ';
@@ -166,36 +164,27 @@ function heartClicked(event) {
       $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has been added!';
       $textHeart.className = 'text-heart text-red fade-out ';
-
     }
-
-    /* for (var i = 0; i < data.liked.length; i++) {
-      if (data.liked[i].name === currentVillagerLiked) {
-        console.log('already an added villager ');
-        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
-        $textHeart.textContent = 'Villager has already been added!';
-        $textHeart.className = 'text-heart text-red fade-out';
-      } else {
-        console.log('not a match, new villager');
-
-        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
-        $textHeart.textContent = 'Villager has been added!';
-        $textHeart.className = 'text-heart text-red fade-out ';
-
-      }
-    } */
   }
 }
-function likedCheck(event) {
+/* function likedCheck(event) { // old.
   var currentVillagerLiked = $name.textContent;
   for (var i = 0; i < data.liked.length; i++) {
-    if (data.liked[i].name === currentVillagerLiked) {
-      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
-    } else {
+    if (data.liked[i].name !== currentVillagerLiked) {
       $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+    } else {
+      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
     }
   }
+} */
+function likedCheck(event) {
 
+  if (data.liked.some(e => e.name === data.entries[0].name)) {
+    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+  } else {
+
+    $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+  }
 }
 
 var $home = document.querySelector('.fa-house');
@@ -321,7 +310,7 @@ function renderSlide(firstVillager, secondVillager) {
     $resIconBelow.setAttribute('src', 'images/thought.png');
     $resIconBelow.setAttribute('class', 'icon resident-icon-mobile-slide');
     $pBelow = document.createElement('p');
-    $pBelow.textContent = 'no 2nd villager';
+    $pBelow.textContent = 'Add another villager!';
     $pBelow.setAttribute('class', 'res-p-below');
 
     $slidesRow.appendChild($resColImgBelow);
@@ -402,31 +391,12 @@ function renderSlide(firstVillager, secondVillager) {
 var villagerList10Max = data.liked;
 function createSlides(villagerList10Max) {
   for (var i = 0; i < villagerList10Max.length; i += 2) {
-    renderSlide(villagerList10Max[i], villagerList10Max[i + 1]);
+    $sliderCol.appendChild(renderSlide(villagerList10Max[i], villagerList10Max[i + 1]));
   }
 }
 var $sliderCol = document.querySelector('.slider');
 document.addEventListener('DOMContentLoaded', generateDomTree);
-/* function generateDomTree(event) {
-  for (var i = 0; i < data.entries.length; i++) {
-    for (var k = 0; k < data.liked.length; k++) {
-      if (data.entries[i].name === data.liked[k]) {
-        $sliderCol.appendChild(renderSlide(data.entries[i]));
 
-      }
-    }
-  }
-  viewSwap($villageSlide);
-}
- */
 function generateDomTree(event) {
-  for (var i = 0; i < data.entries.length; i++) {
-    for (var k = 0; k < data.liked.length; k++) {
-      if (data.entries[i].name === data.liked[k]) {
-        $sliderCol.appendChild(createSlides(villagerList10Max));
-
-      }
-    }
-  }
-  /* viewSwap($villageSlide); */
+  createSlides(villagerList10Max);
 }
