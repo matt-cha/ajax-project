@@ -248,15 +248,15 @@ function renderSlide(firstVillager, secondVillager) {
     $resColImgBelow.setAttribute('class', 'column-full ');
     $resMainImgBelow = document.createElement('img');
     $resMainImgBelow.setAttribute('src', 'images/hello.png');
-    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    $resMainImgBelow.setAttribute('class', 'visibility-hidden res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
     $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     $resIconBelow = document.createElement('img');
     $resIconBelow.setAttribute('src', 'images/thought.png');
-    $resIconBelow.setAttribute('class', 'icon resident-icon-mobile-slide');
+    $resIconBelow.setAttribute('class', 'visibility-hidden icon resident-icon-mobile-slide');
     $pBelow = document.createElement('p');
     $pBelow.textContent = 'Add another villager!';
-    $pBelow.setAttribute('class', 'res-p-below');
+    $pBelow.setAttribute('class', 'visibility-hidden res-p-below');
 
     $slidesRow.appendChild($resColImgBelow);
     $resColImgBelow.appendChild($resMainImgBelow);
@@ -268,71 +268,6 @@ function renderSlide(firstVillager, secondVillager) {
   return $slidesRow;
 }
 
-/*   if ((data.liked.length + 2) % 2 === 0) { //old
-    var $slidesRow = document.createElement('div');
-
-    $slidesRow.setAttribute('class', 'row slides');
-    var $resColImg = document.createElement('div');
-    $resColImg.setAttribute('class', 'column-full resident-one-top');
-    var $resMainImg = document.createElement('img');
-    $resMainImg.setAttribute('src', entry.image);
-    $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
-    var $resColIcon = document.createElement('div');
-    $resColIcon.setAttribute('class', 'column-full display-flex');
-    var $resIcon = document.createElement('img');
-    $resIcon.setAttribute('src', entry.icon);
-    $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide');
-    var $p = document.createElement('p');
-    $p.textContent = entry.name;
-
-    $slidesRow.appendChild($resColImg);
-    $resColImg.appendChild($resMainImg);
-    $slidesRow.appendChild($resColIcon);
-    $resColIcon.appendChild($resIcon);
-    $resColIcon.appendChild($p);
-
-    var $resColImgBelow = document.createElement('div');
-    $resColImgBelow.setAttribute('class', 'column-full resident-one-top');
-    var $resMainImgBelow = document.createElement('img');
-    $resMainImgBelow.setAttribute('src', entry.image);
-    $resMainImgBelow.setAttribute('class', 'visibility-hidden res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
-    var $resColIconBelow = document.createElement('div');
-    $resColIconBelow.setAttribute('class', 'visibility-hidden res-icon-below column-full display-flex');
-    var $resIconBelow = document.createElement('img');
-    $resIconBelow.setAttribute('src', entry.icon);
-    $resIconBelow.setAttribute('class', 'icon visibility-hidden resident-icon-mobile-slide');
-    var $pBelow = document.createElement('p');
-    $pBelow.textContent = entry.name;
-    $pBelow.setAttribute('class', 'res-p-below');
-
-    $slidesRow.appendChild($resColImgBelow);
-    $resColImgBelow.appendChild($resMainImgBelow);
-    $slidesRow.appendChild($resColIconBelow);
-    $resColIconBelow.appendChild($resIconBelow);
-    $resColIconBelow.appendChild($pBelow);
-
-    $slidesRow.appendChild($resColImgBelow);
-    $resColImgBelow.appendChild($resMainImgBelow);
-    $slidesRow.appendChild($resColIconBelow);
-    $resColIconBelow.appendChild($resIconBelow);
-    $resColIconBelow.appendChild($pBelow);
-  } else if ((data.liked.length + 2) % 2 !== 0) {
-
-    var $resMainImgBelowToChange = document.querySelector('.res-img-below');
-    $resMainImgBelowToChange.setAttribute('src', entry.image);
-    $resMainImgBelowToChange.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
-    var $resColIconToChange = document.querySelector('div');
-    $resColIconToChange.setAttribute('class', 'column-full display-flex');
-    var $resIconToChange = document.querySelector('.res-icon-below');
-    $resIconToChange.setAttribute('src', entry.icon);
-    $resIconToChange.setAttribute('class', 'icon resident-icon-mobile-slide');
-    var $pToChange = document.querySelector('res-p-below');
-    $pToChange.textContent = entry.name;
-
-  }
-  return $slidesRow;
-}
- */
 var villagerList10Max = data.liked;
 function createSlides(villagerList10Max) {
   for (var i = 0; i < villagerList10Max.length; i += 2) {
@@ -386,12 +321,24 @@ function openRemoveModal(event) {
 
 var $removeVillagerButton = document.querySelector('.remove-villager');
 var $cancelRemoveVillagerButton = document.querySelector('.cancel-remove-villager');
-$removeVillagerButton.addEventListener('click', removeModalButtons);
-$cancelRemoveVillagerButton.addEventListener('click', removeModalButtons);
-function removeModalButtons(event) {
+$removeVillagerButton.addEventListener('click', trashModalButtons);
+$cancelRemoveVillagerButton.addEventListener('click', trashModalButtons);
+function trashModalButtons(event) {
+
+  var formJsonString = JSON.stringify(data);
   if (event.target.classList.contains('remove-villager')) {
-    /*     console.log('remove clicked'); */
+
     $overlayTrash.classList.add('hidden');
+    $overlay.classList.add('hidden');
+    for (var i = 0; i < data.liked.length; i++) {
+      if ($individualName.textContent === data.liked[i].name) {
+
+        formJsonString = JSON.stringify(data);
+        localStorage.setItem('form-values', formJsonString);
+        data.liked.splice(i, 1);
+      }
+
+    }
 
   } else if (event.target.classList.contains('cancel-remove-villager')) {
     $overlayTrash.classList.add('hidden');
