@@ -21,7 +21,7 @@ xhrVillagers.addEventListener('load', function () {
     villagerData[name] = target;
 
   }
-  /*   console.log('villagerData:', villagerData); */
+  /* console.log('villagerData:', villagerData); */
 
 });
 xhrVillagers.send();
@@ -54,7 +54,6 @@ function saveForm(event) {
       renderNotFound();
     }
   }
-
 }
 
 var $searchImage = document.querySelector('.search-image');
@@ -97,55 +96,6 @@ function renderNotFound(entry) {
 var $heart = document.querySelector('.heart-like');
 var $textHeart = document.querySelector('.text-heart');
 $heart.addEventListener('click', heartClicked);
-// original
-/* function heartClicked(event) {
-  var currentVillagerLiked = $name.textContent;
-  if (data.liked.length >= 10) {
-    $textHeart.textContent = 'There are already 10 villagers!';
-    $textHeart.className = 'text-heart text-red fade-out ';
-
-  } else if (data.liked.includes(currentVillagerLiked)) {
-    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
-    $textHeart.textContent = 'Villager has already been added!';
-    $textHeart.className = 'text-heart text-red fade-out';
-
-  } else {
-    data.liked.push(currentVillagerLiked);
-    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
-    $textHeart.textContent = 'Villager has been added!';
-    $textHeart.className = 'text-heart text-red fade-out ';
-  }
-} */
-
-/* function heartClicked(event) { // edit 2
-
-  var currentVillagerLiked = $name.textContent;
-  console.log('line:122 currentVillagerLiked::: ', currentVillagerLiked);
-  if (data.liked.length >= 10) {
-    $textHeart.textContent = 'There are already 10 villagers!';
-    $textHeart.className = 'text-heart text-red fade-out ';
-    return null;
-  } else {
-    if (data.liked.length === 0) {
-      data.liked.unshift(data.entries[0]);
-      console.log('line131');
-
-    } for (var i = 0; i < data.liked.length; i++) {
-      if (data.liked[i].name === currentVillagerLiked) {
-        console.log('already an added villager ');
-        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
-        $textHeart.textContent = 'Villager has already been added!';
-        $textHeart.className = 'text-heart text-red fade-out';
-      } else {
-        console.log('not a match, new villager');
-        data.liked.unshift(data.entries[0]);
-        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
-        $textHeart.textContent = 'Villager has been added!';
-        $textHeart.className = 'text-heart text-red fade-out ';
-      }
-    }
-  }
-} */
 
 function heartClicked(event) {
 
@@ -167,16 +117,7 @@ function heartClicked(event) {
     }
   }
 }
-/* function likedCheck(event) { // old.
-  var currentVillagerLiked = $name.textContent;
-  for (var i = 0; i < data.liked.length; i++) {
-    if (data.liked[i].name !== currentVillagerLiked) {
-      $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
-    } else {
-      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
-    }
-  }
-} */
+
 function likedCheck(event) {
 
   if (data.liked.some(e => e.name === data.entries[0].name)) {
@@ -254,21 +195,22 @@ function arrowClicked(event) {
   }
 }
 
-// use loop to append data for one image,icon, name and repeat for lengt of the liekd array
 function renderSlide(firstVillager, secondVillager) {
   var $slidesRow = document.createElement('div');
 
   $slidesRow.setAttribute('class', 'row slides');
   var $resColImg = document.createElement('div');
-  $resColImg.setAttribute('class', 'column-full resident-one-top');
+  $resColImg.setAttribute('class', 'column-full resident');
   var $resMainImg = document.createElement('img');
   $resMainImg.setAttribute('src', firstVillager.image);
   $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+  $resMainImg.setAttribute('villager-name', firstVillager.name);
   var $resColIcon = document.createElement('div');
   $resColIcon.setAttribute('class', 'column-full display-flex');
   var $resIcon = document.createElement('img');
   $resIcon.setAttribute('src', firstVillager.icon);
   $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide');
+  $resIcon.setAttribute('villager-name', firstVillager.name);
   var $p = document.createElement('p');
   $p.textContent = firstVillager.name;
 
@@ -280,15 +222,17 @@ function renderSlide(firstVillager, secondVillager) {
 
   if (typeof secondVillager !== 'undefined') {
     var $resColImgBelow = document.createElement('div');
-    $resColImgBelow.setAttribute('class', 'column-full resident-one-top');
+    $resColImgBelow.setAttribute('class', 'column-full resident');
     var $resMainImgBelow = document.createElement('img');
     $resMainImgBelow.setAttribute('src', secondVillager.image);
     $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    $resMainImgBelow.setAttribute('villager-name', secondVillager.name);
     var $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     var $resIconBelow = document.createElement('img');
     $resIconBelow.setAttribute('src', secondVillager.icon);
     $resIconBelow.setAttribute('class', 'icon  resident-icon-mobile-slide');
+    $resIconBelow.setAttribute('villager-name', secondVillager.name);
     var $pBelow = document.createElement('p');
     $pBelow.textContent = secondVillager.name;
     $pBelow.setAttribute('class', 'res-p-below');
@@ -300,9 +244,9 @@ function renderSlide(firstVillager, secondVillager) {
     $resColIconBelow.appendChild($pBelow);
   } else {
     $resColImgBelow = document.createElement('div');
-    $resColImgBelow.setAttribute('class', 'column-full resident-one-top');
+    $resColImgBelow.setAttribute('class', 'column-full ');
     $resMainImgBelow = document.createElement('img');
-    $resMainImgBelow.setAttribute('src', 'images/hello.png' /* secondVillager.image */);
+    $resMainImgBelow.setAttribute('src', 'images/hello.png');
     $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
     $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
@@ -399,4 +343,36 @@ document.addEventListener('DOMContentLoaded', generateDomTree);
 
 function generateDomTree(event) {
   createSlides(villagerList10Max);
+}
+var $overlay = document.querySelector('.overlay');
+var $xButton = document.querySelector('.fa-x');
+$xButton.addEventListener('click', closeIndividualCard);
+function closeIndividualCard(event) {
+  $overlay.classList.add('hidden');
+}
+$slider = document.querySelector('.slider');
+$slider.addEventListener('click', openVillagerCard);
+var $individualMainImg = document.querySelector('.individual-main-img');
+var $individualIconImg = document.querySelector('.individual-icon-img');
+var $individualName = document.querySelector('.individual-name');
+var $individualBirthday = document.querySelector('.individual-birthday');
+var $individualHobby = document.querySelector('.individual-hobby');
+var $individualPersonality = document.querySelector('.individual-personality');
+var $individualSaying = document.querySelector('.individual-saying');
+
+function openVillagerCard(event) {
+  if (event.target.matches('img')) {
+    $overlay.classList.remove('hidden');
+    for (var i = 0; i < data.liked.length; i++) {
+      if (event.target.getAttribute('villager-name') === data.liked[i].name) {
+        $individualMainImg.setAttribute('src', data.liked[i].image);
+        $individualIconImg.setAttribute('src', data.liked[i].icon);
+        $individualName.textContent = data.liked[i].name;
+        $individualBirthday.textContent = data.liked[i].birthdayString;
+        $individualHobby.textContent = data.liked[i].hobby;
+        $individualPersonality.textContent = data.liked[i].personality;
+        $individualSaying.textContent = data.liked[i].saying;
+      }
+    }
+  }
 }

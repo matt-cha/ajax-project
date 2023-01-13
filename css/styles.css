@@ -45,7 +45,6 @@
   right: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .border-none {
@@ -279,11 +278,11 @@
 .modal-villager-card {
   width: 350px;
   height: 625px;
-  background-color: rgba(255, 255, 255, 0.89);
+  background-color: rgba(255, 255, 255, 0.99);
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  margin-top: 0;
+  margin-top: 7rem;
 }
 
 .resident-icon-mobile-slide {
@@ -325,6 +324,10 @@
 
 .visibility-hidden {
   visibility: hidden;
+}
+
+.fa-x:hover {
+  color: rgb(251, 106, 106);
 }
 
 @media screen and (min-width: 1280px) {

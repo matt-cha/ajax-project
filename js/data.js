@@ -1,7 +1,7 @@
 /* exported data */
 
 var data = {
-  view: 'search',
+  individualVillagerCard: null,
   entries: [],
   liked: []
 };
