@@ -1,3 +1,4 @@
+
 var xhrVillagers = new XMLHttpRequest();
 var villagerData = {};
 xhrVillagers.open('GET', 'http://acnhapi.com/v1/villagers/');
@@ -15,6 +16,7 @@ xhrVillagers.addEventListener('load', function () {
     target.icon = xhrVillagers.response[key].icon_uri;
     target.image = xhrVillagers.response[key].image_uri;
     target.saying = xhrVillagers.response[key].saying;
+    target.id = xhrVillagers.response[key].id;
 
     villagerData[name] = target;
 
@@ -36,7 +38,7 @@ function saveForm(event) {
   for (var i = 0; i < villagerNamesList.length; i++) {
     if (formValues.name === villagerNamesList[i]) {
 
-      formValues.entryId = data.nextEntryId;
+      formValues.id = villagerData[villagerNamesList[i]].id;
       formValues.hobby = villagerData[villagerNamesList[i]].hobby;
       formValues.personality = villagerData[villagerNamesList[i]].personality;
       formValues.icon = villagerData[villagerNamesList[i]].icon;
@@ -44,7 +46,6 @@ function saveForm(event) {
       formValues.birthdayString = villagerData[villagerNamesList[i]].birthdayString;
       formValues.saying = villagerData[villagerNamesList[i]].saying;
 
-      data.nextEntryId++;
       data.entries.unshift(formValues);
       document.querySelector('.navbar-form').reset();
       renderVillagerSearch();
@@ -96,9 +97,10 @@ function renderNotFound(entry) {
 var $heart = document.querySelector('.heart-like');
 var $textHeart = document.querySelector('.text-heart');
 $heart.addEventListener('click', heartClicked);
-function heartClicked(event) {
+// original
+/* function heartClicked(event) {
   var currentVillagerLiked = $name.textContent;
-  if (data.liked.length === 10) {
+  if (data.liked.length >= 10) {
     $textHeart.textContent = 'There are already 10 villagers!';
     $textHeart.className = 'text-heart text-red fade-out ';
 
@@ -113,34 +115,92 @@ function heartClicked(event) {
     $textHeart.textContent = 'Villager has been added!';
     $textHeart.className = 'text-heart text-red fade-out ';
   }
-}
+} */
 
+/* function heartClicked(event) { // edit 2
+
+  var currentVillagerLiked = $name.textContent;
+  console.log('line:122 currentVillagerLiked::: ', currentVillagerLiked);
+  if (data.liked.length >= 10) {
+    $textHeart.textContent = 'There are already 10 villagers!';
+    $textHeart.className = 'text-heart text-red fade-out ';
+    return null;
+  } else {
+    if (data.liked.length === 0) {
+      data.liked.unshift(data.entries[0]);
+      console.log('line131');
+
+    } for (var i = 0; i < data.liked.length; i++) {
+      if (data.liked[i].name === currentVillagerLiked) {
+        console.log('already an added villager ');
+        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+        $textHeart.textContent = 'Villager has already been added!';
+        $textHeart.className = 'text-heart text-red fade-out';
+      } else {
+        console.log('not a match, new villager');
+        data.liked.unshift(data.entries[0]);
+        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+        $textHeart.textContent = 'Villager has been added!';
+        $textHeart.className = 'text-heart text-red fade-out ';
+      }
+    }
+  }
+} */
+
+function heartClicked(event) {
+
+  /*   var currentVillagerLiked = $name.textContent; */
+
+  if (data.liked.length >= 10) {
+    $textHeart.textContent = 'There are already 10 villagers!';
+    $textHeart.className = 'text-heart text-red fade-out ';
+    return null;
+  } else {
+    if (data.liked.some(e => e.name === data.entries[0].name)) {
+    /*   console.log('Already Liked'); */
+      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $textHeart.textContent = 'Villager has already been added!';
+      $textHeart.className = 'text-heart text-red fade-out';
+    } else {
+      data.liked.unshift(data.entries[0]);
+      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $textHeart.textContent = 'Villager has been added!';
+      $textHeart.className = 'text-heart text-red fade-out ';
+
+    }
+
+    /* for (var i = 0; i < data.liked.length; i++) {
+      if (data.liked[i].name === currentVillagerLiked) {
+        console.log('already an added villager ');
+        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+        $textHeart.textContent = 'Villager has already been added!';
+        $textHeart.className = 'text-heart text-red fade-out';
+      } else {
+        console.log('not a match, new villager');
+
+        $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+        $textHeart.textContent = 'Villager has been added!';
+        $textHeart.className = 'text-heart text-red fade-out ';
+
+      }
+    } */
+  }
+}
 function likedCheck(event) {
   var currentVillagerLiked = $name.textContent;
-
-  if (data.liked.includes(currentVillagerLiked)) {
-    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
-  } else {
-    $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+  for (var i = 0; i < data.liked.length; i++) {
+    if (data.liked[i].name === currentVillagerLiked) {
+      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+    } else {
+      $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+    }
   }
 
 }
-/* var $searchView = document.querySelector('.search-view');
-var $villageViewMobile = document.querySelector('.village-view-mobile');
-var $villageViewDesktop = document.querySelector('.village-view-desktop'); */
+
 var $home = document.querySelector('.fa-house');
 $home.addEventListener('click', goHome);
-/* function goHome(event) {
-  $villageViewMobile.classList.remove('hidden');
-  $villageViewDesktop.classList.remove('hidden');
-  $searchView.classList.add('hidden');
-}
 
-function searchForAVillager(event) {
-  $villageViewMobile.classList.add('hidden');
-  $villageViewDesktop.classList.add('hidden');
-  $searchView.classList.remove('hidden');
-} */
 function goHome(event) {
   viewSwap($villageSlide);
 }
@@ -204,39 +264,169 @@ function arrowClicked(event) {
     }
   }
 }
-/* var $residentOneImage = document.querySelector('.resident-one-image');
-var $residentOneIcon = document.querySelector('.resident-one-icon');
-var $residentOneName = document.querySelector('.resident-one-name');
-var $residentTwoImage = document.querySelector('.resident-two-image');
-var $residentTwoIcon = document.querySelector('.resident-two-icon');
-var $residentTwoName = document.querySelector('.resident-two-name');
-var $residentThreeImage = document.querySelector('.resident-three-image');
-var $residentThreeIcon = document.querySelector('.resident-three-icon');
-var $residentThreeName = document.querySelector('.resident-three-name');
-var $residentFourImage = document.querySelector('.resident-four-image');
-var $residentFourIcon = document.querySelector('.resident-four-icon');
-var $residentFourName = document.querySelector('.resident-four-name');
-var $residentFiveImage = document.querySelector('.resident-five-image');
-var $residentFiveIcon = document.querySelector('.resident-five-icon');
-var $residentFiveName = document.querySelector('.resident-five-name');
-var $residentSixImage = document.querySelector('.resident-six-image');
-var $residentSixIcon = document.querySelector('.resident-six-icon');
-var $residentSixName = document.querySelector('.resident-six-name');
-var $residentSevenImage = document.querySelector('.resident-seven-image');
-var $residentSevenIcon = document.querySelector('.resident-seven-icon');
-var $residentSevenName = document.querySelector('.resident-seven-name');
-var $residentEightImage = document.querySelector('.resident-eight-image');
-var $residentEightIcon = document.querySelector('.resident-eight-icon');
-var $residentEightName = document.querySelector('.resident-eight-name');
-var $residentNineImage = document.querySelector('.resident-nine-image');
-var $residentNineIcon = document.querySelector('.resident-nine-icon');
-var $residentNineName = document.querySelector('.resident-nine-name');
-var $residentTenImage = document.querySelector('.resident-ten-image');
-var $residentTenIcon = document.querySelector('.resident-ten-icon');
-var $residentTenName = document.querySelector('.resident-ten-name');
-function renderVillage(entry) {
-
-}
- */
 
 // use loop to append data for one image,icon, name and repeat for lengt of the liekd array
+function renderSlide(firstVillager, secondVillager) {
+  var $slidesRow = document.createElement('div');
+
+  $slidesRow.setAttribute('class', 'row slides');
+  var $resColImg = document.createElement('div');
+  $resColImg.setAttribute('class', 'column-full resident-one-top');
+  var $resMainImg = document.createElement('img');
+  $resMainImg.setAttribute('src', firstVillager.image);
+  $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+  var $resColIcon = document.createElement('div');
+  $resColIcon.setAttribute('class', 'column-full display-flex');
+  var $resIcon = document.createElement('img');
+  $resIcon.setAttribute('src', firstVillager.icon);
+  $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide');
+  var $p = document.createElement('p');
+  $p.textContent = firstVillager.name;
+
+  $slidesRow.appendChild($resColImg);
+  $resColImg.appendChild($resMainImg);
+  $slidesRow.appendChild($resColIcon);
+  $resColIcon.appendChild($resIcon);
+  $resColIcon.appendChild($p);
+
+  if (typeof secondVillager !== 'undefined') {
+    var $resColImgBelow = document.createElement('div');
+    $resColImgBelow.setAttribute('class', 'column-full resident-one-top');
+    var $resMainImgBelow = document.createElement('img');
+    $resMainImgBelow.setAttribute('src', secondVillager.image);
+    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    var $resColIconBelow = document.createElement('div');
+    $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
+    var $resIconBelow = document.createElement('img');
+    $resIconBelow.setAttribute('src', secondVillager.icon);
+    $resIconBelow.setAttribute('class', 'icon  resident-icon-mobile-slide');
+    var $pBelow = document.createElement('p');
+    $pBelow.textContent = secondVillager.name;
+    $pBelow.setAttribute('class', 'res-p-below');
+
+    $slidesRow.appendChild($resColImgBelow);
+    $resColImgBelow.appendChild($resMainImgBelow);
+    $slidesRow.appendChild($resColIconBelow);
+    $resColIconBelow.appendChild($resIconBelow);
+    $resColIconBelow.appendChild($pBelow);
+  } else {
+    $resColImgBelow = document.createElement('div');
+    $resColImgBelow.setAttribute('class', 'column-full resident-one-top');
+    $resMainImgBelow = document.createElement('img');
+    $resMainImgBelow.setAttribute('src', 'images/hello.png' /* secondVillager.image */);
+    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    $resColIconBelow = document.createElement('div');
+    $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
+    $resIconBelow = document.createElement('img');
+    $resIconBelow.setAttribute('src', 'images/thought.png');
+    $resIconBelow.setAttribute('class', 'icon resident-icon-mobile-slide');
+    $pBelow = document.createElement('p');
+    $pBelow.textContent = 'no 2nd villager';
+    $pBelow.setAttribute('class', 'res-p-below');
+
+    $slidesRow.appendChild($resColImgBelow);
+    $resColImgBelow.appendChild($resMainImgBelow);
+    $slidesRow.appendChild($resColIconBelow);
+    $resColIconBelow.appendChild($resIconBelow);
+    $resColIconBelow.appendChild($pBelow);
+  }
+
+  return $slidesRow;
+}
+
+/*   if ((data.liked.length + 2) % 2 === 0) { //old
+    var $slidesRow = document.createElement('div');
+
+    $slidesRow.setAttribute('class', 'row slides');
+    var $resColImg = document.createElement('div');
+    $resColImg.setAttribute('class', 'column-full resident-one-top');
+    var $resMainImg = document.createElement('img');
+    $resMainImg.setAttribute('src', entry.image);
+    $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    var $resColIcon = document.createElement('div');
+    $resColIcon.setAttribute('class', 'column-full display-flex');
+    var $resIcon = document.createElement('img');
+    $resIcon.setAttribute('src', entry.icon);
+    $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide');
+    var $p = document.createElement('p');
+    $p.textContent = entry.name;
+
+    $slidesRow.appendChild($resColImg);
+    $resColImg.appendChild($resMainImg);
+    $slidesRow.appendChild($resColIcon);
+    $resColIcon.appendChild($resIcon);
+    $resColIcon.appendChild($p);
+
+    var $resColImgBelow = document.createElement('div');
+    $resColImgBelow.setAttribute('class', 'column-full resident-one-top');
+    var $resMainImgBelow = document.createElement('img');
+    $resMainImgBelow.setAttribute('src', entry.image);
+    $resMainImgBelow.setAttribute('class', 'visibility-hidden res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    var $resColIconBelow = document.createElement('div');
+    $resColIconBelow.setAttribute('class', 'visibility-hidden res-icon-below column-full display-flex');
+    var $resIconBelow = document.createElement('img');
+    $resIconBelow.setAttribute('src', entry.icon);
+    $resIconBelow.setAttribute('class', 'icon visibility-hidden resident-icon-mobile-slide');
+    var $pBelow = document.createElement('p');
+    $pBelow.textContent = entry.name;
+    $pBelow.setAttribute('class', 'res-p-below');
+
+    $slidesRow.appendChild($resColImgBelow);
+    $resColImgBelow.appendChild($resMainImgBelow);
+    $slidesRow.appendChild($resColIconBelow);
+    $resColIconBelow.appendChild($resIconBelow);
+    $resColIconBelow.appendChild($pBelow);
+
+    $slidesRow.appendChild($resColImgBelow);
+    $resColImgBelow.appendChild($resMainImgBelow);
+    $slidesRow.appendChild($resColIconBelow);
+    $resColIconBelow.appendChild($resIconBelow);
+    $resColIconBelow.appendChild($pBelow);
+  } else if ((data.liked.length + 2) % 2 !== 0) {
+
+    var $resMainImgBelowToChange = document.querySelector('.res-img-below');
+    $resMainImgBelowToChange.setAttribute('src', entry.image);
+    $resMainImgBelowToChange.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
+    var $resColIconToChange = document.querySelector('div');
+    $resColIconToChange.setAttribute('class', 'column-full display-flex');
+    var $resIconToChange = document.querySelector('.res-icon-below');
+    $resIconToChange.setAttribute('src', entry.icon);
+    $resIconToChange.setAttribute('class', 'icon resident-icon-mobile-slide');
+    var $pToChange = document.querySelector('res-p-below');
+    $pToChange.textContent = entry.name;
+
+  }
+  return $slidesRow;
+}
+ */
+var villagerList10Max = data.liked;
+function createSlides(villagerList10Max) {
+  for (var i = 0; i < villagerList10Max.length; i += 2) {
+    renderSlide(villagerList10Max[i], villagerList10Max[i + 1]);
+  }
+}
+var $sliderCol = document.querySelector('.slider');
+document.addEventListener('DOMContentLoaded', generateDomTree);
+/* function generateDomTree(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    for (var k = 0; k < data.liked.length; k++) {
+      if (data.entries[i].name === data.liked[k]) {
+        $sliderCol.appendChild(renderSlide(data.entries[i]));
+
+      }
+    }
+  }
+  viewSwap($villageSlide);
+}
+ */
+function generateDomTree(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    for (var k = 0; k < data.liked.length; k++) {
+      if (data.entries[i].name === data.liked[k]) {
+        $sliderCol.appendChild(createSlides(villagerList10Max));
+
+      }
+    }
+  }
+  /* viewSwap($villageSlide); */
+}

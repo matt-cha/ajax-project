@@ -229,7 +229,11 @@
 }
 
 .residents-right-arrow {
-  padding-right: 4.5rem;
+  padding-right: 4.55rem;
+}
+
+.residents-left-arrow {
+  padding-left: 4.55rem;
 }
 
 .align-items-right {
@@ -319,10 +323,9 @@
   margin-left: -840px;
 }
 
-/* -add event listeners to the arrows
-query select for the SLIDER
--click, function arrrow lcicked
--right arrow,  */
+.visibility-hidden {
+  visibility: hidden;
+}
 
 @media screen and (min-width: 1280px) {
   .village-card-mobile {
@@ -336,5 +339,14 @@ query select for the SLIDER
   .mobile-slider-left,
   .mobile-slider-right {
     display: none;
+  }
+
+  .slider {
+    margin-left: 0;
+    transition: 1s;
+  }
+
+  .residents-padding-left {
+    padding-left: 4.55rem;
   }
 }
