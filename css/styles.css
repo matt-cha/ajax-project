@@ -1,3 +1,9 @@
+.container {
+  max-width: 2000px;
+  width: 100vw;
+  height: 100vh;
+}
+
 .bg-color-blue {
   background-color: #a4e9f7;
 }
@@ -21,6 +27,8 @@
 
 .background-image {
   background-image: url("/images/sunnyday.bmp");
+  object-fit: fill;
+  width: 100%;
 }
 
 .margin-home {
@@ -35,6 +43,8 @@
   bottom: 0;
   left: 0;
   right: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .border-none {
@@ -107,6 +117,10 @@
   width: 22.5%;
 }
 
+.resident-icon {
+  width: 15%;
+}
+
 .text-red {
   color: rgb(251, 106, 106);
 }
@@ -146,22 +160,6 @@
 
 .villager-search-for-text-padding-right {
   padding-right: 2rem;
-}
-
-.column-one-fourth {
-  flex-basis: calc(100% / 4);
-}
-
-.column-three-fourth {
-  flex-basis: calc(3/4 * 100%);
-}
-
-.column-40p {
-  flex-basis: calc(40/100 * 100%);
-}
-
-.column-60p {
-  flex-basis: calc(60/100 * 100%);
 }
 
 .header {
@@ -205,4 +203,153 @@
 .margin-16px {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.village-card-mobile {
+  width: 350px;
+  height: 625px;
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+}
+
+.residents-padding-left {
+  padding-left: 4.3rem;
+}
+
+.residents-icon-padding-left {
+  padding-left: 4rem;
+}
+
+.residents-main-image {
+  width: 60%;
+  object-fit: contain;
+  height: auto;
+}
+
+.residents-right-arrow {
+  padding-right: 4.55rem;
+}
+
+.residents-left-arrow {
+  padding-left: 4.55rem;
+}
+
+.align-items-right {
+  align-items: right;
+}
+
+.arrows-margin-top {
+  margin-top: 0.2rem;
+}
+
+.village-card-desktop {
+  width: 1400px;
+  height: 625px;
+  background-color: rgba(255, 255, 255, 0.89);
+  border-radius: 0.5rem;
+  margin-top: 4rem;
+}
+
+.resident-main-desktop {
+  width: 75%;
+  object-fit: contain;
+  height: auto;
+}
+
+.resident-icon-desktop {
+  width: 20%;
+}
+
+.residents-padding-left-desktop {
+  padding-left: 2.1rem;
+}
+
+.residents-icon-padding-left-desktop {
+  padding-left: 1.9rem;
+}
+
+.residents-main-image-slide {
+  width: 210px;
+  object-fit: contain;
+  height: 210px;
+}
+
+.modal-villager-card {
+  width: 350px;
+  height: 625px;
+  background-color: rgba(255, 255, 255, 0.99);
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  margin-top: 7rem;
+}
+
+.resident-icon-mobile-slide {
+  width: 42.9px;
+  height: 42.9px;
+}
+
+.window {
+  width: 210px;
+  height: 515px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.slider {
+  transition: 2s;
+}
+
+.first-slide {
+  margin-left: 0;
+}
+
+.second-slide {
+  margin-left: -210px;
+}
+
+.third-slide {
+  margin-left: -420px;
+}
+
+.fourth-slide {
+  margin-left: -630px;
+}
+
+.fifth-slide {
+  margin-left: -840px;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.fa-x:hover {
+  color: rgb(251, 106, 106);
+}
+
+@media screen and (min-width: 1280px) {
+  .village-card-mobile {
+    width: 1200px;
+  }
+
+  .window {
+    width: 1050px;
+  }
+
+  .mobile-slider-left,
+  .mobile-slider-right {
+    display: none;
+  }
+
+  .slider {
+    margin-left: 0;
+    transition: 1s;
+  }
+
+  .residents-padding-left {
+    padding-left: 4.55rem;
+  }
 }

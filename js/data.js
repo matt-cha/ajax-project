@@ -1,10 +1,8 @@
 /* exported data */
-/* exported villagerLikedData */
+
 var data = {
-  view: 'search-view',
+  individualVillagerCard: null,
   entries: [],
-  villagerNumber: 1,
-  nextEntryId: 1,
   liked: []
 };
 
