@@ -47,6 +47,18 @@
   justify-content: center;
 }
 
+.overlay-trash {
+  position: fixed;
+  background-color: rgba(248, 248, 248, 0.35);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .border-none {
   border: none;
 }
@@ -328,6 +340,20 @@
 
 .fa-x:hover {
   color: rgb(251, 106, 106);
+}
+
+.fa-trash:hover {
+  color: rgb(251, 106, 106);
+}
+
+.trash-modal {
+  width: 250px;
+  height: 170px;
+  background-color: rgba(255, 255, 255, 0.99);
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  margin-top: 0;
 }
 
 @media screen and (min-width: 1280px) {

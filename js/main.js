@@ -377,3 +377,23 @@ function openVillagerCard(event) {
     }
   }
 }
+var $overlayTrash = document.querySelector('.overlay-trash');
+var $trash = document.querySelector('.fa-trash');
+$trash.addEventListener('click', openRemoveModal);
+function openRemoveModal(event) {
+  $overlayTrash.classList.remove('hidden');
+}
+
+var $removeVillagerButton = document.querySelector('.remove-villager');
+var $cancelRemoveVillagerButton = document.querySelector('.cancel-remove-villager');
+$removeVillagerButton.addEventListener('click', removeModalButtons);
+$cancelRemoveVillagerButton.addEventListener('click', removeModalButtons);
+function removeModalButtons(event) {
+  if (event.target.classList.contains('remove-villager')) {
+    /*     console.log('remove clicked'); */
+    $overlayTrash.classList.add('hidden');
+
+  } else if (event.target.classList.contains('cancel-remove-villager')) {
+    $overlayTrash.classList.add('hidden');
+  }
+}
