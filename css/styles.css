@@ -59,6 +59,30 @@
   align-items: center;
 }
 
+.overlay-weather {
+  position: fixed;
+  background-color: rgba(248, 248, 248, 0.35);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-time {
+  position: fixed;
+  background-color: rgba(248, 248, 248, 0.35);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .border-none {
   border: none;
 }
@@ -373,6 +397,18 @@
 }
 
 .cancel-remove-villager {
+  background-color: #87c9a1;
+  border-radius: 0.25rem;
+  border: solid #87c9a1;
+}
+
+.weather-close {
+  background-color: #87c9a1;
+  border-radius: 0.25rem;
+  border: solid #87c9a1;
+}
+
+.weather-save {
   background-color: #87c9a1;
   border-radius: 0.25rem;
   border: solid #87c9a1;

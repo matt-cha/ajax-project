@@ -21,7 +21,7 @@ xhrVillagers.addEventListener('load', function () {
     villagerData[name] = target;
 
   }
-  /* console.log('villagerData:', villagerData); */
+  /*   console.log('villagerData:', villagerData); */
 
 });
 xhrVillagers.send();
@@ -339,21 +339,152 @@ var $cancelRemoveVillagerButton = document.querySelector('.cancel-remove-village
 $removeVillagerButton.addEventListener('click', trashModalButtons);
 $cancelRemoveVillagerButton.addEventListener('click', trashModalButtons);
 function trashModalButtons(event) {
-
   if (event.target.classList.contains('remove-villager')) {
-
     $overlayTrash.classList.add('hidden');
     $overlay.classList.add('hidden');
     for (var i = 0; i < data.liked.length; i++) {
       if ($individualName.textContent === data.liked[i].name) {
-
         data.liked.splice(i, 1);
         generateDomTree();
       }
-
     }
-
   } else if (event.target.classList.contains('cancel-remove-villager')) {
     $overlayTrash.classList.add('hidden');
   }
 }
+
+var xhrMusic = new XMLHttpRequest();
+var musicDataAll = [];
+var musicDataSunny = [];
+var musicDataRainy = [];
+var musicDataSnowy = [];
+var musicDataDay = [];
+var musicDataNight = [];
+
+xhrMusic.open('GET', 'http://acnhapi.com/v1/backgroundmusic/');
+xhrMusic.responseType = 'json';
+xhrMusic.addEventListener('load', function () {
+/*   console.log('xhrMusic.status:', xhrMusic.status);
+  console.log('xhrMusic.response:', xhrMusic.response); */
+  for (var key in xhrMusic.response) {
+    musicDataAll.push(xhrMusic.response[key].music_uri);
+    if (xhrMusic.response[key].hour > 4 && xhrMusic.response[key].hour < 19) {
+      musicDataDay.push(xhrMusic.response[key].music_uri);
+    } else if (xhrMusic.response[key].hour < 5 || xhrMusic.response[key].hour > 18) {
+      musicDataNight.push(xhrMusic.response[key].music_uri);
+    }
+    if (xhrMusic.response[key].weather.includes('Rainy')) {
+      musicDataRainy.push(xhrMusic.response[key].music_uri);
+    } else if (xhrMusic.response[key].weather.includes('Sunny')) {
+      musicDataSunny.push(xhrMusic.response[key].music_uri);
+    } else if (xhrMusic.response[key].weather.includes('Snowy')) {
+      musicDataSnowy.push(xhrMusic.response[key].music_uri);
+    }
+  }
+});
+
+/* console.log('line:380 musicDataNight::: ', musicDataNight);
+console.log('line:378 musicDataDay::: ', musicDataDay);
+console.log('line:383 musicDataRainy::: ', musicDataRainy);
+console.log('line:385 musicDataSunny::: ', musicDataSunny);
+console.log('line:387 musicDataSnowy::: ', musicDataSnowy); */
+xhrMusic.send();
+
+/* var $weather = document.querySelector('.fa-cloud-sun');
+var $weatherModal = document.querySelector('.overlay-weather');
+$weatherModal.addEventListener('click', weatherOptionClicked);
+var weatherChosen = [];
+
+function weatherOptionClicked(event) {
+
+  if (event.target.classList.contains('weather-sun')) {
+    weatherChosen = musicDataSunny;
+    $weatherModal.classList.add('hidden');
+  } else if (event.target.classList.contains('fa-cloud-showers-heavy')) {
+    weatherChosen = musicDataRainy;
+    $weatherModal.classList.add('hidden');
+  } else if (event.target.classList.contains('fa-snowflake')) {
+    weatherChosen = musicDataSnowy;
+    $weatherModal.classList.add('hidden');
+  } else if (event.target.classList.contains('weather-close')) {
+    $weatherModal.classList.add('hidden');
+  }
+
+  return weatherChosen;
+}
+
+$weather.addEventListener('click', openWeatherModal);
+function openWeatherModal(event) {
+  $weatherModal.classList.remove('hidden');
+
+}
+
+var $time = document.querySelector('.fa-clock');
+var $timeModal = document.querySelector('.overlay-time');
+var timeChosen = [];
+$time.addEventListener('click', openTimeModal);
+function openTimeModal(event) {
+  $timeModal.classList.remove('hidden');
+}
+
+$timeModal.addEventListener('click', timeOptionClicked);
+function timeOptionClicked(event) {
+  if (event.target.classList.contains('time-sun-day')) {
+
+    timeChosen = musicDataDay;
+    console.log('line:477 timeChosen::: ', timeChosen);
+    $timeModal.classList.add('hidden');
+  } else if (event.target.classList.contains('fa-moon')) {
+    timeChosen = musicDataNight;
+    $timeModal.classList.add('hidden');
+  } else if (event.target.classList.contains('time-close')) {
+    console.log('line:483 event.target::: ', event.target);
+
+    $timeModal.classList.add('hidden');
+  }
+
+  return timeChosen;
+}
+
+var randomIndex = 0;
+function pickRandomSong(songArray) {
+  randomIndex = Math.floor(Math.random() * songArray.length);
+
+  return randomIndex;
+
+}
+
+var $playButton = document.querySelector('.play-button');
+
+var $audio = document.querySelector('.play-music-audio');
+$playButton.addEventListener('click', playButton);
+
+function playButton(event) {
+  if ($playButton.className.includes('fa-music')) {
+    var playlist = [];
+      pickRandomSong(musicDataAll);
+
+    $audio.setAttribute('src', musicDataAll[randomIndex]);
+    $audio.play();
+    $playButton.classList.remove('fa-music');
+    $playButton.classList.add('fa-pause');
+  } else if ($playButton.className.includes('fa-pause')) {
+    $audio.pause();
+    $playButton.classList.add('fa-music');
+    $playButton.classList.remove('fa-pause');
+  }
+
+}
+
+function intersection(arrayOne, arrayTwo) {
+  var intersectionArray = [];
+  for (var i = 0; i < arrayOne.length; i++) {
+    for (var k = 0; k < arrayTwo.length; k++) {
+      if (arrayOne[i] === arrayTwo[k]) {
+        intersectionArray.push(arrayTwo[k]);
+      }
+    }
+  } */
+/*   pickRandomSong(intersectionArray); */
+/*   return intersectionArray;
+} */
