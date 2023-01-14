@@ -383,11 +383,6 @@ xhrMusic.addEventListener('load', function () {
   }
 });
 
-/* console.log('line:380 musicDataNight::: ', musicDataNight);
-console.log('line:378 musicDataDay::: ', musicDataDay);
-console.log('line:383 musicDataRainy::: ', musicDataRainy);
-console.log('line:385 musicDataSunny::: ', musicDataSunny);
-console.log('line:387 musicDataSnowy::: ', musicDataSnowy); */
 xhrMusic.send();
 
 /* var $weather = document.querySelector('.fa-cloud-sun');
