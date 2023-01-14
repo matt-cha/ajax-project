@@ -31,6 +31,13 @@
   width: 100%;
 }
 
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 .margin-home {
   margin: 0.75rem;
   width: 1.5rem;

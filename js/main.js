@@ -384,22 +384,66 @@ xhrMusic.addEventListener('load', function () {
 });
 
 xhrMusic.send();
+/*
+var $playButton = document.querySelector('.play-button');
 
-/* var $weather = document.querySelector('.fa-cloud-sun');
+var $audio = document.querySelector('.play-music-audio');
+$playButton.addEventListener('click', playButton);
+
+function playButton(event) {
+  if ($playButton.className.includes('fa-music')) {
+
+    intersection(weatherChosen, timeChosen);
+
+    pickRandomSong(intersectionArray);
+
+    $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+    $audio.play();
+
+    $playButton.classList.remove('fa-music');
+    $playButton.classList.add('fa-pause');
+  } else if ($playButton.className.includes('fa-pause')) {
+    $audio.pause();
+    $playButton.classList.add('fa-music');
+    $playButton.classList.remove('fa-pause');
+  }
+
+}
+
+$audio.addEventListener('ended', playNextSong);
+function playNextSong(event) {
+
+  intersection(weatherChosen, timeChosen);
+
+  pickRandomSong(intersectionArray);
+  console.log('$audio.src::: ', $audio.src);
+  $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+  $audio.play();
+}
+
+var $weather = document.querySelector('.fa-cloud-sun');
 var $weatherModal = document.querySelector('.overlay-weather');
 $weatherModal.addEventListener('click', weatherOptionClicked);
-var weatherChosen = [];
+var weatherChosen = musicDataAll;
 
 function weatherOptionClicked(event) {
 
   if (event.target.classList.contains('weather-sun')) {
     weatherChosen = musicDataSunny;
+    playButton();
+
+    console.log('line:397 weatherChosen::: ', weatherChosen);
     $weatherModal.classList.add('hidden');
+
   } else if (event.target.classList.contains('fa-cloud-showers-heavy')) {
     weatherChosen = musicDataRainy;
+    playButton();
     $weatherModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-snowflake')) {
     weatherChosen = musicDataSnowy;
+    playButton();
     $weatherModal.classList.add('hidden');
   } else if (event.target.classList.contains('weather-close')) {
     $weatherModal.classList.add('hidden');
@@ -416,7 +460,7 @@ function openWeatherModal(event) {
 
 var $time = document.querySelector('.fa-clock');
 var $timeModal = document.querySelector('.overlay-time');
-var timeChosen = [];
+var timeChosen = musicDataAll;
 $time.addEventListener('click', openTimeModal);
 function openTimeModal(event) {
   $timeModal.classList.remove('hidden');
@@ -427,13 +471,14 @@ function timeOptionClicked(event) {
   if (event.target.classList.contains('time-sun-day')) {
 
     timeChosen = musicDataDay;
+    playButton();
     console.log('line:477 timeChosen::: ', timeChosen);
     $timeModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-moon')) {
     timeChosen = musicDataNight;
+    playButton();
     $timeModal.classList.add('hidden');
   } else if (event.target.classList.contains('time-close')) {
-    console.log('line:483 event.target::: ', event.target);
 
     $timeModal.classList.add('hidden');
   }
@@ -449,37 +494,18 @@ function pickRandomSong(songArray) {
 
 }
 
-var $playButton = document.querySelector('.play-button');
-
-var $audio = document.querySelector('.play-music-audio');
-$playButton.addEventListener('click', playButton);
-
-function playButton(event) {
-  if ($playButton.className.includes('fa-music')) {
-    var playlist = [];
-      pickRandomSong(musicDataAll);
-
-    $audio.setAttribute('src', musicDataAll[randomIndex]);
-    $audio.play();
-    $playButton.classList.remove('fa-music');
-    $playButton.classList.add('fa-pause');
-  } else if ($playButton.className.includes('fa-pause')) {
-    $audio.pause();
-    $playButton.classList.add('fa-music');
-    $playButton.classList.remove('fa-pause');
-  }
-
-}
-
+var intersectionArray = [];
 function intersection(arrayOne, arrayTwo) {
-  var intersectionArray = [];
+
   for (var i = 0; i < arrayOne.length; i++) {
     for (var k = 0; k < arrayTwo.length; k++) {
       if (arrayOne[i] === arrayTwo[k]) {
         intersectionArray.push(arrayTwo[k]);
       }
     }
-  } */
-/*   pickRandomSong(intersectionArray); */
-/*   return intersectionArray;
-} */
+  }
+
+  return intersectionArray;
+
+}
+ */
