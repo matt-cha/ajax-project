@@ -393,8 +393,19 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.long-button:active {
+.long-button:active,
+.time-weather-buttons:active,
+.footer-buttons:active,
+.fa-solid:active,
+.fa-regular:active, {
   transform: translateY(0.1rem);
+}
+
+.time-weather-buttons:hover,
+.footer-buttons:hover,
+.fa-solid:hover,
+.fa-regular:hover {
+  color: rgb(251, 106, 106);
 }
 
 .remove-villager {

@@ -384,13 +384,14 @@ xhrMusic.addEventListener('load', function () {
 });
 
 xhrMusic.send();
-/*
-var $playButton = document.querySelector('.play-button');
+
+/* var $playButton = document.querySelector('.play-button');
 
 var $audio = document.querySelector('.play-music-audio');
 $playButton.addEventListener('click', playButton);
 
 function playButton(event) {
+  $audio.play(); // play the curent song if it was paused... maybe or add a if, add a class to the element for PAUSED when paused clickedand remove when u click playh again.
   if ($playButton.className.includes('fa-music')) {
 
     intersection(weatherChosen, timeChosen);
@@ -427,10 +428,11 @@ var $weather = document.querySelector('.fa-cloud-sun');
 var $weatherModal = document.querySelector('.overlay-weather');
 $weatherModal.addEventListener('click', weatherOptionClicked);
 var weatherChosen = musicDataAll;
-
+var $backgroundImage = document.querySelector('.background-image');
 function weatherOptionClicked(event) {
 
   if (event.target.classList.contains('weather-sun')) {
+        $backgroundImage.setAttribute('src', )
     weatherChosen = musicDataSunny;
     playButton();
 
