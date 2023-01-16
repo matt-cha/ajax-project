@@ -385,14 +385,16 @@ xhrMusic.addEventListener('load', function () {
 
 xhrMusic.send();
 
-/* var $playButton = document.querySelector('.play-button');
+var $playButton = document.querySelector('.play-button');
 
 var $audio = document.querySelector('.play-music-audio');
 $playButton.addEventListener('click', playButton);
 
-function playButton(event) {
-  $audio.play(); // play the curent song if it was paused... maybe or add a if, add a class to the element for PAUSED when paused clickedand remove when u click playh again.
-  if ($playButton.className.includes('fa-music')) {
+/* function playButton(event) { // original
+  $audio.play();
+  // play the curent song if it was paused... maybe or add a if, add a
+  // class to the element for PAUSED when paused clickedand remove when u click playh again.
+  if ($playButton.className.includes('fa-play')) {
 
     intersection(weatherChosen, timeChosen);
 
@@ -402,14 +404,63 @@ function playButton(event) {
 
     $audio.play();
 
-    $playButton.classList.remove('fa-music');
+    $playButton.classList.remove('fa-play');
     $playButton.classList.add('fa-pause');
   } else if ($playButton.className.includes('fa-pause')) {
     $audio.pause();
-    $playButton.classList.add('fa-music');
+    $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
   }
 
+} */
+var $pausebutton = document.querySelector('.pause-button');
+$pausebutton.addEventListener('click', pauseButton);
+var $playParent = document.querySelector('.play-parent');
+var $pauseParent = document.querySelector('.pause-parent');
+function playButton(event) {
+  $playParent.classList.add('hidden');
+  $pauseParent.classList.remove('hidden');
+  if ($pausebutton.classList.contains('was-paused')) {
+    $audio.play();
+    $pausebutton.classList.remove('was-paused');
+  } else {
+
+    intersection(weatherChosen, timeChosen);
+
+    pickRandomSong(intersectionArray);
+
+    $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+    $audio.play();
+
+    $pauseParent.classList.remove('hidden');
+
+    $playParent.classList.add('hidden');
+  }
+}
+function pauseButton(event) {
+  $audio.pause();
+  $pauseParent.classList.add('hidden');
+  $playParent.classList.remove('hidden');
+  $pausebutton.classList.add('was-paused');
+}
+
+var $rewind = document.querySelector('.fa-backward');
+var $next = document.querySelector('.fa-forward');
+$rewind.addEventListener('click', rewindSong);
+$next.addEventListener('click', nextSong);
+function nextSong(event) {
+  intersection(weatherChosen, timeChosen);
+
+  pickRandomSong(intersectionArray);
+
+  $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+  $audio.play();
+}
+function rewindSong(event) {
+  $audio.currentTime = 0;
+  $audio.play();
 }
 
 $audio.addEventListener('ended', playNextSong);
@@ -418,7 +469,7 @@ function playNextSong(event) {
   intersection(weatherChosen, timeChosen);
 
   pickRandomSong(intersectionArray);
-  console.log('$audio.src::: ', $audio.src);
+
   $audio.setAttribute('src', intersectionArray[randomIndex]);
 
   $audio.play();
@@ -428,23 +479,29 @@ var $weather = document.querySelector('.fa-cloud-sun');
 var $weatherModal = document.querySelector('.overlay-weather');
 $weatherModal.addEventListener('click', weatherOptionClicked);
 var weatherChosen = musicDataAll;
-var $backgroundImage = document.querySelector('.background-image');
+var $backgroundImage = document.querySelector('.background');
 function weatherOptionClicked(event) {
 
   if (event.target.classList.contains('weather-sun')) {
-        $backgroundImage.setAttribute('src', )
+    $backgroundImage.className = 'container background background-image-sunny';
     weatherChosen = musicDataSunny;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
     playButton();
-
-    console.log('line:397 weatherChosen::: ', weatherChosen);
     $weatherModal.classList.add('hidden');
 
   } else if (event.target.classList.contains('fa-cloud-showers-heavy')) {
+    $backgroundImage.className = 'container background background-image-rain';
     weatherChosen = musicDataRainy;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
     playButton();
     $weatherModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-snowflake')) {
+    $backgroundImage.className = 'container background background-image-snow';
     weatherChosen = musicDataSnowy;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
     playButton();
     $weatherModal.classList.add('hidden');
   } else if (event.target.classList.contains('weather-close')) {
@@ -471,27 +528,29 @@ function openTimeModal(event) {
 $timeModal.addEventListener('click', timeOptionClicked);
 function timeOptionClicked(event) {
   if (event.target.classList.contains('time-sun-day')) {
-
+    $backgroundImage.className = 'container background background-image-day';
     timeChosen = musicDataDay;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
     playButton();
-    console.log('line:477 timeChosen::: ', timeChosen);
+
     $timeModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-moon')) {
+    $backgroundImage.className = 'container background background-image-night';
     timeChosen = musicDataNight;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
     playButton();
     $timeModal.classList.add('hidden');
   } else if (event.target.classList.contains('time-close')) {
-
     $timeModal.classList.add('hidden');
   }
-
   return timeChosen;
 }
 
 var randomIndex = 0;
 function pickRandomSong(songArray) {
   randomIndex = Math.floor(Math.random() * songArray.length);
-
   return randomIndex;
 
 }
@@ -506,8 +565,5 @@ function intersection(arrayOne, arrayTwo) {
       }
     }
   }
-
   return intersectionArray;
-
 }
- */

@@ -41,3 +41,7 @@
 .column-60p {
   flex-basis: calc(60/100 * 100%);
 }
+
+.column-third {
+  flex-basis: calc(100% / 3);
+}

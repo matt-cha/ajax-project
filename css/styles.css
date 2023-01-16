@@ -25,10 +25,29 @@
   border-radius: 0.5rem;
 }
 
-.background-image {
-  background-image: url("/images/sunnyday.bmp");
+.background {
   object-fit: fill;
   width: 100%;
+}
+
+.background-image-sunny {
+  background-image: url("/images/sunnyday.bmp");
+}
+
+.background-image-night {
+  background-image: url("/images/nightaurora.webp");
+}
+
+.background-image-rain {
+  background-image: url("/images/raincamp.webp");
+}
+
+.background-image-snow {
+  background-image: url("/images/snow.jpeg");
+}
+
+.background-image-day {
+  background-image: url("/images/weather1.jpeg");
 }
 
 html,
@@ -215,6 +234,11 @@ body {
   flex-grow: 1;
 }
 
+.footer-buttons-bar {
+  width: 350px;
+  margin: 0.75rem;
+}
+
 .justify-content-center {
   justify-content: center;
 }
@@ -397,7 +421,8 @@ body {
 .time-weather-buttons:active,
 .footer-buttons:active,
 .fa-solid:active,
-.fa-regular:active, {
+.fa-regular:active,
+.house-font-size:active {
   transform: translateY(0.1rem);
 }
 
@@ -457,5 +482,9 @@ body {
 
   .residents-padding-left {
     padding-left: 4.55rem;
+  }
+
+  .footer-buttons-bar {
+    width: 1200px;
   }
 }
