@@ -455,11 +455,15 @@ function nextSong(event) {
   pickRandomSong(intersectionArray);
 
   $audio.setAttribute('src', intersectionArray[randomIndex]);
+  $pauseParent.classList.remove('hidden');
+  $playParent.classList.add('hidden');
 
   $audio.play();
 }
 function rewindSong(event) {
   $audio.currentTime = 0;
+  $pauseParent.classList.remove('hidden');
+  $playParent.classList.add('hidden');
   $audio.play();
 }
 
