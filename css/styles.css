@@ -25,10 +25,36 @@
   border-radius: 0.5rem;
 }
 
-.background-image {
-  background-image: url("/images/sunnyday.bmp");
+.background {
   object-fit: fill;
   width: 100%;
+}
+
+.background-image-sunny {
+  background-image: url("/images/sunnyday.bmp");
+}
+
+.background-image-night {
+  background-image: url("/images/nightaurora.webp");
+}
+
+.background-image-rain {
+  background-image: url("/images/raincamp.webp");
+}
+
+.background-image-snow {
+  background-image: url("/images/snow.jpeg");
+}
+
+.background-image-day {
+  background-image: url("/images/weather1.jpeg");
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .margin-home {
@@ -48,6 +74,30 @@
 }
 
 .overlay-trash {
+  position: fixed;
+  background-color: rgba(248, 248, 248, 0.35);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-weather {
+  position: fixed;
+  background-color: rgba(248, 248, 248, 0.35);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-time {
   position: fixed;
   background-color: rgba(248, 248, 248, 0.35);
   top: 0;
@@ -182,6 +232,11 @@
 
 .flex-grow-1 {
   flex-grow: 1;
+}
+
+.footer-buttons-bar {
+  width: 350px;
+  margin: 0.75rem;
 }
 
 .justify-content-center {
@@ -362,8 +417,20 @@
   margin-bottom: 0.5rem;
 }
 
-.long-button:active {
+.long-button:active,
+.time-weather-buttons:active,
+.footer-buttons:active,
+.fa-solid:active,
+.fa-regular:active,
+.house-font-size:active {
   transform: translateY(0.1rem);
+}
+
+.time-weather-buttons:hover,
+.footer-buttons:hover,
+.fa-solid:hover,
+.fa-regular:hover {
+  color: rgb(251, 106, 106);
 }
 
 .remove-villager {
@@ -373,6 +440,18 @@
 }
 
 .cancel-remove-villager {
+  background-color: #87c9a1;
+  border-radius: 0.25rem;
+  border: solid #87c9a1;
+}
+
+.weather-close {
+  background-color: #87c9a1;
+  border-radius: 0.25rem;
+  border: solid #87c9a1;
+}
+
+.weather-save {
   background-color: #87c9a1;
   border-radius: 0.25rem;
   border: solid #87c9a1;
@@ -403,5 +482,9 @@
 
   .residents-padding-left {
     padding-left: 4.55rem;
+  }
+
+  .footer-buttons-bar {
+    width: 1200px;
   }
 }

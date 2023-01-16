@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/styles.css">
 
 </head>
-<body>
+<body class="">
   <header class="bg-color-blue navbar-height">
     <form class="navbar-form height-search-bar header">
       <i class="fa-solid fa-house darkblue-font-color margin-home house-font-size"></i>
@@ -32,7 +32,7 @@
 
 
   <main>
-    <div class="container background-image">
+    <div class="container background background-image-sunny">
 
       <div class="">
         <div class="search-view view" data-view="search">
@@ -300,8 +300,39 @@ s -->
           </div>
 modal test enmd -->
 
-        </div>
+        </div> <!-- end of slide -->
       </div>
+
+      <div class="row"> <!-- music buttons -->
+        <div class="column-full display-flex justify-content-center">
+          <div class="footer-buttons-bar">
+
+            <div class="row">
+              <div class="column-one-fifth display-flex justify-content-center">
+                <i class="fa-solid  footer-buttons fa-backward house-font-size"></i>
+              </div>
+              <div class="column-one-fifth display-flex justify-content-center play-parent">
+                <i class="fa-solid footer-buttons play-button fa-play  house-font-size"></i>
+              </div>
+              <div class="column-one-fifth display-flex justify-content-center hidden pause-parent">
+                <i class="fa-solid footer-buttons  fa-pause pause-button house-font-size"></i>
+              </div>
+              <div class="column-one-fifth display-flex justify-content-center">
+                <i class="fa-solid footer-buttons fa-forward house-font-size"></i>
+              </div>
+              <!--               s
+              <div class="column-one-fifth display-flex justify-content-center">
+                <i class="fa-solid footer-buttons fa-cloud-sun house-font-size"></i>
+              </div>
+              <div class="column-one-fifth display-flex justify-content-center">
+                <i class="fa-regular footer-buttons fa-clock house-font-size"></i>
+              </div>
+              s -->
+            </div>
+            <audio src="" class="play-music-audio"></audio>
+          </div>
+        </div>
+      </div> <!-- end ofm usic mbtions -->
 
     </div> <!-- end of container -->
     <div class="villager-individual" data-view="villager-card"> <!-- start of new modal testing? -->
@@ -403,8 +434,71 @@ modal test enmd -->
       </div>
     </div>
 
+    <div class="overlay-weather hidden">
+      <div class="row">
+        <div class="column-full">
+          <div class="trash-modal weather-modal-card modal-confirm-padding">
+            <div class="row">
+              <div class="column-full">
+                <h2>Weather</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column-third weather-options-div display-flex justify-content-center">
+                <i class="weather-options time-weather-buttons fa-regular weather-sun fa-sun house-font-size"></i>
+              </div>
+              <div class="column-third weather-options-div display-flex justify-content-center">
+
+                <i class="weather-options time-weather-buttons fa-solid fa-cloud-showers-heavy house-font-size"></i>
+              </div>
+              <div class="column-third weather-options-div display-flex justify-content-center">
+                <i class="weather-options time-weather-buttons fa-solid fa-snowflake house-font-size"></i>
+              </div>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+              <div class="column-full">
+                <button type="button" class="weather-close weather-options long-button">CANCEL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay-time hidden">
+      <div class="row">
+        <div class="column-full">
+          <div class="trash-modal time-modal-card modal-confirm-padding">
+            <div class="row">
+              <div class="column-full">
+                <h2>Time</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column-full">
+                <i class="fa-regular time-weather-buttons time-sun-day fa-sun house-font-size"></i>
+                <i class="fa-regular time-weather-buttons fa-moon house-font-size"></i>
+              </div>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row">
+              <div class="column-full">
+                <button type="button" class="time-close weather-close long-button">CANCEL</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
   </main>
+
 
 
   <script src="js/data.js"></script>

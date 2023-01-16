@@ -21,7 +21,7 @@ xhrVillagers.addEventListener('load', function () {
     villagerData[name] = target;
 
   }
-  /* console.log('villagerData:', villagerData); */
+  /*   console.log('villagerData:', villagerData); */
 
 });
 xhrVillagers.send();
@@ -339,21 +339,231 @@ var $cancelRemoveVillagerButton = document.querySelector('.cancel-remove-village
 $removeVillagerButton.addEventListener('click', trashModalButtons);
 $cancelRemoveVillagerButton.addEventListener('click', trashModalButtons);
 function trashModalButtons(event) {
-
   if (event.target.classList.contains('remove-villager')) {
-
     $overlayTrash.classList.add('hidden');
     $overlay.classList.add('hidden');
     for (var i = 0; i < data.liked.length; i++) {
       if ($individualName.textContent === data.liked[i].name) {
-
         data.liked.splice(i, 1);
         generateDomTree();
       }
-
     }
-
   } else if (event.target.classList.contains('cancel-remove-villager')) {
     $overlayTrash.classList.add('hidden');
   }
+}
+
+var xhrMusic = new XMLHttpRequest();
+var musicDataAll = [];
+var musicDataSunny = [];
+var musicDataRainy = [];
+var musicDataSnowy = [];
+var musicDataDay = [];
+var musicDataNight = [];
+
+xhrMusic.open('GET', 'http://acnhapi.com/v1/backgroundmusic/');
+xhrMusic.responseType = 'json';
+xhrMusic.addEventListener('load', function () {
+/*   console.log('xhrMusic.status:', xhrMusic.status);
+  console.log('xhrMusic.response:', xhrMusic.response); */
+  for (var key in xhrMusic.response) {
+    musicDataAll.push(xhrMusic.response[key].music_uri);
+    if (xhrMusic.response[key].hour > 4 && xhrMusic.response[key].hour < 19) {
+      musicDataDay.push(xhrMusic.response[key].music_uri);
+    } else if (xhrMusic.response[key].hour < 5 || xhrMusic.response[key].hour > 18) {
+      musicDataNight.push(xhrMusic.response[key].music_uri);
+    }
+    if (xhrMusic.response[key].weather.includes('Rainy')) {
+      musicDataRainy.push(xhrMusic.response[key].music_uri);
+    } else if (xhrMusic.response[key].weather.includes('Sunny')) {
+      musicDataSunny.push(xhrMusic.response[key].music_uri);
+    } else if (xhrMusic.response[key].weather.includes('Snowy')) {
+      musicDataSnowy.push(xhrMusic.response[key].music_uri);
+    }
+  }
+});
+
+xhrMusic.send();
+
+var $playButton = document.querySelector('.play-button');
+
+var $audio = document.querySelector('.play-music-audio');
+$playButton.addEventListener('click', playButton);
+
+/* function playButton(event) { // original
+  $audio.play();
+  // play the curent song if it was paused... maybe or add a if, add a
+  // class to the element for PAUSED when paused clickedand remove when u click playh again.
+  if ($playButton.className.includes('fa-play')) {
+
+    intersection(weatherChosen, timeChosen);
+
+    pickRandomSong(intersectionArray);
+
+    $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+    $audio.play();
+
+    $playButton.classList.remove('fa-play');
+    $playButton.classList.add('fa-pause');
+  } else if ($playButton.className.includes('fa-pause')) {
+    $audio.pause();
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
+  }
+
+} */
+var $pausebutton = document.querySelector('.pause-button');
+$pausebutton.addEventListener('click', pauseButton);
+var $playParent = document.querySelector('.play-parent');
+var $pauseParent = document.querySelector('.pause-parent');
+function playButton(event) {
+  $playParent.classList.add('hidden');
+  $pauseParent.classList.remove('hidden');
+  if ($pausebutton.classList.contains('was-paused')) {
+    $audio.play();
+    $pausebutton.classList.remove('was-paused');
+  } else {
+
+    intersection(weatherChosen, timeChosen);
+
+    pickRandomSong(intersectionArray);
+
+    $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+    $audio.play();
+
+    $pauseParent.classList.remove('hidden');
+
+    $playParent.classList.add('hidden');
+  }
+}
+function pauseButton(event) {
+  $audio.pause();
+  $pauseParent.classList.add('hidden');
+  $playParent.classList.remove('hidden');
+  $pausebutton.classList.add('was-paused');
+}
+
+var $rewind = document.querySelector('.fa-backward');
+var $next = document.querySelector('.fa-forward');
+$rewind.addEventListener('click', rewindSong);
+$next.addEventListener('click', nextSong);
+function nextSong(event) {
+  intersection(weatherChosen, timeChosen);
+
+  pickRandomSong(intersectionArray);
+
+  $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+  $audio.play();
+}
+function rewindSong(event) {
+  $audio.currentTime = 0;
+  $audio.play();
+}
+
+$audio.addEventListener('ended', playNextSong);
+function playNextSong(event) {
+
+  intersection(weatherChosen, timeChosen);
+
+  pickRandomSong(intersectionArray);
+
+  $audio.setAttribute('src', intersectionArray[randomIndex]);
+
+  $audio.play();
+}
+
+var $weather = document.querySelector('.fa-cloud-sun');
+var $weatherModal = document.querySelector('.overlay-weather');
+$weatherModal.addEventListener('click', weatherOptionClicked);
+var weatherChosen = musicDataAll;
+var $backgroundImage = document.querySelector('.background');
+function weatherOptionClicked(event) {
+
+  if (event.target.classList.contains('weather-sun')) {
+    $backgroundImage.className = 'container background background-image-sunny';
+    weatherChosen = musicDataSunny;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
+    playButton();
+    $weatherModal.classList.add('hidden');
+
+  } else if (event.target.classList.contains('fa-cloud-showers-heavy')) {
+    $backgroundImage.className = 'container background background-image-rain';
+    weatherChosen = musicDataRainy;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
+    playButton();
+    $weatherModal.classList.add('hidden');
+  } else if (event.target.classList.contains('fa-snowflake')) {
+    $backgroundImage.className = 'container background background-image-snow';
+    weatherChosen = musicDataSnowy;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
+    playButton();
+    $weatherModal.classList.add('hidden');
+  } else if (event.target.classList.contains('weather-close')) {
+    $weatherModal.classList.add('hidden');
+  }
+
+  return weatherChosen;
+}
+
+$weather.addEventListener('click', openWeatherModal);
+function openWeatherModal(event) {
+  $weatherModal.classList.remove('hidden');
+
+}
+
+var $time = document.querySelector('.fa-clock');
+var $timeModal = document.querySelector('.overlay-time');
+var timeChosen = musicDataAll;
+$time.addEventListener('click', openTimeModal);
+function openTimeModal(event) {
+  $timeModal.classList.remove('hidden');
+}
+
+$timeModal.addEventListener('click', timeOptionClicked);
+function timeOptionClicked(event) {
+  if (event.target.classList.contains('time-sun-day')) {
+    $backgroundImage.className = 'container background background-image-day';
+    timeChosen = musicDataDay;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
+    playButton();
+
+    $timeModal.classList.add('hidden');
+  } else if (event.target.classList.contains('fa-moon')) {
+    $backgroundImage.className = 'container background background-image-night';
+    timeChosen = musicDataNight;
+    $playButton.classList.add('fa-play');
+    $playButton.classList.remove('fa-pause');
+    playButton();
+    $timeModal.classList.add('hidden');
+  } else if (event.target.classList.contains('time-close')) {
+    $timeModal.classList.add('hidden');
+  }
+  return timeChosen;
+}
+
+var randomIndex = 0;
+function pickRandomSong(songArray) {
+  randomIndex = Math.floor(Math.random() * songArray.length);
+  return randomIndex;
+
+}
+
+var intersectionArray = [];
+function intersection(arrayOne, arrayTwo) {
+
+  for (var i = 0; i < arrayOne.length; i++) {
+    for (var k = 0; k < arrayTwo.length; k++) {
+      if (arrayOne[i] === arrayTwo[k]) {
+        intersectionArray.push(arrayTwo[k]);
+      }
+    }
+  }
+  return intersectionArray;
 }
