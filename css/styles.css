@@ -126,12 +126,12 @@ body {
 }
 
 .fa-house:hover {
-  color: black;
+  color: #028093;
   cursor: pointer;
 }
 
 .search-button:hover {
-  background-color: black;
+  background-color: #028093;
   cursor: pointer;
 }
 
@@ -463,6 +463,10 @@ body {
 
 .modal-confirm-padding {
   padding: 1rem;
+}
+
+.only-home:hover {
+  color: #028093;
 }
 
 @media screen and (min-width: 1280px) {
