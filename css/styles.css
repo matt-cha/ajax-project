@@ -457,6 +457,10 @@ body {
   border: solid #87c9a1;
 }
 
+.margin-weather-buttons-below {
+  margin: 0 0 1rem;
+}
+
 .modal-confirm-padding {
   padding: 1rem;
 }
