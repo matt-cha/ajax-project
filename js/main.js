@@ -710,7 +710,7 @@ var $trashModal = document.querySelector('.trash-modal');
 var $weatherModalBox = document.querySelector('.weather-modal-card');
 var $timeModalBox = document.querySelector('.time-modal-card');
 var $footerButtons = document.querySelector('.footer-buttons-bar');
-
+var $searchBar = document.querySelector('.search-bar');
 $nightMode.addEventListener('click', nightMode);
 function nightMode(event) {
   if ($nightMode.classList.contains('fa-solid')) {
@@ -726,6 +726,8 @@ function nightMode(event) {
     $weatherModalBox.classList.add('nightmode-text-white');
     $timeModalBox.classList.add('nightmode-bg-black-modals');
     $timeModalBox.classList.add('nightmode-text-white');
+    $searchBar.classList.add('nightmode-bg-black-modals');
+    $searchBar.classList.add('nightmode-text-white');
 
     $footerButtons.classList.add('nightmode-text-white');
 
@@ -741,6 +743,8 @@ function nightMode(event) {
     $weatherModalBox.classList.remove('text-black');
     $timeModalBox.classList.remove('bg-color-white-cards-modals');
     $timeModalBox.classList.remove('text-black');
+    $searchBar.classList.remove('bg-color-white-cards-modals');
+    $searchBar.classList.remove('text-black');
     $footerButtons.classList.remove('text-black');
 
     $nightMode.classList.remove('fa-solid');
@@ -758,6 +762,8 @@ function nightMode(event) {
     $weatherModalBox.classList.add('text-black');
     $timeModalBox.classList.add('bg-color-white-cards-modals');
     $timeModalBox.classList.add('text-black');
+    $searchBar.classList.add('bg-color-white-cards-modals');
+    $searchBar.classList.add('text-black');
     $footerButtons.classList.add('text-black');
 
     $searchCard.classList.remove('nightmode-bg-black');
@@ -772,6 +778,8 @@ function nightMode(event) {
     $weatherModalBox.classList.remove('nightmode-text-white');
     $timeModalBox.classList.remove('nightmode-bg-black-modals');
     $timeModalBox.classList.remove('nightmode-text-white');
+    $searchBar.classList.remove('nightmode-bg-black-modals');
+    $searchBar.classList.remove('nightmode-text-white');
     $footerButtons.classList.remove('nightmode-text-white');
 
     $nightMode.classList.remove('fa-regular');
