@@ -702,9 +702,80 @@ function intersection(arrayOne, arrayTwo) {
   return intersectionArray;
 }
 
-/* var $nightMode = document.querySelector('.night-mode');
+var $nightMode = document.querySelector('.night-mode');
+var $villagerCardMobile = document.querySelector('.village-card-mobile');
+var $searchCard = document.querySelector('.search-card');
+var $modalVillagerCard = document.querySelector('.modal-villager-card');
+var $trashModal = document.querySelector('.trash-modal');
+var $weatherModalBox = document.querySelector('.weather-modal-card');
+var $timeModalBox = document.querySelector('.time-modal-card');
+var $footerButtons = document.querySelector('.footer-buttons-bar');
+
 $nightMode.addEventListener('click', nightMode);
 function nightMode(event) {
+  if ($nightMode.classList.contains('fa-solid')) {
+    $searchCard.classList.add('nightmode-bg-black');
+    $searchCard.classList.add('nightmode-text-white');
+    $villagerCardMobile.classList.add('nightmode-bg-black');
+    $villagerCardMobile.classList.add('nightmode-text-white');
+    $modalVillagerCard.classList.add('nightmode-bg-black-modals');
+    $modalVillagerCard.classList.add('nightmode-text-white');
+    $trashModal.classList.add('nightmode-bg-black-modals');
+    $trashModal.classList.add('nightmode-text-white');
+    $weatherModalBox.classList.add('nightmode-bg-black-modals');
+    $weatherModalBox.classList.add('nightmode-text-white');
+    $timeModalBox.classList.add('nightmode-bg-black-modals');
+    $timeModalBox.classList.add('nightmode-text-white');
 
+    $footerButtons.classList.add('nightmode-text-white');
+
+    $searchCard.classList.remove('bg-color-white-cards');
+    $searchCard.classList.remove('text-black');
+    $villagerCardMobile.classList.remove('bg-color-white-cards');
+    $villagerCardMobile.classList.remove('text-black');
+    $modalVillagerCard.classList.remove('bg-color-white-cards-modals');
+    $modalVillagerCard.classList.remove('text-black');
+    $trashModal.classList.remove('bg-color-white-cards-modals');
+    $trashModal.classList.remove('text-black');
+    $weatherModalBox.classList.remove('bg-color-white-cards-modals');
+    $weatherModalBox.classList.remove('text-black');
+    $timeModalBox.classList.remove('bg-color-white-cards-modals');
+    $timeModalBox.classList.remove('text-black');
+    $footerButtons.classList.remove('text-black');
+
+    $nightMode.classList.remove('fa-solid');
+    $nightMode.classList.add('fa-regular');
+  } else if ($nightMode.classList.contains('fa-regular')) {
+    $searchCard.classList.add('bg-color-white-cards');
+    $searchCard.classList.add('text-black');
+    $villagerCardMobile.classList.add('bg-color-white-cards');
+    $villagerCardMobile.classList.add('text-black');
+    $modalVillagerCard.classList.add('bg-color-white-cards-modals');
+    $modalVillagerCard.classList.add('text-black');
+    $trashModal.classList.add('bg-color-white-cards-modals');
+    $trashModal.classList.add('text-black');
+    $weatherModalBox.classList.add('bg-color-white-cards-modals');
+    $weatherModalBox.classList.add('text-black');
+    $timeModalBox.classList.add('bg-color-white-cards-modals');
+    $timeModalBox.classList.add('text-black');
+    $footerButtons.classList.add('text-black');
+
+    $searchCard.classList.remove('nightmode-bg-black');
+    $searchCard.classList.remove('nightmode-text-white');
+    $villagerCardMobile.classList.remove('nightmode-bg-black');
+    $villagerCardMobile.classList.remove('nightmode-text-white');
+    $modalVillagerCard.classList.remove('nightmode-bg-black-modals');
+    $modalVillagerCard.classList.remove('nightmode-text-white');
+    $trashModal.classList.remove('nightmode-bg-black-modals');
+    $trashModal.classList.remove('nightmode-text-white');
+    $weatherModalBox.classList.remove('nightmode-bg-black-modals');
+    $weatherModalBox.classList.remove('nightmode-text-white');
+    $timeModalBox.classList.remove('nightmode-bg-black-modals');
+    $timeModalBox.classList.remove('nightmode-text-white');
+    $footerButtons.classList.remove('nightmode-text-white');
+
+    $nightMode.classList.remove('fa-regular');
+    $nightMode.classList.add('fa-solid');
+
+  }
 }
- */

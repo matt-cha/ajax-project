@@ -17,11 +17,12 @@
   <header class="bg-color-blue navbar-height">
     <form class="navbar-form height-search-bar header">
       <i class="fa-solid fa-house darkblue-font-color only-home margin-home house-font-size"></i>
-
+      <i class="fa-solid fa-lightbulb house-font-size darkblue-font-color night-mode margin-home"></i>
+      <i class="fa-regular fa-lightbulb house-font-size darkblue-font-color night-mode hidden margin-home"></i>
       <input
         name="name"
         required
-        class="flex-grow-1 border-radius-all border-none search-height border-solid-darkblue display-inline-block"
+        class="search-bar flex-grow-1 border-radius-all border-none search-height border-solid-darkblue display-inline-block"
         placeholder=" Search for a villager!"
       >
       <button type="submit" class="margin-lr-10 search-height search-button darkblue-font-color bg-color-blue border-radius-all border-solid-darkblue">
@@ -38,7 +39,7 @@
         <div class="search-view view" data-view="search">
           <div class="row">
             <div class="column-full display-flex align-items-center ">
-              <div class="search-card ">
+              <div class="search-card bg-color-white-cards">
                 <div class="row">
                   <div class="column-full villager-search-for-text-margin">
                     <h2>Villager Search</h2>
@@ -102,7 +103,7 @@
         <div data-view="village-slide" class="village-view-mobile view slidetesting hidden"> <!-- SLIDE -->
           <div class="row"> <!-- SLIDE -->
             <div class="column-full display-flex align-items-center desktop-view-test">
-              <div class="village-card-mobile ">
+              <div class="village-card-mobile bg-color-white-cards">
                 <div class="row">
                   <div class="column-three-fourth residents-padding-left">
                     <h2 class="">Residents</h2>
@@ -181,7 +182,7 @@
             <div class="">
               <div class="row">
                 <div class="column-full display-flex align-items-center ">
-                  <div class="modal-villager-card ">
+                  <div class="modal-villager-card bg-color-white-cards-modals">
                     <div class="row">
                       <div class="column-half villager-search-for-text-margin">
                         <h2>Resident</h2>
@@ -252,7 +253,7 @@
     <div class="overlay-trash hidden">
       <div class="row">
         <div class="column-full">
-          <div class="trash-modal modal-confirm-padding">
+          <div class="trash-modal modal-confirm-padding bg-color-white-cards-modals">
             <div class="row">
               <div class="column-full">
                 <p>Are you sure you want to remove this villager?</p>
@@ -276,7 +277,7 @@
     <div class="overlay-weather hidden">
       <div class="row ">
         <div class="column-full">
-          <div class="trash-modal weather-modal-card modal-confirm-padding">
+          <div class="trash-modal weather-modal-card modal-confirm-padding bg-color-white-cards-modals">
             <div class="row">
               <div class="column-full">
                 <h2>Weather</h2>
@@ -309,7 +310,7 @@
     <div class="overlay-time hidden">
       <div class="row">
         <div class="column-full">
-          <div class="trash-modal time-modal-card modal-confirm-padding">
+          <div class="trash-modal time-modal-card modal-confirm-padding bg-color-white-cards-modals">
             <div class="row">
               <div class="column-full">
                 <h2>Time</h2>

@@ -8,6 +8,10 @@
   color: white;
 }
 
+.text-black {
+  color: black;
+}
+
 .bg-color-black {
   background-color: rgba(0, 0, 0, 0.89);
 }
@@ -154,9 +158,16 @@ body {
 .search-card {
   width: 350px;
   height: 625px;
-  background-color: rgba(255, 255, 255, 0.89);
   border-radius: 0.5rem;
   margin-top: 4rem;
+}
+
+.bg-color-white-cards {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-color-white-cards-modals {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .align-items-center {
@@ -283,7 +294,6 @@ body {
 .village-card-mobile {
   width: 350px;
   height: 625px;
-  background-color: rgba(255, 255, 255, 0.89);
   border-radius: 0.5rem;
   margin-top: 4rem;
 }
@@ -318,14 +328,6 @@ body {
   margin-top: 0.2rem;
 }
 
-.village-card-desktop {
-  width: 1400px;
-  height: 625px;
-  background-color: rgba(255, 255, 255, 0.89);
-  border-radius: 0.5rem;
-  margin-top: 4rem;
-}
-
 .resident-main-desktop {
   width: 75%;
   object-fit: contain;
@@ -353,7 +355,6 @@ body {
 .modal-villager-card {
   width: 350px;
   height: 625px;
-  background-color: rgba(255, 255, 255, 0.75);
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
@@ -424,7 +425,6 @@ body {
 .trash-modal {
   width: 250px;
   height: 170px;
-  background-color: rgba(255, 255, 255, 0.99);
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
@@ -495,6 +495,18 @@ body {
 
 .only-home:hover {
   color: #028093;
+}
+
+.nightmode-bg-black {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.nightmode-bg-black-modals {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.nightmode-text-white {
+  color: white;
 }
 
 @media screen and (min-width: 1280px) {
