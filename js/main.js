@@ -79,7 +79,7 @@ function renderNotFound(entry) {
   $name.textContent = 'No villager was found!';
   $name.classList.add('text-red');
   $birthday.textContent = '';
-  $hobbyText.textContent = '';
+  $hobbyText.textContent = 'Try searching the exact name.';
   $personalityText.textContent = '';
   $sayingText.textContent = '';
   $heart.classList.add('hidden');
@@ -509,7 +509,7 @@ var $backgroundImage = document.querySelector('.background');
 function weatherOptionClicked(event) {
 
   if (event.target.classList.contains('weather-sun')) {
-    $backgroundImage.className = 'container background background-image-sunny';
+    $backgroundImage.className = ' background background-image-sunny';
     weatherChosen = musicDataSunny;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
@@ -517,14 +517,15 @@ function weatherOptionClicked(event) {
     $weatherModal.classList.add('hidden');
 
   } else if (event.target.classList.contains('fa-cloud-showers-heavy')) {
-    $backgroundImage.className = 'container background background-image-rain';
+    $backgroundImage.className = ' background background-image-rain';
+
     weatherChosen = musicDataRainy;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
     playButton();
     $weatherModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-snowflake')) {
-    $backgroundImage.className = 'container background background-image-snow';
+    $backgroundImage.className = ' background background-image-snow';
     weatherChosen = musicDataSnowy;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
@@ -552,7 +553,7 @@ function openTimeModal(event) {
 $timeModal.addEventListener('click', timeOptionClicked);
 function timeOptionClicked(event) {
   if (event.target.classList.contains('time-sun-day')) {
-    $backgroundImage.className = 'container background background-image-day';
+    $backgroundImage.className = ' background background-image-day';
     timeChosen = musicDataDay;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
@@ -560,7 +561,7 @@ function timeOptionClicked(event) {
 
     $timeModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-moon')) {
-    $backgroundImage.className = 'container background background-image-night';
+    $backgroundImage.className = ' background background-image-night';
     timeChosen = musicDataNight;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
