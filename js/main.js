@@ -4,9 +4,6 @@ var villagerData = {};
 xhrVillagers.open('GET', 'http://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
-/*   console.log('xhrVillagers.status:', xhrVillagers.status);
-  console.log('xhrVillagers.response:', xhrVillagers.response); */
-
   for (var key in xhrVillagers.response) {
     var target = {};
     var name = xhrVillagers.response[key].name['name-USen'];
@@ -17,12 +14,8 @@ xhrVillagers.addEventListener('load', function () {
     target.image = xhrVillagers.response[key].image_uri;
     target.saying = xhrVillagers.response[key].saying;
     target.id = xhrVillagers.response[key].id;
-
     villagerData[name] = target;
-
   }
-  /*   console.log('villagerData:', villagerData); */
-
 });
 xhrVillagers.send();
 
@@ -155,46 +148,119 @@ var $leftArrow = document.querySelector('.mobile-slider-left');
 var $rightArrow = document.querySelector('.mobile-slider-right');
 $leftArrow.addEventListener('click', arrowClicked);
 $rightArrow.addEventListener('click', arrowClicked);
+var count = 1;
+function countChecker(event) {
+  if (count > 5) {
+    count = 1;
+  }
+  if (count < 1) {
+    count = 5;
+  }
+  if (count === 1) {
+    slideOne();
+  }
+  if (count === 2) {
+    slideTwo();
+  }
+  if (count === 3) {
+    slideThree();
+  }
+  if (count === 4) {
+    slideFour();
+  }
+  if (count === 5) {
+    slideFive();
+  }
+}
 
 function arrowClicked(event) {
 
   if (event.target.classList.contains('mobile-slider-right')) {
-
-    if ($slider.classList.contains('first-slide')) {
-
-      $slider.classList.remove('first-slide');
-      $slider.classList.add('second-slide');
-    } else if ($slider.classList.contains('second-slide')) {
-      $slider.classList.remove('second-slide');
-      $slider.classList.add('third-slide');
-    } else if ($slider.classList.contains('third-slide')) {
-      $slider.classList.remove('third-slide');
-      $slider.classList.add('fourth-slide');
-    } else if ($slider.classList.contains('fourth-slide')) {
-      $slider.classList.remove('fourth-slide');
-      $slider.classList.add('fifth-slide');
-    } else if ($slider.classList.contains('fifth-slide')) {
-      $slider.classList.remove('fifth-slide');
-      $slider.classList.add('first-slide');
-    }
+    count++;
+    countChecker();
   } else if (event.target.classList.contains('mobile-slider-left')) {
-    if ($slider.classList.contains('first-slide')) {
-      $slider.classList.remove('first-slide');
-      $slider.classList.add('fifth-slide');
-    } else if ($slider.classList.contains('fifth-slide')) {
-      $slider.classList.remove('fifth-slide');
-      $slider.classList.add('fourth-slide');
-    } else if ($slider.classList.contains('fourth-slide')) {
-      $slider.classList.remove('fourth-slide');
-      $slider.classList.add('third-slide');
-    } else if ($slider.classList.contains('third-slide')) {
-      $slider.classList.remove('third-slide');
-      $slider.classList.add('second-slide');
-    } else if ($slider.classList.contains('second-slide')) {
-      $slider.classList.remove('second-slide');
-      $slider.classList.add('first-slide');
-    }
+    count--;
+    countChecker();
   }
+}
+var $dotOne = document.querySelector('.dot-one');
+var $dotTwo = document.querySelector('.dot-two');
+var $dotThree = document.querySelector('.dot-three');
+var $dotFour = document.querySelector('.dot-four');
+var $dotFive = document.querySelector('.dot-five');
+
+$dotOne.addEventListener('click', dotOneClicked);
+function dotOneClicked(event) {
+  count = 1;
+  countChecker();
+}
+
+$dotTwo.addEventListener('click', dotTwoClicked);
+function dotTwoClicked(event) {
+  count = 2;
+  countChecker();
+}
+
+$dotThree.addEventListener('click', dotThreeClicked);
+function dotThreeClicked(event) {
+  count = 3;
+  countChecker();
+}
+
+$dotFour.addEventListener('click', dotFourClicked);
+function dotFourClicked(event) {
+  count = 4;
+  countChecker();
+}
+
+$dotFive.addEventListener('click', dotFiveClicked);
+function dotFiveClicked(event) {
+  count = 5;
+  countChecker();
+}
+
+function slideOne(event) {
+  $slider.className = 'column-full img-frame display-flex  slider first-slide';
+  $dotOne.className = 'dot-one fa-solid  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+function slideTwo(event) {
+  $slider.className = 'column-full img-frame display-flex  slider second-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-solid fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+
+function slideThree(event) {
+  $slider.className = 'column-full img-frame display-flex  slider third-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-solid fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+
+function slideFour(event) {
+  $slider.className = 'column-full img-frame display-flex  slider fourth-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-solid fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+
+function slideFive(event) {
+  $slider.className = 'column-full img-frame display-flex  slider fifth-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-solid fa-circle dots-padding house-font-size';
 }
 
 function renderSlide(firstVillager, secondVillager) {
@@ -215,7 +281,6 @@ function renderSlide(firstVillager, secondVillager) {
   $resIcon.setAttribute('villager-name', firstVillager.name);
   var $p = document.createElement('p');
   $p.textContent = firstVillager.name;
-  /*   $p.setAttribute('class', 'clickable'); */
 
   $slidesRow.appendChild($resColImg);
   $resColImg.appendChild($resMainImg);
@@ -266,7 +331,6 @@ function renderSlide(firstVillager, secondVillager) {
     $resColIconBelow.appendChild($resIconBelow);
     $resColIconBelow.appendChild($pBelow);
   }
-
   return $slidesRow;
 }
 
@@ -289,7 +353,6 @@ var $noLikedMessage = document.querySelector('.no-liked-message');
 function toggleNoEntries(event) {
   if (data.liked.length === 0) {
     $noLikedMessage.classList.remove('hidden');
-
   } else {
     $noLikedMessage.classList.add('hidden');
   }
@@ -364,8 +427,7 @@ var musicDataNight = [];
 xhrMusic.open('GET', 'http://acnhapi.com/v1/backgroundmusic/');
 xhrMusic.responseType = 'json';
 xhrMusic.addEventListener('load', function () {
-/*   console.log('xhrMusic.status:', xhrMusic.status);
-  console.log('xhrMusic.response:', xhrMusic.response); */
+
   for (var key in xhrMusic.response) {
     musicDataAll.push(xhrMusic.response[key].music_uri);
     if (xhrMusic.response[key].hour > 4 && xhrMusic.response[key].hour < 19) {
@@ -382,37 +444,11 @@ xhrMusic.addEventListener('load', function () {
     }
   }
 });
-
 xhrMusic.send();
 
 var $playButton = document.querySelector('.play-button');
-
 var $audio = document.querySelector('.play-music-audio');
 $playButton.addEventListener('click', playButton);
-
-/* function playButton(event) { // original
-  $audio.play();
-  // play the curent song if it was paused... maybe or add a if, add a
-  // class to the element for PAUSED when paused clickedand remove when u click playh again.
-  if ($playButton.className.includes('fa-play')) {
-
-    intersection(weatherChosen, timeChosen);
-
-    pickRandomSong(intersectionArray);
-
-    $audio.setAttribute('src', intersectionArray[randomIndex]);
-
-    $audio.play();
-
-    $playButton.classList.remove('fa-play');
-    $playButton.classList.add('fa-pause');
-  } else if ($playButton.className.includes('fa-pause')) {
-    $audio.pause();
-    $playButton.classList.add('fa-play');
-    $playButton.classList.remove('fa-pause');
-  }
-
-} */
 var $pausebutton = document.querySelector('.pause-button');
 $pausebutton.addEventListener('click', pauseButton);
 var $playParent = document.querySelector('.play-parent');
@@ -424,17 +460,11 @@ function playButton(event) {
     $audio.play();
     $pausebutton.classList.remove('was-paused');
   } else {
-
     intersection(weatherChosen, timeChosen);
-
     pickRandomSong(intersectionArray);
-
     $audio.setAttribute('src', intersectionArray[randomIndex]);
-
     $audio.play();
-
     $pauseParent.classList.remove('hidden');
-
     $playParent.classList.add('hidden');
   }
 }
@@ -451,27 +481,24 @@ $rewind.addEventListener('click', rewindSong);
 $next.addEventListener('click', nextSong);
 function nextSong(event) {
   intersection(weatherChosen, timeChosen);
-
   pickRandomSong(intersectionArray);
-
   $audio.setAttribute('src', intersectionArray[randomIndex]);
-
+  $pauseParent.classList.remove('hidden');
+  $playParent.classList.add('hidden');
   $audio.play();
 }
 function rewindSong(event) {
   $audio.currentTime = 0;
+  $pauseParent.classList.remove('hidden');
+  $playParent.classList.add('hidden');
   $audio.play();
 }
 
 $audio.addEventListener('ended', playNextSong);
 function playNextSong(event) {
-
   intersection(weatherChosen, timeChosen);
-
   pickRandomSong(intersectionArray);
-
   $audio.setAttribute('src', intersectionArray[randomIndex]);
-
   $audio.play();
 }
 
@@ -507,14 +534,12 @@ function weatherOptionClicked(event) {
   } else if (event.target.classList.contains('weather-close')) {
     $weatherModal.classList.add('hidden');
   }
-
   return weatherChosen;
 }
 
 $weather.addEventListener('click', openWeatherModal);
 function openWeatherModal(event) {
   $weatherModal.classList.remove('hidden');
-
 }
 
 var $time = document.querySelector('.fa-clock');
@@ -566,4 +591,88 @@ function intersection(arrayOne, arrayTwo) {
     }
   }
   return intersectionArray;
+}
+
+var $nightMode = document.querySelector('.night-mode');
+var $villagerCardMobile = document.querySelector('.village-card-mobile');
+var $searchCard = document.querySelector('.search-card');
+var $modalVillagerCard = document.querySelector('.modal-villager-card');
+var $trashModal = document.querySelector('.trash-modal');
+var $weatherModalBox = document.querySelector('.weather-modal-card');
+var $timeModalBox = document.querySelector('.time-modal-card');
+var $footerButtons = document.querySelector('.footer-buttons-bar');
+var $searchBar = document.querySelector('.search-bar');
+$nightMode.addEventListener('click', nightMode);
+function nightMode(event) {
+  if ($nightMode.classList.contains('fa-solid')) {
+    $searchCard.classList.add('nightmode-bg-black');
+    $searchCard.classList.add('nightmode-text-white');
+    $villagerCardMobile.classList.add('nightmode-bg-black');
+    $villagerCardMobile.classList.add('nightmode-text-white');
+    $modalVillagerCard.classList.add('nightmode-bg-black-modals');
+    $modalVillagerCard.classList.add('nightmode-text-white');
+    $trashModal.classList.add('nightmode-bg-black-modals');
+    $trashModal.classList.add('nightmode-text-white');
+    $weatherModalBox.classList.add('nightmode-bg-black-modals');
+    $weatherModalBox.classList.add('nightmode-text-white');
+    $timeModalBox.classList.add('nightmode-bg-black-modals');
+    $timeModalBox.classList.add('nightmode-text-white');
+    $searchBar.classList.add('nightmode-bg-black-modals');
+    $searchBar.classList.add('nightmode-text-white');
+    $footerButtons.classList.add('nightmode-text-white');
+
+    $searchCard.classList.remove('bg-color-white-cards');
+    $searchCard.classList.remove('text-black');
+    $villagerCardMobile.classList.remove('bg-color-white-cards');
+    $villagerCardMobile.classList.remove('text-black');
+    $modalVillagerCard.classList.remove('bg-color-white-cards-modals');
+    $modalVillagerCard.classList.remove('text-black');
+    $trashModal.classList.remove('bg-color-white-cards-modals');
+    $trashModal.classList.remove('text-black');
+    $weatherModalBox.classList.remove('bg-color-white-cards-modals');
+    $weatherModalBox.classList.remove('text-black');
+    $timeModalBox.classList.remove('bg-color-white-cards-modals');
+    $timeModalBox.classList.remove('text-black');
+    $searchBar.classList.remove('bg-color-white-cards-modals');
+    $searchBar.classList.remove('text-black');
+    $footerButtons.classList.remove('text-black');
+
+    $nightMode.classList.remove('fa-solid');
+    $nightMode.classList.add('fa-regular');
+  } else if ($nightMode.classList.contains('fa-regular')) {
+    $searchCard.classList.add('bg-color-white-cards');
+    $searchCard.classList.add('text-black');
+    $villagerCardMobile.classList.add('bg-color-white-cards');
+    $villagerCardMobile.classList.add('text-black');
+    $modalVillagerCard.classList.add('bg-color-white-cards-modals');
+    $modalVillagerCard.classList.add('text-black');
+    $trashModal.classList.add('bg-color-white-cards-modals');
+    $trashModal.classList.add('text-black');
+    $weatherModalBox.classList.add('bg-color-white-cards-modals');
+    $weatherModalBox.classList.add('text-black');
+    $timeModalBox.classList.add('bg-color-white-cards-modals');
+    $timeModalBox.classList.add('text-black');
+    $searchBar.classList.add('bg-color-white-cards-modals');
+    $searchBar.classList.add('text-black');
+    $footerButtons.classList.add('text-black');
+
+    $searchCard.classList.remove('nightmode-bg-black');
+    $searchCard.classList.remove('nightmode-text-white');
+    $villagerCardMobile.classList.remove('nightmode-bg-black');
+    $villagerCardMobile.classList.remove('nightmode-text-white');
+    $modalVillagerCard.classList.remove('nightmode-bg-black-modals');
+    $modalVillagerCard.classList.remove('nightmode-text-white');
+    $trashModal.classList.remove('nightmode-bg-black-modals');
+    $trashModal.classList.remove('nightmode-text-white');
+    $weatherModalBox.classList.remove('nightmode-bg-black-modals');
+    $weatherModalBox.classList.remove('nightmode-text-white');
+    $timeModalBox.classList.remove('nightmode-bg-black-modals');
+    $timeModalBox.classList.remove('nightmode-text-white');
+    $searchBar.classList.remove('nightmode-bg-black-modals');
+    $searchBar.classList.remove('nightmode-text-white');
+    $footerButtons.classList.remove('nightmode-text-white');
+
+    $nightMode.classList.remove('fa-regular');
+    $nightMode.classList.add('fa-solid');
+  }
 }
