@@ -98,7 +98,6 @@ function heartClicked(event) {
     return null;
   } else {
     if (data.liked.some(e => e.name === data.entries[0].name)) {
-    /*   console.log('Already Liked'); */
       $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has already been added!';
       $textHeart.className = 'text-heart text-red fade-out';
