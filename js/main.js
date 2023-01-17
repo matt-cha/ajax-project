@@ -4,7 +4,6 @@ var villagerData = {};
 xhrVillagers.open('GET', 'http://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
-
   for (var key in xhrVillagers.response) {
     var target = {};
     var name = xhrVillagers.response[key].name['name-USen'];
@@ -15,11 +14,8 @@ xhrVillagers.addEventListener('load', function () {
     target.image = xhrVillagers.response[key].image_uri;
     target.saying = xhrVillagers.response[key].saying;
     target.id = xhrVillagers.response[key].id;
-
     villagerData[name] = target;
-
   }
-
 });
 xhrVillagers.send();
 
@@ -176,49 +172,7 @@ function countChecker(event) {
     slideFive();
   }
 }
-/* function arrowClicked(event) {
 
-  if (event.target.classList.contains('mobile-slider-right')) {
-    count++;
-
-    if ($slider.classList.contains('first-slide')) {
-
-      $slider.classList.remove('first-slide');
-      $slider.classList.add('second-slide');
-    } else if ($slider.classList.contains('second-slide')) {
-      $slider.classList.remove('second-slide');
-      $slider.classList.add('third-slide');
-    } else if ($slider.classList.contains('third-slide')) {
-      $slider.classList.remove('third-slide');
-      $slider.classList.add('fourth-slide');
-    } else if ($slider.classList.contains('fourth-slide')) {
-      $slider.classList.remove('fourth-slide');
-      $slider.classList.add('fifth-slide');
-    } else if ($slider.classList.contains('fifth-slide')) {
-      $slider.classList.remove('fifth-slide');
-      $slider.classList.add('first-slide');
-    }
-  } else if (event.target.classList.contains('mobile-slider-left')) {
-    count--;
-
-    if ($slider.classList.contains('first-slide')) {
-      $slider.classList.remove('first-slide');
-      $slider.classList.add('fifth-slide');
-    } else if ($slider.classList.contains('fifth-slide')) {
-      $slider.classList.remove('fifth-slide');
-      $slider.classList.add('fourth-slide');
-    } else if ($slider.classList.contains('fourth-slide')) {
-      $slider.classList.remove('fourth-slide');
-      $slider.classList.add('third-slide');
-    } else if ($slider.classList.contains('third-slide')) {
-      $slider.classList.remove('third-slide');
-      $slider.classList.add('second-slide');
-    } else if ($slider.classList.contains('second-slide')) {
-      $slider.classList.remove('second-slide');
-      $slider.classList.add('first-slide');
-    }
-  }
-} */
 function arrowClicked(event) {
 
   if (event.target.classList.contains('mobile-slider-right')) {
@@ -308,50 +262,7 @@ function slideFive(event) {
   $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
   $dotFive.className = 'dot-five  fa-solid fa-circle dots-padding house-font-size';
 }
-/* function slideOne(event) {
 
-  $slider.className = 'column-full img-frame display-flex  slider first-slide';
-  $dotOne.className = 'dot-one fa-solid  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
-}
-function slideTwo(event) {
-  $slider.className = 'column-full img-frame display-flex  slider second-slide';
-  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-solid dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
-}
-
-function slideThree(event) {
-  $slider.className = 'column-full img-frame display-flex  slider third-slide';
-  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-solid dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
-}
-
-function slideFour(event) {
-  $slider.className = 'column-full img-frame display-flex  slider fourth-slide';
-  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-solid dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
-}
-
-function slideFive(event) {
-  $slider.className = 'column-full img-frame display-flex  slider fifth-slide';
-  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-solid dots-padding house-font-size';
-} */
 function renderSlide(firstVillager, secondVillager) {
   var $slidesRow = document.createElement('div');
 
@@ -420,7 +331,6 @@ function renderSlide(firstVillager, secondVillager) {
     $resColIconBelow.appendChild($resIconBelow);
     $resColIconBelow.appendChild($pBelow);
   }
-
   return $slidesRow;
 }
 
@@ -443,7 +353,6 @@ var $noLikedMessage = document.querySelector('.no-liked-message');
 function toggleNoEntries(event) {
   if (data.liked.length === 0) {
     $noLikedMessage.classList.remove('hidden');
-
   } else {
     $noLikedMessage.classList.add('hidden');
   }
@@ -535,14 +444,11 @@ xhrMusic.addEventListener('load', function () {
     }
   }
 });
-
 xhrMusic.send();
 
 var $playButton = document.querySelector('.play-button');
-
 var $audio = document.querySelector('.play-music-audio');
 $playButton.addEventListener('click', playButton);
-
 var $pausebutton = document.querySelector('.pause-button');
 $pausebutton.addEventListener('click', pauseButton);
 var $playParent = document.querySelector('.play-parent');
@@ -554,17 +460,11 @@ function playButton(event) {
     $audio.play();
     $pausebutton.classList.remove('was-paused');
   } else {
-
     intersection(weatherChosen, timeChosen);
-
     pickRandomSong(intersectionArray);
-
     $audio.setAttribute('src', intersectionArray[randomIndex]);
-
     $audio.play();
-
     $pauseParent.classList.remove('hidden');
-
     $playParent.classList.add('hidden');
   }
 }
@@ -581,13 +481,10 @@ $rewind.addEventListener('click', rewindSong);
 $next.addEventListener('click', nextSong);
 function nextSong(event) {
   intersection(weatherChosen, timeChosen);
-
   pickRandomSong(intersectionArray);
-
   $audio.setAttribute('src', intersectionArray[randomIndex]);
   $pauseParent.classList.remove('hidden');
   $playParent.classList.add('hidden');
-
   $audio.play();
 }
 function rewindSong(event) {
@@ -599,13 +496,9 @@ function rewindSong(event) {
 
 $audio.addEventListener('ended', playNextSong);
 function playNextSong(event) {
-
   intersection(weatherChosen, timeChosen);
-
   pickRandomSong(intersectionArray);
-
   $audio.setAttribute('src', intersectionArray[randomIndex]);
-
   $audio.play();
 }
 
@@ -641,14 +534,12 @@ function weatherOptionClicked(event) {
   } else if (event.target.classList.contains('weather-close')) {
     $weatherModal.classList.add('hidden');
   }
-
   return weatherChosen;
 }
 
 $weather.addEventListener('click', openWeatherModal);
 function openWeatherModal(event) {
   $weatherModal.classList.remove('hidden');
-
 }
 
 var $time = document.querySelector('.fa-clock');
@@ -728,7 +619,6 @@ function nightMode(event) {
     $timeModalBox.classList.add('nightmode-text-white');
     $searchBar.classList.add('nightmode-bg-black-modals');
     $searchBar.classList.add('nightmode-text-white');
-
     $footerButtons.classList.add('nightmode-text-white');
 
     $searchCard.classList.remove('bg-color-white-cards');
@@ -784,6 +674,5 @@ function nightMode(event) {
 
     $nightMode.classList.remove('fa-regular');
     $nightMode.classList.add('fa-solid');
-
   }
 }
