@@ -198,20 +198,8 @@ body {
   width: 22.5%;
 }
 
-.resident-icon {
-  width: 15%;
-}
-
 .text-red {
   color: rgb(251, 106, 106);
-}
-
-.text-red-bg {
-  background-color: rgb(251, 106, 106);
-}
-
-.column-half {
-  flex-basis: 50%;
 }
 
 .centered {
@@ -274,10 +262,6 @@ body {
   display: none;
 }
 
-.fade-out {
-  transition: opacity 3s ease-in-out;
-}
-
 .transparent {
   font-size: 0;
 }
@@ -302,26 +286,10 @@ body {
   padding-left: 4.3rem;
 }
 
-.residents-icon-padding-left {
-  padding-left: 4rem;
-}
-
 .residents-main-image {
   width: 60%;
   object-fit: contain;
   height: auto;
-}
-
-.residents-right-arrow {
-  padding-right: 4.55rem;
-}
-
-.residents-left-arrow {
-  padding-left: 4.55rem;
-}
-
-.align-items-right {
-  align-items: right;
 }
 
 .arrows-margin-top {
@@ -332,18 +300,6 @@ body {
   width: 75%;
   object-fit: contain;
   height: auto;
-}
-
-.resident-icon-desktop {
-  width: 20%;
-}
-
-.residents-padding-left-desktop {
-  padding-left: 2.1rem;
-}
-
-.residents-icon-padding-left-desktop {
-  padding-left: 1.9rem;
 }
 
 .residents-main-image-slide {
@@ -406,14 +362,6 @@ body {
   color: rgb(251, 106, 106);
 }
 
-.max-width-350px {
-  max-width: 350px;
-}
-
-.max-width-210px {
-  max-width: 210px;
-}
-
 .width-15px {
   width: 15px;
 }
@@ -474,12 +422,6 @@ body {
 }
 
 .weather-close {
-  background-color: #87c9a1;
-  border-radius: 0.25rem;
-  border: solid #87c9a1;
-}
-
-.weather-save {
   background-color: #87c9a1;
   border-radius: 0.25rem;
   border: solid #87c9a1;
