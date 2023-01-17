@@ -26,6 +26,10 @@
   flex-basis: calc(100% / 4);
 }
 
+.column-two-fourth {
+  flex-basis: calc(2 / 4 * 100%);
+}
+
 .column-three-fourth {
   flex-basis: calc(3/4 * 100%);
 }
@@ -44,4 +48,12 @@
 
 .column-third {
   flex-basis: calc(100% / 3);
+}
+
+.column-one-eighth {
+  flex-basis: calc(100% / 8);
+}
+
+.column-six-eighth {
+  flex-basis: calc(6 / 8 * 100%);
 }

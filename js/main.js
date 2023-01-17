@@ -4,8 +4,6 @@ var villagerData = {};
 xhrVillagers.open('GET', 'http://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
-/*   console.log('xhrVillagers.status:', xhrVillagers.status);
-  console.log('xhrVillagers.response:', xhrVillagers.response); */
 
   for (var key in xhrVillagers.response) {
     var target = {};
@@ -21,7 +19,6 @@ xhrVillagers.addEventListener('load', function () {
     villagerData[name] = target;
 
   }
-  /*   console.log('villagerData:', villagerData); */
 
 });
 xhrVillagers.send();
@@ -155,10 +152,34 @@ var $leftArrow = document.querySelector('.mobile-slider-left');
 var $rightArrow = document.querySelector('.mobile-slider-right');
 $leftArrow.addEventListener('click', arrowClicked);
 $rightArrow.addEventListener('click', arrowClicked);
-
-function arrowClicked(event) {
+var count = 1;
+function countChecker(event) {
+  if (count > 5) {
+    count = 1;
+  }
+  if (count < 1) {
+    count = 5;
+  }
+  if (count === 1) {
+    slideOne();
+  }
+  if (count === 2) {
+    slideTwo();
+  }
+  if (count === 3) {
+    slideThree();
+  }
+  if (count === 4) {
+    slideFour();
+  }
+  if (count === 5) {
+    slideFive();
+  }
+}
+/* function arrowClicked(event) {
 
   if (event.target.classList.contains('mobile-slider-right')) {
+    count++;
 
     if ($slider.classList.contains('first-slide')) {
 
@@ -178,6 +199,8 @@ function arrowClicked(event) {
       $slider.classList.add('first-slide');
     }
   } else if (event.target.classList.contains('mobile-slider-left')) {
+    count--;
+
     if ($slider.classList.contains('first-slide')) {
       $slider.classList.remove('first-slide');
       $slider.classList.add('fifth-slide');
@@ -195,8 +218,140 @@ function arrowClicked(event) {
       $slider.classList.add('first-slide');
     }
   }
+} */
+function arrowClicked(event) {
+
+  if (event.target.classList.contains('mobile-slider-right')) {
+    count++;
+    countChecker();
+  } else if (event.target.classList.contains('mobile-slider-left')) {
+    count--;
+    countChecker();
+  }
+}
+var $dotOne = document.querySelector('.dot-one');
+var $dotTwo = document.querySelector('.dot-two');
+var $dotThree = document.querySelector('.dot-three');
+var $dotFour = document.querySelector('.dot-four');
+var $dotFive = document.querySelector('.dot-five');
+
+$dotOne.addEventListener('click', dotOneClicked);
+function dotOneClicked(event) {
+  count = 1;
+  countChecker();
 }
 
+$dotTwo.addEventListener('click', dotTwoClicked);
+function dotTwoClicked(event) {
+  count = 2;
+  countChecker();
+}
+
+$dotThree.addEventListener('click', dotThreeClicked);
+function dotThreeClicked(event) {
+  count = 3;
+  countChecker();
+}
+
+$dotFour.addEventListener('click', dotFourClicked);
+function dotFourClicked(event) {
+  count = 4;
+  countChecker();
+}
+
+$dotFive.addEventListener('click', dotFiveClicked);
+function dotFiveClicked(event) {
+  count = 5;
+  countChecker();
+}
+
+function slideOne(event) {
+  $slider.className = 'column-full img-frame display-flex  slider first-slide';
+  $dotOne.className = 'dot-one fa-solid  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+function slideTwo(event) {
+  $slider.className = 'column-full img-frame display-flex  slider second-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-solid fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+
+function slideThree(event) {
+  $slider.className = 'column-full img-frame display-flex  slider third-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-solid fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+
+function slideFour(event) {
+  $slider.className = 'column-full img-frame display-flex  slider fourth-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-solid fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+}
+
+function slideFive(event) {
+  $slider.className = 'column-full img-frame display-flex  slider fifth-slide';
+  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-solid fa-circle dots-padding house-font-size';
+}
+/* function slideOne(event) {
+
+  $slider.className = 'column-full img-frame display-flex  slider first-slide';
+  $dotOne.className = 'dot-one fa-solid  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
+}
+function slideTwo(event) {
+  $slider.className = 'column-full img-frame display-flex  slider second-slide';
+  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-solid dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
+}
+
+function slideThree(event) {
+  $slider.className = 'column-full img-frame display-flex  slider third-slide';
+  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-solid dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
+}
+
+function slideFour(event) {
+  $slider.className = 'column-full img-frame display-flex  slider fourth-slide';
+  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-solid dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-regular dots-padding house-font-size';
+}
+
+function slideFive(event) {
+  $slider.className = 'column-full img-frame display-flex  slider fifth-slide';
+  $dotOne.className = 'dot-one fa-regular  dots-padding house-font-size';
+  $dotTwo.className = 'dot-two  fa-regular dots-padding house-font-size';
+  $dotThree.className = 'dot-three  fa-regular dots-padding house-font-size';
+  $dotFour.className = 'dot-four  fa-regular dots-padding house-font-size';
+  $dotFive.className = 'dot-five  fa-solid dots-padding house-font-size';
+} */
 function renderSlide(firstVillager, secondVillager) {
   var $slidesRow = document.createElement('div');
 
@@ -215,7 +370,6 @@ function renderSlide(firstVillager, secondVillager) {
   $resIcon.setAttribute('villager-name', firstVillager.name);
   var $p = document.createElement('p');
   $p.textContent = firstVillager.name;
-  /*   $p.setAttribute('class', 'clickable'); */
 
   $slidesRow.appendChild($resColImg);
   $resColImg.appendChild($resMainImg);
@@ -364,8 +518,7 @@ var musicDataNight = [];
 xhrMusic.open('GET', 'http://acnhapi.com/v1/backgroundmusic/');
 xhrMusic.responseType = 'json';
 xhrMusic.addEventListener('load', function () {
-/*   console.log('xhrMusic.status:', xhrMusic.status);
-  console.log('xhrMusic.response:', xhrMusic.response); */
+
   for (var key in xhrMusic.response) {
     musicDataAll.push(xhrMusic.response[key].music_uri);
     if (xhrMusic.response[key].hour > 4 && xhrMusic.response[key].hour < 19) {
@@ -390,29 +543,6 @@ var $playButton = document.querySelector('.play-button');
 var $audio = document.querySelector('.play-music-audio');
 $playButton.addEventListener('click', playButton);
 
-/* function playButton(event) { // original
-  $audio.play();
-  // play the curent song if it was paused... maybe or add a if, add a
-  // class to the element for PAUSED when paused clickedand remove when u click playh again.
-  if ($playButton.className.includes('fa-play')) {
-
-    intersection(weatherChosen, timeChosen);
-
-    pickRandomSong(intersectionArray);
-
-    $audio.setAttribute('src', intersectionArray[randomIndex]);
-
-    $audio.play();
-
-    $playButton.classList.remove('fa-play');
-    $playButton.classList.add('fa-pause');
-  } else if ($playButton.className.includes('fa-pause')) {
-    $audio.pause();
-    $playButton.classList.add('fa-play');
-    $playButton.classList.remove('fa-pause');
-  }
-
-} */
 var $pausebutton = document.querySelector('.pause-button');
 $pausebutton.addEventListener('click', pauseButton);
 var $playParent = document.querySelector('.play-parent');
@@ -571,3 +701,10 @@ function intersection(arrayOne, arrayTwo) {
   }
   return intersectionArray;
 }
+
+/* var $nightMode = document.querySelector('.night-mode');
+$nightMode.addEventListener('click', nightMode);
+function nightMode(event) {
+
+}
+ */
