@@ -43,15 +43,15 @@
 }
 
 .background-image-sunny {
-  background-image: url("/images/sunnyday.bmp");
+  background-image: url("/images/sunny.bmp");
 }
 
 .background-image-night {
-  background-image: url("/images/nightaurora.webp");
+  background-image: url("/images/night.webp");
 }
 
 .background-image-rain {
-  background-image: url("/images/raincamp.webp");
+  background-image: url("/images/rain.webp");
 }
 
 .background-image-snow {
@@ -59,7 +59,7 @@
 }
 
 .background-image-day {
-  background-image: url("/images/weather.jpeg");
+  background-image: url("/images/day.jpeg");
 }
 
 html,
