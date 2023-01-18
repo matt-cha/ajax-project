@@ -57,15 +57,19 @@ var $hobbyText = document.querySelector('.hobby-text');
 var $personalityText = document.querySelector('.personality-text');
 var $sayingText = document.querySelector('.saying-text');
 var $hobbyLeft = document.querySelector('.hobby-left');
+var $hobbyDiv = document.querySelector('.hobby-left-div');
 var $personalityLeft = document.querySelector('.personality-left');
 var $sayingLeft = document.querySelector('.saying-left');
 function renderVillagerSearch(entry) {
 
   $searchImage.setAttribute('src', data.entries[0].image);
   $icon.setAttribute('src', data.entries[0].icon);
+  $icon.classList.remove('hidden');
   $name.textContent = data.entries[0].name;
   $name.classList.remove('text-red');
   $hobbyLeft.classList.remove('text-red');
+  $hobbyDiv.className = 'column-half hobby-left-div villager-search-for-text-margin';
+  $personalityLeft.classList.remove('text-red');
   $hobbyLeft.textContent = 'Hobby:';
   $personalityLeft.textContent = 'Personality';
   $sayingLeft.textContent = 'Saying:';
@@ -81,12 +85,15 @@ function renderVillagerSearch(entry) {
 
 function renderNotFound(entry) {
   $searchImage.setAttribute('src', '/images/sad.webp');
-  $icon.setAttribute('src', '/images/thought.png');
+  $icon.setAttribute('src', '/images/thought.webp');
+  $icon.classList.add('hidden');
   $name.textContent = 'No villager was found!';
   $name.classList.add('text-red');
-  $hobbyLeft.textContent = 'Try searching the exact name!';
+  $hobbyLeft.textContent = 'Try searching the exact name.';
   $hobbyLeft.classList.add('text-red');
+  $hobbyDiv.className = 'column-full hobby-left-div villager-search-for-text-margin';
   $personalityLeft.textContent = '';
+  $personalityLeft.classList.add('text-red');
   $sayingLeft.textContent = '';
   $birthday.textContent = '';
   $hobbyText.textContent = '';
@@ -328,7 +335,7 @@ function renderSlide(firstVillager, secondVillager) {
     $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     $resIconBelow = document.createElement('img');
-    $resIconBelow.setAttribute('src', 'images/thought.png');
+    $resIconBelow.setAttribute('src', 'images/thought.webp');
     $resIconBelow.setAttribute('class', 'visibility-hidden icon resident-icon-mobile-slide');
     $pBelow = document.createElement('p');
     $pBelow.textContent = 'Add another villager!';
@@ -352,6 +359,7 @@ function createSlides(likedVillagers) {
 }
 var $loadingOverlay = document.querySelector('.loading-overlay');
 var $sliderCol = document.querySelector('.slider');
+
 document.addEventListener('DOMContentLoaded', generateDomTree);
 
 function generateDomTree(event) {
@@ -360,6 +368,14 @@ function generateDomTree(event) {
   createSlides(data.liked);
   toggleNoEntries();
 }
+
+window.addEventListener('offline', showError);
+var $error = document.querySelector('.error');
+function showError(event) {
+
+  $error.classList.remove('hidden');
+}
+
 var $noLikedMessage = document.querySelector('.no-liked-message');
 
 function toggleNoEntries(event) {
@@ -522,7 +538,7 @@ var $backgroundImage = document.querySelector('.background');
 function weatherOptionClicked(event) {
 
   if (event.target.classList.contains('weather-sun')) {
-    $backgroundImage.className = ' background background-image-sunny';
+    $backgroundImage.className = 'background background-image-sunny';
     weatherChosen = musicDataSunny;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
@@ -530,7 +546,7 @@ function weatherOptionClicked(event) {
     $weatherModal.classList.add('hidden');
 
   } else if (event.target.classList.contains('fa-cloud-showers-heavy')) {
-    $backgroundImage.className = ' background background-image-rain';
+    $backgroundImage.className = 'background background-image-rain';
 
     weatherChosen = musicDataRainy;
     $playButton.classList.add('fa-play');
@@ -538,7 +554,7 @@ function weatherOptionClicked(event) {
     playButton();
     $weatherModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-snowflake')) {
-    $backgroundImage.className = ' background background-image-snow';
+    $backgroundImage.className = 'background background-image-snow';
     weatherChosen = musicDataSnowy;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
@@ -566,7 +582,7 @@ function openTimeModal(event) {
 $timeModal.addEventListener('click', timeOptionClicked);
 function timeOptionClicked(event) {
   if (event.target.classList.contains('time-sun-day')) {
-    $backgroundImage.className = ' background background-image-day';
+    $backgroundImage.className = 'background background-image-day';
     timeChosen = musicDataDay;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
@@ -574,7 +590,7 @@ function timeOptionClicked(event) {
 
     $timeModal.classList.add('hidden');
   } else if (event.target.classList.contains('fa-moon')) {
-    $backgroundImage.className = ' background background-image-night';
+    $backgroundImage.className = 'background background-image-night';
     timeChosen = musicDataNight;
     $playButton.classList.add('fa-play');
     $playButton.classList.remove('fa-pause');
