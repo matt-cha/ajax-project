@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/styles.css">
 
 </head>
-<body class="">
+<body class="background background-image-sunny">
   <header class="bg-color-blue navbar-height">
     <form class="navbar-form height-search-bar header">
       <i class="button fa-solid fa-house darkblue-font-color only-home margin-home house-font-size"></i>
@@ -32,7 +32,7 @@
   </header>
 
   <main>
-    <div class="container background background-image-sunny">
+    <div class="container">
 
       <div class="">
         <div class="search-view view" data-view="search">
@@ -47,21 +47,21 @@
                 </div>
                 <div class="row">
                   <div class="column-full img-frame display-flex align-items-center ">
-                    <img src="/images/hello.png" class="search-image search-img  margin-zero border-radius-all align-items-center display-flex">
+                    <img src="/images/hello.webp" class="search-image search-img  margin-zero border-radius-all align-items-center display-flex">
                   </div>
                 </div>
                 <div class="row ">
                   <div class="column-60p display-flex  centered-left ">
-                    <img src="/images/thought.png" class="icon thought-image " >
-                    <p class="villager-name margin-zero text-red ">No villagers yet!</p>
+                    <img src="/images/thought.webp" class="icon hidden thought-image " >
+                    <p class="villager-name margin-zero text-red ">Search for a villager!</p>
                   </div>
                   <div class="column-40p birthday text-align-right villager-search-for-text-padding-right display-flex align-items-center-only justify-content-right">
                     <p class=" birthday  align-items-center-only text-align-right"></p>
                   </div>
                 </div>
                 <div class="row ">
-                  <div class="column-half villager-search-for-text-margin">
-                    <p class="">Hobby:</p>
+                  <div class="column-full hobby-left-div villager-search-for-text-margin">
+                    <p class="hobby-left">Click the home button to see your villagers. </p>
                   </div>
                   <div class="column-half text-align-right villager-search-for-text-padding-right">
                     <p class="hobby-text "></p>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="row ">
                   <div class="column-half villager-search-for-text-margin">
-                    <p class="">Personality:</p>
+                    <p class="personality-left"></p>
                   </div>
                   <div class="column-half text-align-right villager-search-for-text-padding-right">
                     <p class="personality-text "></p>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="row ">
                   <div class="column-one-fourth villager-search-for-text-margin">
-                    <p class="">Saying:</p>
+                    <p class="saying-left"></p>
                   </div>
                   <div class="column-three-fourth text-align-right villager-search-for-text-padding-right">
                     <p class="saying-text
@@ -113,7 +113,6 @@
                   <p class="no-liked-message text-red hidden">No villagers have been added!</p>
                   <div class="column-full img-frame display-flex  slider first-slide">
 
-
                   </div>
                 </div>
 
@@ -133,7 +132,6 @@
                   <div class="column-one-fourth display-flex justify-content-left text-align-right  ">
                     <i class="fa-solid fa-chevron-right width-15px display-flex justify-content-right house-font-size mobile-slider-right text-align-right"></i>
                   </div>
-
 
 
                 </div>
@@ -174,6 +172,7 @@
       </div>
 
     </div>
+
     <div class="villager-individual" data-view="villager-card">
       <div class="row">
         <div class="column-full display-flex align-items-center">
@@ -193,13 +192,13 @@
                     </div>
                     <div class="row">
                       <div class="column-full img-frame display-flex align-items-center ">
-                        <img src="/images/hello.png"
+                        <img src="/images/hello.webp"
                           class="search-image search-img individual-main-img margin-zero border-radius-all align-items-center display-flex">
                       </div>
                     </div>
                     <div class="row ">
                       <div class="column-60p display-flex  centered-left ">
-                        <img src="/images/thought.png" class="icon thought-image individual-icon-img">
+                        <img src="/images/thought.webp" class="icon hidden thought-image individual-icon-img">
                         <p class="villager-name individual-name margin-zero ">No villagers yet!</p>
                       </div>
                       <div
@@ -334,6 +333,40 @@
         </div>
       </div>
     </div>
+
+    <div class="loading-overlay">
+      <div class="row">
+        <div class="column-full display-flex justify-content-center">
+          <div class="loading display-flex ">
+            <div class="lds-default text-black">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="error error-overlay hidden">
+      <div class="row">
+        <div class="column-full display-flex justify-content-center">
+          <div class="loading display-flex ">
+            <h2>Sorry, there was an error connecting to the network! Please check your internet connection and try again.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </main>
 
