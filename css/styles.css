@@ -5,8 +5,6 @@ i {
 
 .container {
   max-width: 2000px;
-  width: 100vw;
-  height: 100vh;
 }
 
 .text-white {
@@ -50,7 +48,7 @@ i {
 }
 
 .background-image-sunny {
-  background-image: url("/images/sunny.bmp");
+  background-image: url("/images/sunny.webp");
 }
 
 .background-image-night {
@@ -62,11 +60,11 @@ i {
 }
 
 .background-image-snow {
-  background-image: url("/images/snow.jpeg");
+  background-image: url("/images/snow.webp");
 }
 
 .background-image-day {
-  background-image: url("/images/day.jpeg");
+  background-image: url("/images/day.webp");
 }
 
 .margin-home {
@@ -75,7 +73,7 @@ i {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   background-color: rgba(248, 248, 248, 0.35);
   top: 0;
   bottom: 0;
@@ -550,6 +548,23 @@ i {
   50% {
     transform: scale(1.5);
   }
+}
+
+.loading-overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 1280px) {
