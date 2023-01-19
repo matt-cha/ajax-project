@@ -192,7 +192,6 @@ function jsonStringify(event) {
 }
 
 window.addEventListener('pagehide', jsonStringify);
-
 var formJson = localStorage.getItem('form-values');
 if (formJson !== null) {
   data = JSON.parse(formJson);
