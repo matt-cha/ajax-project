@@ -84,8 +84,8 @@ function renderVillagerSearch(entry) {
 }
 
 function renderNotFound(entry) {
-  $searchImage.setAttribute('src', '/images/sad.webp');
-  $icon.setAttribute('src', '/images/thought.webp');
+  $searchImage.setAttribute('src', '../images/sad.webp');
+  $icon.setAttribute('src', '../images/thought.webp');
   $icon.classList.add('hidden');
   $name.textContent = 'No villager was found!';
   $name.classList.add('text-red');
@@ -330,12 +330,12 @@ function renderSlide(firstVillager, secondVillager) {
     $resColImgBelow = document.createElement('div');
     $resColImgBelow.setAttribute('class', 'column-full ');
     $resMainImgBelow = document.createElement('img');
-    $resMainImgBelow.setAttribute('src', 'images/hello.webp');
+    $resMainImgBelow.setAttribute('src', '../images/hello.webp');
     $resMainImgBelow.setAttribute('class', 'visibility-hidden res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex');
     $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     $resIconBelow = document.createElement('img');
-    $resIconBelow.setAttribute('src', 'images/thought.webp');
+    $resIconBelow.setAttribute('src', '../images/thought.webp');
     $resIconBelow.setAttribute('class', 'visibility-hidden icon resident-icon-mobile-slide');
     $pBelow = document.createElement('p');
     $pBelow.textContent = 'Add another villager!';
