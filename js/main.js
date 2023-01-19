@@ -1,7 +1,7 @@
 
 var xhrVillagers = new XMLHttpRequest();
 var villagerData = {};
-xhrVillagers.open('GET', 'http://acnhapi.com/v1/villagers/');
+xhrVillagers.open('GET', 'https://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
   for (var key in xhrVillagers.response) {
@@ -452,7 +452,7 @@ var musicDataSnowy = [];
 var musicDataDay = [];
 var musicDataNight = [];
 
-xhrMusic.open('GET', 'http://acnhapi.com/v1/backgroundmusic/');
+xhrMusic.open('GET', 'https://acnhapi.com/v1/backgroundmusic/');
 xhrMusic.responseType = 'json';
 xhrMusic.addEventListener('load', function () {
 
