@@ -48,23 +48,23 @@ i {
 }
 
 .background-image-sunny {
-  background-image: url("images/sunny.webp");
+  background-image: url("../images/sunny.webp");
 }
 
 .background-image-night {
-  background-image: url("images/night.webp");
+  background-image: url("../images/night.webp");
 }
 
 .background-image-rain {
-  background-image: url("images/rain.webp");
+  background-image: url("../images/rain.webp");
 }
 
 .background-image-snow {
-  background-image: url("images/snow.webp");
+  background-image: url("../images/snow.webp");
 }
 
 .background-image-day {
-  background-image: url("images/day.webp");
+  background-image: url("../images/day.webp");
 }
 
 .margin-home {
