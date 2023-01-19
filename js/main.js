@@ -1,6 +1,7 @@
 
 var xhrVillagers = new XMLHttpRequest();
 var villagerData = {};
+
 xhrVillagers.open('GET', 'https://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
@@ -363,12 +364,15 @@ var $sliderCol = document.querySelector('.slider');
 document.addEventListener('DOMContentLoaded', generateDomTree);
 
 function generateDomTree(event) {
-  $loadingOverlay.classList.add('hidden');
 
   createSlides(data.liked);
   toggleNoEntries();
 }
 
+window.addEventListener('DOMContentLoaded', hideLoadingOverlay);
+function hideLoadingOverlay(event) {
+  $loadingOverlay.classList.add('hidden');
+}
 window.addEventListener('offline', showError);
 var $error = document.querySelector('.error');
 function showError(event) {
@@ -451,7 +455,6 @@ var musicDataRainy = [];
 var musicDataSnowy = [];
 var musicDataDay = [];
 var musicDataNight = [];
-
 xhrMusic.open('GET', 'https://acnhapi.com/v1/backgroundmusic/');
 xhrMusic.responseType = 'json';
 xhrMusic.addEventListener('load', function () {
