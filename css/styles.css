@@ -1,6 +1,7 @@
 button,
 i.button,
-img.button {
+img.button,
+p.clickable {
   cursor: pointer;
 }
 
@@ -205,8 +206,12 @@ input {
   padding-left: 2rem;
 }
 
+.icon-search {
+  width: 30%;
+}
+
 .thought-image {
-  width: 22.5%;
+  width: 24%;
 }
 
 .text-red {
@@ -413,10 +418,6 @@ input {
   transform: translateY(0.1rem);
 }
 
-/* .time-weather-buttons:hover {
-  color: rgb(128, 128, 128);
-} */
-
 i.button:hover,
 img.button:hover,
 button:hover {
@@ -598,7 +599,7 @@ button:hover {
 
 .footer-buttons:hover,
 .arrow-buttons:hover {
-  color: #006979;
+  color: #a3e9f7;
 }
 
 .fa-sun:hover {

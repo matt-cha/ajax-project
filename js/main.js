@@ -319,6 +319,8 @@ function renderSlide(firstVillager, secondVillager) {
   $resIcon.setAttribute('villager-name', firstVillager.name);
   var $p = document.createElement('p');
   $p.textContent = firstVillager.name;
+  $p.setAttribute('villager-name', firstVillager.name);
+  $p.classList.add('clickable');
 
   $slidesRow.appendChild($resColImg);
   $resColImg.appendChild($resMainImg);
@@ -342,7 +344,8 @@ function renderSlide(firstVillager, secondVillager) {
     $resIconBelow.setAttribute('villager-name', secondVillager.name);
     var $pBelow = document.createElement('p');
     $pBelow.textContent = secondVillager.name;
-    $pBelow.setAttribute('class', 'res-p-below');
+    $pBelow.setAttribute('villager-name', secondVillager.name);
+    $pBelow.setAttribute('class', 'res-p-below clickable');
 
     $slidesRow.appendChild($resColImgBelow);
     $resColImgBelow.appendChild($resMainImgBelow);
@@ -436,11 +439,13 @@ function openVillagerCard(event) {
   }
   if (event.target.matches('.clickable')) {
     $overlay.classList.remove('hidden');
+
     for (var i = 0; i < data.liked.length; i++) {
       if (event.target.getAttribute('villager-name') === data.liked[i].name) {
         $individualMainImg.setAttribute('src', data.liked[i].image);
         $individualMainImg.addEventListener('error', errorImage);
         $individualIconImg.setAttribute('src', data.liked[i].icon);
+        $individualIconImg.classList.remove('hidden');
         $individualName.textContent = data.liked[i].name;
         $individualBirthday.textContent = data.liked[i].birthdayString;
         $individualHobby.textContent = data.liked[i].hobby;
