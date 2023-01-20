@@ -63,7 +63,10 @@ var $hobbyDiv = document.querySelector('.hobby-left-div');
 var $personalityLeft = document.querySelector('.personality-left');
 var $sayingLeft = document.querySelector('.saying-left');
 function renderVillagerSearch(entry) {
-
+  $searchImage.addEventListener('error', errorImage);
+  function errorImage(event) {
+    $searchImage.setAttribute('src', 'images/rover.webp');
+  }
   $searchImage.setAttribute('src', data.entries[0].image);
   $icon.setAttribute('src', data.entries[0].icon);
   $icon.classList.remove('hidden');
@@ -288,6 +291,10 @@ function renderSlide(firstVillager, secondVillager) {
   var $resColImg = document.createElement('div');
   $resColImg.setAttribute('class', 'column-full resident');
   var $resMainImg = document.createElement('img');
+  $resMainImg.addEventListener('error', errorImage);
+  function errorImage(event) {
+    $resMainImg.setAttribute('src', 'images/rover.webp');
+  }
   $resMainImg.setAttribute('src', firstVillager.image);
   $resMainImg.setAttribute('class', 'button residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
   $resMainImg.setAttribute('villager-name', firstVillager.name);
@@ -310,6 +317,7 @@ function renderSlide(firstVillager, secondVillager) {
     var $resColImgBelow = document.createElement('div');
     $resColImgBelow.setAttribute('class', 'column-full resident');
     var $resMainImgBelow = document.createElement('img');
+    $resMainImgBelow.addEventListener('error', errorImageBelow);
     $resMainImgBelow.setAttribute('src', secondVillager.image);
     $resMainImgBelow.setAttribute('class', 'button res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
     $resMainImgBelow.setAttribute('villager-name', secondVillager.name);
@@ -348,6 +356,9 @@ function renderSlide(firstVillager, secondVillager) {
     $slidesRow.appendChild($resColIconBelow);
     $resColIconBelow.appendChild($resIconBelow);
     $resColIconBelow.appendChild($pBelow);
+  }
+  function errorImageBelow(event) {
+    $resMainImgBelow.setAttribute('src', 'images/rover.webp');
   }
   return $slidesRow;
 }
@@ -407,11 +418,15 @@ var $individualPersonality = document.querySelector('.individual-personality');
 var $individualSaying = document.querySelector('.individual-saying');
 
 function openVillagerCard(event) {
+  function errorImage(event) {
+    $individualMainImg.setAttribute('src', 'images/rover.webp');
+  }
   if (event.target.matches('.clickable')) {
     $overlay.classList.remove('hidden');
     for (var i = 0; i < data.liked.length; i++) {
       if (event.target.getAttribute('villager-name') === data.liked[i].name) {
         $individualMainImg.setAttribute('src', data.liked[i].image);
+        $individualMainImg.addEventListener('error', errorImage);
         $individualIconImg.setAttribute('src', data.liked[i].icon);
         $individualName.textContent = data.liked[i].name;
         $individualBirthday.textContent = data.liked[i].birthdayString;
@@ -634,8 +649,7 @@ var $weatherModalBox = document.querySelector('.weather-modal-card');
 var $timeModalBox = document.querySelector('.time-modal-card');
 var $footerButtons = document.querySelector('.footer-buttons-bar');
 var $searchBar = document.querySelector('.search-bar');
-/* var $overlay = document.querySelector('.overlay'); */
-/* var $overlayTrash = document.querySelector('.overlay-trash'); */
+
 var $overlayWeather = document.querySelector('.overlay-weather');
 var $overlayTime = document.querySelector('.overlay-time');
 $nightMode.addEventListener('click', nightMode);
@@ -655,7 +669,7 @@ function nightMode(event) {
     $timeModalBox.classList.add('nightmode-text-white');
     $searchBar.classList.add('nightmode-bg-black-modals');
     $searchBar.classList.add('nightmode-text-white');
-    $footerButtons.classList.add('nightmode-text-white');
+    $footerButtons.classList.add('text-black');
 
     $overlay.classList.add('overlay-nightmode');
     $overlayTrash.classList.add('overlay-nightmode');
@@ -676,7 +690,7 @@ function nightMode(event) {
     $timeModalBox.classList.remove('text-black');
     $searchBar.classList.remove('bg-color-white-cards-modals');
     $searchBar.classList.remove('text-black');
-    $footerButtons.classList.remove('text-black');
+    $footerButtons.classList.remove('text-white');
 
     $overlay.classList.remove('overlay-white');
     $overlayTrash.classList.remove('overlay-white');
@@ -700,7 +714,7 @@ function nightMode(event) {
     $timeModalBox.classList.add('text-black');
     $searchBar.classList.add('bg-color-white-cards-modals');
     $searchBar.classList.add('text-black');
-    $footerButtons.classList.add('text-black');
+    $footerButtons.classList.add('text-white');
 
     $overlay.classList.add('overlay-white');
     $overlayTrash.classList.add('overlay-white');
@@ -721,7 +735,7 @@ function nightMode(event) {
     $timeModalBox.classList.remove('nightmode-text-white');
     $searchBar.classList.remove('nightmode-bg-black-modals');
     $searchBar.classList.remove('nightmode-text-white');
-    $footerButtons.classList.remove('nightmode-text-white');
+    $footerButtons.classList.remove('text-black');
 
     $overlay.classList.remove('overlay-nightmode');
     $overlayTrash.classList.remove('overlay-nightmode');
