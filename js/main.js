@@ -531,7 +531,7 @@ function nextSong(event) {
   $audio.setAttribute('src', intersectionArray[randomIndex]);
   $pauseParent.classList.remove('hidden');
   $playParent.classList.add('hidden');
-
+  $audio.play();
 }
 function rewindSong(event) {
   $audio.currentTime = 0;
