@@ -1,4 +1,3 @@
-
 var xhrVillagers = new XMLHttpRequest();
 var villagerData = {};
 

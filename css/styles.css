@@ -412,8 +412,6 @@ input {
 .long-button:active,
 .time-weather-buttons:active,
 .footer-buttons:active,
-.fa-solid:active,
-.fa-regular:active,
 .house-font-size:active {
   transform: translateY(0.1rem);
 }
