@@ -617,6 +617,12 @@ button:hover {
   }
 
   .footer-buttons-bar {
-    width: 1200px;
+    width: 400px;
+  }
+
+  .footer-row {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
