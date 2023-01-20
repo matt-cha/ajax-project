@@ -669,7 +669,8 @@ function nightMode(event) {
     $timeModalBox.classList.add('nightmode-text-white');
     $searchBar.classList.add('nightmode-bg-black-modals');
     $searchBar.classList.add('nightmode-text-white');
-    $footerButtons.classList.add('text-black');
+    $footerButtons.classList.add('nightmode-text-white');
+    $footerButtons.classList.add('nightmode-bg-black');
 
     $overlay.classList.add('overlay-nightmode');
     $overlayTrash.classList.add('overlay-nightmode');
@@ -690,7 +691,8 @@ function nightMode(event) {
     $timeModalBox.classList.remove('text-black');
     $searchBar.classList.remove('bg-color-white-cards-modals');
     $searchBar.classList.remove('text-black');
-    $footerButtons.classList.remove('text-white');
+    $footerButtons.classList.remove('text-black');
+    $footerButtons.classList.remove('bg-color-white-cards');
 
     $overlay.classList.remove('overlay-white');
     $overlayTrash.classList.remove('overlay-white');
@@ -714,7 +716,8 @@ function nightMode(event) {
     $timeModalBox.classList.add('text-black');
     $searchBar.classList.add('bg-color-white-cards-modals');
     $searchBar.classList.add('text-black');
-    $footerButtons.classList.add('text-white');
+    $footerButtons.classList.add('text-black');
+    $footerButtons.classList.add('bg-color-white-cards');
 
     $overlay.classList.add('overlay-white');
     $overlayTrash.classList.add('overlay-white');
@@ -735,7 +738,8 @@ function nightMode(event) {
     $timeModalBox.classList.remove('nightmode-text-white');
     $searchBar.classList.remove('nightmode-bg-black-modals');
     $searchBar.classList.remove('nightmode-text-white');
-    $footerButtons.classList.remove('text-black');
+    $footerButtons.classList.remove('nightmode-text-white');
+    $footerButtons.classList.remove('nightmode-bg-black');
 
     $overlay.classList.remove('overlay-nightmode');
     $overlayTrash.classList.remove('overlay-nightmode');

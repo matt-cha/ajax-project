@@ -45,6 +45,11 @@ input {
   border-radius: 0.5rem;
 }
 
+.border-radius-cards {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
 .background {
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -150,7 +155,7 @@ input {
 
 .fa-house:hover,
 .search-button:hover {
-  color: #028093;
+  color: #006979;
   cursor: pointer;
 }
 
@@ -165,7 +170,6 @@ input {
 .search-card {
   width: 350px;
   height: 625px;
-  border-radius: 0.5rem;
   margin-top: 4rem;
 }
 
@@ -250,7 +254,12 @@ input {
 
 .footer-buttons-bar {
   width: 350px;
-  margin: 0.75rem;
+
+  /*  margin: 0.75rem; */
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .justify-content-center {
@@ -285,7 +294,6 @@ input {
 .village-card-mobile {
   width: 350px;
   height: 625px;
-  border-radius: 0.5rem;
   margin-top: 4rem;
 }
 
@@ -320,7 +328,6 @@ input {
   height: 625px;
   justify-content: center;
   align-items: center;
-  border-radius: 0.5rem;
   margin-top: 7rem;
 }
 
@@ -406,8 +413,7 @@ input {
   transform: translateY(0.1rem);
 }
 
-.time-weather-buttons:hover,
-.footer-buttons:hover {
+.time-weather-buttons:hover {
   color: rgb(128, 128, 128);
 }
 
@@ -594,6 +600,10 @@ button:hover {
   align-items: center;
 }
 
+.footer-buttons:hover {
+  color: #006979;
+}
+
 @media screen and (min-width: 1280px) {
   .village-card-mobile {
     width: 1200px;
@@ -618,11 +628,21 @@ button:hover {
 
   .footer-buttons-bar {
     width: 400px;
+    background-color: #a3e9f7;
+    color: #18a2b8;
   }
 
   .footer-row {
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  .footer-buttons:hover {
+    color: #006979;
+  }
+
+  .border-radius-cards {
+    border-radius: 0.5rem;
   }
 }
