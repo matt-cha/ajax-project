@@ -52,6 +52,8 @@ function saveForm(event) {
 }
 
 var $searchImage = document.querySelector('.search-image');
+var $nameDivLeft = document.querySelector('.name-div-left');
+var $birthdayDivRight = document.querySelector('.birthday-div-right');
 var $icon = document.querySelector('.icon');
 var $name = document.querySelector('.villager-name');
 var $birthday = document.querySelector('.birthday');
@@ -61,7 +63,9 @@ var $sayingText = document.querySelector('.saying-text');
 var $hobbyLeft = document.querySelector('.hobby-left');
 var $hobbyDiv = document.querySelector('.hobby-left-div');
 var $personalityLeft = document.querySelector('.personality-left');
+var $pesonalityDiv = document.querySelector('.personality-left-div');
 var $sayingLeft = document.querySelector('.saying-left');
+var $hobbyRightDiv = document.querySelector('.hobby-right-div');
 function renderVillagerSearch(entry) {
   $searchImage.addEventListener('error', errorImage);
   function errorImage(event) {
@@ -70,12 +74,16 @@ function renderVillagerSearch(entry) {
   $searchImage.setAttribute('src', data.entries[0].image);
   $icon.setAttribute('src', data.entries[0].icon);
   $icon.classList.remove('hidden');
+  $nameDivLeft.className = 'column-half display-flex name-div-left centered-left';
   $name.textContent = data.entries[0].name;
   $name.classList.remove('text-red');
+  $birthdayDivRight.className = 'column-half birthday-div-right birthday text-align-right villager-search-for-text-padding-right display-flex align-items-center-only justify-content-right';
   $hobbyLeft.classList.remove('text-red');
   $hobbyDiv.className = 'column-half hobby-left-div villager-search-for-text-margin';
   $personalityLeft.classList.remove('text-red');
+  $pesonalityDiv.className = 'column-half personality-left-div villager-search-for-text-margin';
   $hobbyLeft.textContent = 'Hobby:';
+  $hobbyRightDiv.className = 'column-half hidden hobby-right-div text-align-left villager-search-for-text-padding-right';
   $personalityLeft.textContent = 'Personality';
   $sayingLeft.textContent = 'Saying:';
   $birthday.textContent = data.entries[0].birthdayString;
@@ -92,11 +100,16 @@ function renderNotFound(entry) {
   $searchImage.setAttribute('src', 'images/sad.webp');
   $icon.setAttribute('src', 'images/thought.webp');
   $icon.classList.add('hidden');
+  $nameDivLeft.className = 'column-full display-flex name-div-left centered-left';
   $name.textContent = 'No villager was found!';
   $name.classList.add('text-red');
   $hobbyLeft.textContent = 'Try searching the exact name.';
   $hobbyLeft.classList.add('text-red');
   $hobbyDiv.className = 'column-full hobby-left-div villager-search-for-text-margin';
+  $hobbyRightDiv.textContent = 'Capitalization matters too!';
+
+  $hobbyRightDiv.className = 'column-full text-red villager-search-for-text-margin hobby-right-div text-align-left villager-search-for-text-padding-right';
+
   $personalityLeft.textContent = '';
   $personalityLeft.classList.add('text-red');
   $sayingLeft.textContent = '';
