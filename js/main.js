@@ -255,46 +255,46 @@ function dotFiveClicked(event) {
 
 function slideOne(event) {
   $slider.className = 'column-full img-frame display-flex  slider first-slide';
-  $dotOne.className = 'dot-one fa-solid  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-solid  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 function slideTwo(event) {
   $slider.className = 'column-full img-frame display-flex  slider second-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-solid fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-solid fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 
 function slideThree(event) {
   $slider.className = 'column-full img-frame display-flex  slider third-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-solid fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-solid fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 
 function slideFour(event) {
   $slider.className = 'column-full img-frame display-flex  slider fourth-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-solid fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-solid fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 
 function slideFive(event) {
   $slider.className = 'column-full img-frame display-flex  slider fifth-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-solid fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-solid fa-circle dots-padding house-font-size';
 }
 
 function renderSlide(firstVillager, secondVillager) {
