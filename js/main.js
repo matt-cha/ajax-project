@@ -5,6 +5,7 @@ var villagerData = {};
 xhrVillagers.open('GET', 'https://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
+  hideLoadingOverlay();
   for (var key in xhrVillagers.response) {
     var target = {};
     var name = xhrVillagers.response[key].name['name-USen'];
@@ -79,7 +80,7 @@ function renderVillagerSearch(entry) {
   $personalityText.textContent = data.entries[0].personality;
   $sayingText.textContent = data.entries[0].saying;
   $heart.classList.remove('hidden');
-  $heart.className = 'heart-like fa-regular fa-heart centered house-font-size margin-16px';
+  $heart.className = 'button heart-like fa-regular fa-heart centered house-font-size margin-16px';
   $textHeart.textContent = '';
   likedCheck();
 }
@@ -116,12 +117,12 @@ function heartClicked(event) {
     return null;
   } else {
     if (data.liked.some(e => e.name === data.entries[0].name)) {
-      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $heart.className = 'button heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has already been added!';
       $textHeart.className = 'text-heart text-red fade-out';
     } else {
       data.liked.unshift(data.entries[0]);
-      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $heart.className = 'button heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has been added!';
       $textHeart.className = 'text-heart text-red fade-out ';
     }
@@ -131,10 +132,10 @@ function heartClicked(event) {
 function likedCheck(event) {
 
   if (data.liked.some(e => e.name === data.entries[0].name)) {
-    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+    $heart.className = 'button heart-like fa-solid text-red fa-heart centered house-font-size';
   } else {
 
-    $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+    $heart.className = 'button heart-like fa-regular fa-heart centered house-font-size';
   }
 }
 
@@ -288,13 +289,13 @@ function renderSlide(firstVillager, secondVillager) {
   $resColImg.setAttribute('class', 'column-full resident');
   var $resMainImg = document.createElement('img');
   $resMainImg.setAttribute('src', firstVillager.image);
-  $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
+  $resMainImg.setAttribute('class', 'button residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
   $resMainImg.setAttribute('villager-name', firstVillager.name);
   var $resColIcon = document.createElement('div');
   $resColIcon.setAttribute('class', 'column-full display-flex');
   var $resIcon = document.createElement('img');
   $resIcon.setAttribute('src', firstVillager.icon);
-  $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide clickable');
+  $resIcon.setAttribute('class', 'button icon resident-icon-mobile-slide clickable');
   $resIcon.setAttribute('villager-name', firstVillager.name);
   var $p = document.createElement('p');
   $p.textContent = firstVillager.name;
@@ -310,13 +311,13 @@ function renderSlide(firstVillager, secondVillager) {
     $resColImgBelow.setAttribute('class', 'column-full resident');
     var $resMainImgBelow = document.createElement('img');
     $resMainImgBelow.setAttribute('src', secondVillager.image);
-    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
+    $resMainImgBelow.setAttribute('class', 'button res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
     $resMainImgBelow.setAttribute('villager-name', secondVillager.name);
     var $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     var $resIconBelow = document.createElement('img');
     $resIconBelow.setAttribute('src', secondVillager.icon);
-    $resIconBelow.setAttribute('class', 'icon  resident-icon-mobile-slide clickable');
+    $resIconBelow.setAttribute('class', 'button icon  resident-icon-mobile-slide clickable');
     $resIconBelow.setAttribute('villager-name', secondVillager.name);
     var $pBelow = document.createElement('p');
     $pBelow.textContent = secondVillager.name;
@@ -369,7 +370,6 @@ function generateDomTree(event) {
   toggleNoEntries();
 }
 
-window.addEventListener('DOMContentLoaded', hideLoadingOverlay);
 function hideLoadingOverlay(event) {
   $loadingOverlay.classList.add('hidden');
 }
@@ -506,8 +506,8 @@ function pauseButton(event) {
   $pausebutton.classList.add('was-paused');
 }
 
-var $rewind = document.querySelector('.fa-backward');
-var $next = document.querySelector('.fa-forward');
+var $rewind = document.querySelector('.fa-backward-step');
+var $next = document.querySelector('.fa-forward-step');
 $rewind.addEventListener('click', rewindSong);
 $next.addEventListener('click', nextSong);
 function nextSong(event) {
@@ -634,6 +634,10 @@ var $weatherModalBox = document.querySelector('.weather-modal-card');
 var $timeModalBox = document.querySelector('.time-modal-card');
 var $footerButtons = document.querySelector('.footer-buttons-bar');
 var $searchBar = document.querySelector('.search-bar');
+/* var $overlay = document.querySelector('.overlay'); */
+/* var $overlayTrash = document.querySelector('.overlay-trash'); */
+var $overlayWeather = document.querySelector('.overlay-weather');
+var $overlayTime = document.querySelector('.overlay-time');
 $nightMode.addEventListener('click', nightMode);
 function nightMode(event) {
   if ($nightMode.classList.contains('fa-solid')) {
@@ -653,6 +657,11 @@ function nightMode(event) {
     $searchBar.classList.add('nightmode-text-white');
     $footerButtons.classList.add('nightmode-text-white');
 
+    $overlay.classList.add('overlay-nightmode');
+    $overlayTrash.classList.add('overlay-nightmode');
+    $overlayWeather.classList.add('overlay-nightmode');
+    $overlayTime.classList.add('overlay-nightmode');
+
     $searchCard.classList.remove('bg-color-white-cards');
     $searchCard.classList.remove('text-black');
     $villagerCardMobile.classList.remove('bg-color-white-cards');
@@ -668,6 +677,11 @@ function nightMode(event) {
     $searchBar.classList.remove('bg-color-white-cards-modals');
     $searchBar.classList.remove('text-black');
     $footerButtons.classList.remove('text-black');
+
+    $overlay.classList.remove('overlay-white');
+    $overlayTrash.classList.remove('overlay-white');
+    $overlayWeather.classList.remove('overlay-white');
+    $overlayTime.classList.remove('overlay-white');
 
     $nightMode.classList.remove('fa-solid');
     $nightMode.classList.add('fa-regular');
@@ -688,6 +702,11 @@ function nightMode(event) {
     $searchBar.classList.add('text-black');
     $footerButtons.classList.add('text-black');
 
+    $overlay.classList.add('overlay-white');
+    $overlayTrash.classList.add('overlay-white');
+    $overlayWeather.classList.add('overlay-white');
+    $overlayTime.classList.add('overlay-white');
+
     $searchCard.classList.remove('nightmode-bg-black');
     $searchCard.classList.remove('nightmode-text-white');
     $villagerCardMobile.classList.remove('nightmode-bg-black');
@@ -703,6 +722,11 @@ function nightMode(event) {
     $searchBar.classList.remove('nightmode-bg-black-modals');
     $searchBar.classList.remove('nightmode-text-white');
     $footerButtons.classList.remove('nightmode-text-white');
+
+    $overlay.classList.remove('overlay-nightmode');
+    $overlayTrash.classList.remove('overlay-nightmode');
+    $overlayWeather.classList.remove('overlay-nightmode');
+    $overlayTime.classList.remove('overlay-nightmode');
 
     $nightMode.classList.remove('fa-regular');
     $nightMode.classList.add('fa-solid');
