@@ -29,21 +29,37 @@
 }
 
 .column-three-fourth {
-  flex-basis: calc(3/4 * 100%);
+  flex-basis: calc(3 / 4 * 100%);
 }
 
 .column-one-fifth {
   flex-basis: calc(100% / 5);
 }
 
+.column-one-sixth {
+  flex-basis: calc(100%/6);
+}
+
+.column-five-sixth {
+  flex-basis: calc(5 / 6 *100%);
+}
+
 .column-40p {
-  flex-basis: calc(40/100 * 100%);
+  flex-basis: calc(40 / 100 * 100%);
 }
 
 .column-60p {
-  flex-basis: calc(60/100 * 100%);
+  flex-basis: calc(60 / 100 * 100%);
 }
 
 .column-third {
   flex-basis: calc(100% / 3);
+}
+
+.flex-basis-grow {
+  flex-basis: min-content;
+}
+
+.flex-basis-saying-text {
+  width: 260.66px;
 }

@@ -82,7 +82,8 @@ function renderVillagerSearch(entry) {
   $personalityLeft.classList.remove('text-red');
   $pesonalityDiv.className = 'column-half personality-left-div villager-search-for-text-margin';
   $hobbyLeft.textContent = 'Hobby:';
-  $hobbyRightDiv.className = 'column-half hidden hobby-right-div text-align-left villager-search-for-text-padding-right';
+  $hobbyRightDiv.className = 'column-half hobby-right-div text-align-right villager-search-for-text-padding-right';
+  $hobbyText.classList.remove('margin-zero');
   $personalityLeft.textContent = 'Personality';
   $sayingLeft.textContent = 'Saying:';
   $birthday.textContent = data.entries[0].birthdayString;
@@ -90,7 +91,7 @@ function renderVillagerSearch(entry) {
   $personalityText.textContent = data.entries[0].personality;
   $sayingText.textContent = data.entries[0].saying;
   $heart.classList.remove('hidden');
-  $heart.className = 'button heart-like fa-regular fa-heart centered house-font-size margin-16px';
+  $heart.className = 'margin-tb-1rem button heart-like fa-regular fa-heart centered house-font-size margin-16px';
   $textHeart.textContent = '';
   likedCheck();
 }
@@ -100,20 +101,19 @@ function renderNotFound(entry) {
   $icon.setAttribute('src', 'images/thought.webp');
   $icon.classList.add('hidden');
   $nameDivLeft.className = 'column-full display-flex name-div-left centered-left';
-  $name.textContent = 'No villager was found!';
+  $name.textContent = 'No villager with that name was found!';
   $name.classList.add('text-red');
   $hobbyLeft.textContent = 'Try searching the exact name.';
   $hobbyLeft.classList.add('text-red');
   $hobbyDiv.className = 'column-full hobby-left-div villager-search-for-text-margin';
-  $hobbyRightDiv.textContent = 'Capitalization matters too!';
 
   $hobbyRightDiv.className = 'column-full text-red villager-search-for-text-margin hobby-right-div text-align-left villager-search-for-text-padding-right';
-
+  $hobbyText.textContent = 'Capitalization matters too!';
+  $hobbyText.classList.add('margin-zero');
   $personalityLeft.textContent = '';
-  $personalityLeft.classList.add('text-red');
   $sayingLeft.textContent = '';
   $birthday.textContent = '';
-  $hobbyText.textContent = '';
+
   $personalityText.textContent = '';
   $sayingText.textContent = '';
   $heart.classList.add('hidden');
@@ -132,12 +132,12 @@ function heartClicked(event) {
     return null;
   } else {
     if (data.liked.some(e => e.name === data.entries[0].name)) {
-      $heart.className = 'button heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $heart.className = 'margin-tb-1rem button heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has already been added!';
       $textHeart.className = 'text-heart text-red fade-out';
     } else {
       data.liked.unshift(data.entries[0]);
-      $heart.className = 'button heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $heart.className = 'margin-tb-1rem button heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has been added!';
       $textHeart.className = 'text-heart text-red fade-out ';
     }
@@ -147,10 +147,10 @@ function heartClicked(event) {
 function likedCheck(event) {
 
   if (data.liked.some(e => e.name === data.entries[0].name)) {
-    $heart.className = 'button heart-like fa-solid text-red fa-heart centered house-font-size';
+    $heart.className = 'margin-tb-1rem button heart-like fa-solid text-red fa-heart centered house-font-size';
   } else {
 
-    $heart.className = 'button heart-like fa-regular fa-heart centered house-font-size';
+    $heart.className = 'margin-tb-1rem button heart-like fa-regular fa-heart centered house-font-size';
   }
 }
 

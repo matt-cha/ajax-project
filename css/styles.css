@@ -5,6 +5,15 @@ p.clickable {
   cursor: pointer;
 }
 
+p,
+h2,
+input,
+.search-bar,
+.search-button,
+.long-button {
+  letter-spacing: 0.1rem;
+}
+
 .container {
   max-width: 2000px;
 }
@@ -154,12 +163,6 @@ input {
   border: solid #18a2b8;
 }
 
-.fa-house:hover,
-.search-button:hover {
-  color: #006979;
-  cursor: pointer;
-}
-
 .display-inline-block {
   display: inline-block;
 }
@@ -195,6 +198,11 @@ input {
   object-fit: contain;
   width: 82.5%;
   height: auto;
+}
+
+.margin-tb-1rem {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .img-frame {
@@ -285,10 +293,6 @@ input {
 
 .transparent {
   font-size: 0;
-}
-
-* {
-  font-family: sans-serif;
 }
 
 .margin-16px {
@@ -611,6 +615,37 @@ button:hover {
 
 .fa-snowflake:hover {
   color: #80fdf9;
+}
+
+.color-gray {
+  color: gray;
+}
+
+::placeholder {
+  color: grey;
+}
+
+.margin-top-individual-text {
+  margin-top: 0.5rem;
+}
+
+.fa-house:hover,
+.search-button:hover {
+  color: #006979;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: finkheavyregular;
+  src:
+    url("../fonts/fink-heavy-regular-webfont.woff2") format("woff2"),
+    url("../fonts/fink-heavy-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: finkheavyregular, sans-serif;
 }
 
 @media screen and (min-width: 1280px) {
