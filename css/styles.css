@@ -1,6 +1,17 @@
 button,
-i {
+i.button,
+img.button,
+p.clickable {
   cursor: pointer;
+}
+
+p,
+h2,
+input,
+.search-bar,
+.search-button,
+.long-button {
+  letter-spacing: 0.1rem;
 }
 
 .container {
@@ -31,6 +42,10 @@ i {
   margin: 0;
 }
 
+input {
+  padding-left: 0.5rem;
+}
+
 .margin-lr-10 {
   margin-left: 10px;
   margin-right: 10px;
@@ -38,6 +53,11 @@ i {
 
 .border-radius-all {
   border-radius: 0.5rem;
+}
+
+.border-radius-cards {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 .background {
@@ -73,8 +93,7 @@ i {
 }
 
 .overlay {
-  position: fixed;
-  background-color: rgba(248, 248, 248, 0.35);
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -83,9 +102,16 @@ i {
   justify-content: center;
 }
 
+.overlay-white {
+  background-color: rgba(248, 248, 248, 0.35);
+}
+
+.overlay-nightmode {
+  background-color: rgba(65, 65, 65, 0.55);
+}
+
 .overlay-trash {
   position: fixed;
-  background-color: rgba(248, 248, 248, 0.35);
   top: 0;
   bottom: 0;
   left: 0;
@@ -97,7 +123,6 @@ i {
 
 .overlay-weather {
   position: fixed;
-  background-color: rgba(248, 248, 248, 0.35);
   top: 0;
   bottom: 0;
   left: 0;
@@ -109,7 +134,6 @@ i {
 
 .overlay-time {
   position: fixed;
-  background-color: rgba(248, 248, 248, 0.35);
   top: 0;
   bottom: 0;
   left: 0;
@@ -127,22 +151,16 @@ i {
   font-size: 1.5rem;
 }
 
+.heart-font-size {
+  font-size: 1.5rem;
+}
+
 .darkblue-font-color {
   color: #18a2b8;
 }
 
 .border-solid-darkblue {
   border: solid #18a2b8;
-}
-
-.fa-house:hover {
-  color: #028093;
-  cursor: pointer;
-}
-
-.search-button:hover {
-  background-color: #028093;
-  cursor: pointer;
 }
 
 .display-inline-block {
@@ -156,7 +174,6 @@ i {
 .search-card {
   width: 350px;
   height: 625px;
-  border-radius: 0.5rem;
   margin-top: 4rem;
 }
 
@@ -183,6 +200,11 @@ i {
   height: auto;
 }
 
+.margin-tb-1rem {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .img-frame {
   width: 100%;
   height: auto;
@@ -192,8 +214,12 @@ i {
   padding-left: 2rem;
 }
 
+.icon-search {
+  width: 30%;
+}
+
 .thought-image {
-  width: 22.5%;
+  width: 24%;
 }
 
 .text-red {
@@ -241,7 +267,12 @@ i {
 
 .footer-buttons-bar {
   width: 350px;
-  margin: 0.75rem;
+
+  /*  margin: 0.75rem; */
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .justify-content-center {
@@ -264,10 +295,6 @@ i {
   font-size: 0;
 }
 
-* {
-  font-family: sans-serif;
-}
-
 .margin-16px {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -276,7 +303,6 @@ i {
 .village-card-mobile {
   width: 350px;
   height: 625px;
-  border-radius: 0.5rem;
   margin-top: 4rem;
 }
 
@@ -311,7 +337,6 @@ i {
   height: 625px;
   justify-content: center;
   align-items: center;
-  border-radius: 0.5rem;
   margin-top: 7rem;
 }
 
@@ -356,16 +381,13 @@ i {
   visibility: hidden;
 }
 
-.fa-x:hover {
+.fa-x:hover,
+.fa-trash:hover {
   color: rgb(251, 106, 106);
 }
 
 .width-15px {
   width: 15px;
-}
-
-.fa-trash:hover {
-  color: rgb(251, 106, 106);
 }
 
 .trash-modal {
@@ -394,17 +416,15 @@ i {
 .long-button:active,
 .time-weather-buttons:active,
 .footer-buttons:active,
-.fa-solid:active,
-.fa-regular:active,
 .house-font-size:active {
   transform: translateY(0.1rem);
 }
 
-.time-weather-buttons:hover,
-.footer-buttons:hover,
-.fa-solid:hover,
-.fa-regular:hover {
-  color: rgb(251, 106, 106);
+i.button:hover,
+img.button:hover,
+button:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease-out;
 }
 
 .remove-villager {
@@ -579,6 +599,55 @@ i {
   align-items: center;
 }
 
+.footer-buttons:hover,
+.arrow-buttons:hover {
+  color: #a3e9f7;
+}
+
+.fa-sun:hover {
+  color: rgb(241, 248, 108);
+}
+
+.fa-cloud-showers-heavy:hover,
+.fa-moon:hover {
+  color: rgb(40, 77, 210);
+}
+
+.fa-snowflake:hover {
+  color: #80fdf9;
+}
+
+.color-gray {
+  color: gray;
+}
+
+::placeholder {
+  color: grey;
+}
+
+.margin-top-individual-text {
+  margin-top: 0.5rem;
+}
+
+.fa-house:hover,
+.search-button:hover {
+  color: #006979;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: finkheavyregular;
+  src:
+    url("../fonts/fink-heavy-regular-webfont.woff2") format("woff2"),
+    url("../fonts/fink-heavy-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: finkheavyregular, sans-serif;
+}
+
 @media screen and (min-width: 1280px) {
   .village-card-mobile {
     width: 1200px;
@@ -602,6 +671,22 @@ i {
   }
 
   .footer-buttons-bar {
-    width: 1200px;
+    width: 400px;
+    background-color: #a3e9f7;
+    color: #18a2b8;
+  }
+
+  .footer-row {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .footer-buttons:hover {
+    color: #006979;
+  }
+
+  .border-radius-cards {
+    border-radius: 0.5rem;
   }
 }

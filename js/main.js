@@ -1,10 +1,10 @@
-
 var xhrVillagers = new XMLHttpRequest();
 var villagerData = {};
 
 xhrVillagers.open('GET', 'https://acnhapi.com/v1/villagers/');
 xhrVillagers.responseType = 'json';
 xhrVillagers.addEventListener('load', function () {
+  hideLoadingOverlay();
   for (var key in xhrVillagers.response) {
     var target = {};
     var name = xhrVillagers.response[key].name['name-USen'];
@@ -51,6 +51,8 @@ function saveForm(event) {
 }
 
 var $searchImage = document.querySelector('.search-image');
+var $nameDivLeft = document.querySelector('.name-div-left');
+var $birthdayDivRight = document.querySelector('.birthday-div-right');
 var $icon = document.querySelector('.icon');
 var $name = document.querySelector('.villager-name');
 var $birthday = document.querySelector('.birthday');
@@ -60,18 +62,28 @@ var $sayingText = document.querySelector('.saying-text');
 var $hobbyLeft = document.querySelector('.hobby-left');
 var $hobbyDiv = document.querySelector('.hobby-left-div');
 var $personalityLeft = document.querySelector('.personality-left');
+var $pesonalityDiv = document.querySelector('.personality-left-div');
 var $sayingLeft = document.querySelector('.saying-left');
+var $hobbyRightDiv = document.querySelector('.hobby-right-div');
 function renderVillagerSearch(entry) {
-
+  $searchImage.addEventListener('error', errorImage);
+  function errorImage(event) {
+    $searchImage.setAttribute('src', 'images/rover.webp');
+  }
   $searchImage.setAttribute('src', data.entries[0].image);
   $icon.setAttribute('src', data.entries[0].icon);
   $icon.classList.remove('hidden');
+  $nameDivLeft.className = 'column-half display-flex name-div-left centered-left';
   $name.textContent = data.entries[0].name;
   $name.classList.remove('text-red');
+  $birthdayDivRight.className = 'column-half birthday-div-right birthday text-align-right villager-search-for-text-padding-right display-flex align-items-center-only justify-content-right';
   $hobbyLeft.classList.remove('text-red');
   $hobbyDiv.className = 'column-half hobby-left-div villager-search-for-text-margin';
   $personalityLeft.classList.remove('text-red');
+  $pesonalityDiv.className = 'column-half personality-left-div villager-search-for-text-margin';
   $hobbyLeft.textContent = 'Hobby:';
+  $hobbyRightDiv.className = 'column-half hobby-right-div text-align-right villager-search-for-text-padding-right';
+  $hobbyText.classList.remove('margin-zero');
   $personalityLeft.textContent = 'Personality';
   $sayingLeft.textContent = 'Saying:';
   $birthday.textContent = data.entries[0].birthdayString;
@@ -79,7 +91,7 @@ function renderVillagerSearch(entry) {
   $personalityText.textContent = data.entries[0].personality;
   $sayingText.textContent = data.entries[0].saying;
   $heart.classList.remove('hidden');
-  $heart.className = 'heart-like fa-regular fa-heart centered house-font-size margin-16px';
+  $heart.className = 'margin-tb-1rem button heart-like fa-regular fa-heart centered house-font-size margin-16px';
   $textHeart.textContent = '';
   likedCheck();
 }
@@ -88,16 +100,20 @@ function renderNotFound(entry) {
   $searchImage.setAttribute('src', 'images/sad.webp');
   $icon.setAttribute('src', 'images/thought.webp');
   $icon.classList.add('hidden');
-  $name.textContent = 'No villager was found!';
+  $nameDivLeft.className = 'column-full display-flex name-div-left centered-left';
+  $name.textContent = 'No villager with that name was found!';
   $name.classList.add('text-red');
   $hobbyLeft.textContent = 'Try searching the exact name.';
   $hobbyLeft.classList.add('text-red');
   $hobbyDiv.className = 'column-full hobby-left-div villager-search-for-text-margin';
+
+  $hobbyRightDiv.className = 'column-full text-red villager-search-for-text-margin hobby-right-div text-align-left villager-search-for-text-padding-right';
+  $hobbyText.textContent = 'Capitalization matters too!';
+  $hobbyText.classList.add('margin-zero');
   $personalityLeft.textContent = '';
-  $personalityLeft.classList.add('text-red');
   $sayingLeft.textContent = '';
   $birthday.textContent = '';
-  $hobbyText.textContent = '';
+
   $personalityText.textContent = '';
   $sayingText.textContent = '';
   $heart.classList.add('hidden');
@@ -116,12 +132,12 @@ function heartClicked(event) {
     return null;
   } else {
     if (data.liked.some(e => e.name === data.entries[0].name)) {
-      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $heart.className = 'margin-tb-1rem button heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has already been added!';
       $textHeart.className = 'text-heart text-red fade-out';
     } else {
       data.liked.unshift(data.entries[0]);
-      $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size ';
+      $heart.className = 'margin-tb-1rem button heart-like fa-solid text-red fa-heart centered house-font-size ';
       $textHeart.textContent = 'Villager has been added!';
       $textHeart.className = 'text-heart text-red fade-out ';
     }
@@ -131,10 +147,10 @@ function heartClicked(event) {
 function likedCheck(event) {
 
   if (data.liked.some(e => e.name === data.entries[0].name)) {
-    $heart.className = 'heart-like fa-solid text-red fa-heart centered house-font-size';
+    $heart.className = 'margin-tb-1rem button heart-like fa-solid text-red fa-heart centered house-font-size';
   } else {
 
-    $heart.className = 'heart-like fa-regular fa-heart centered house-font-size';
+    $heart.className = 'margin-tb-1rem button heart-like fa-regular fa-heart centered house-font-size';
   }
 }
 
@@ -238,46 +254,46 @@ function dotFiveClicked(event) {
 
 function slideOne(event) {
   $slider.className = 'column-full img-frame display-flex  slider first-slide';
-  $dotOne.className = 'dot-one fa-solid  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-solid  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 function slideTwo(event) {
   $slider.className = 'column-full img-frame display-flex  slider second-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-solid fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-solid fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 
 function slideThree(event) {
   $slider.className = 'column-full img-frame display-flex  slider third-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-solid fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-solid fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 
 function slideFour(event) {
   $slider.className = 'column-full img-frame display-flex  slider fourth-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-solid fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-regular fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-solid fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-regular fa-circle dots-padding house-font-size';
 }
 
 function slideFive(event) {
   $slider.className = 'column-full img-frame display-flex  slider fifth-slide';
-  $dotOne.className = 'dot-one fa-regular  fa-circle dots-padding house-font-size';
-  $dotTwo.className = 'dot-two  fa-regular fa-circle dots-padding house-font-size';
-  $dotThree.className = 'dot-three  fa-regular fa-circle dots-padding house-font-size';
-  $dotFour.className = 'dot-four  fa-regular fa-circle dots-padding house-font-size';
-  $dotFive.className = 'dot-five  fa-solid fa-circle dots-padding house-font-size';
+  $dotOne.className = 'arrow-buttons button dot-one fa-regular  fa-circle dots-padding house-font-size';
+  $dotTwo.className = 'arrow-buttons button dot-two  fa-regular fa-circle dots-padding house-font-size';
+  $dotThree.className = 'arrow-buttons button dot-three  fa-regular fa-circle dots-padding house-font-size';
+  $dotFour.className = 'arrow-buttons button dot-four  fa-regular fa-circle dots-padding house-font-size';
+  $dotFive.className = 'arrow-buttons button dot-five  fa-solid fa-circle dots-padding house-font-size';
 }
 
 function renderSlide(firstVillager, secondVillager) {
@@ -287,17 +303,23 @@ function renderSlide(firstVillager, secondVillager) {
   var $resColImg = document.createElement('div');
   $resColImg.setAttribute('class', 'column-full resident');
   var $resMainImg = document.createElement('img');
+  $resMainImg.addEventListener('error', errorImage);
+  function errorImage(event) {
+    $resMainImg.setAttribute('src', 'images/rover.webp');
+  }
   $resMainImg.setAttribute('src', firstVillager.image);
-  $resMainImg.setAttribute('class', 'residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
+  $resMainImg.setAttribute('class', 'button residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
   $resMainImg.setAttribute('villager-name', firstVillager.name);
   var $resColIcon = document.createElement('div');
   $resColIcon.setAttribute('class', 'column-full display-flex');
   var $resIcon = document.createElement('img');
   $resIcon.setAttribute('src', firstVillager.icon);
-  $resIcon.setAttribute('class', 'icon resident-icon-mobile-slide clickable');
+  $resIcon.setAttribute('class', 'button icon resident-icon-mobile-slide clickable');
   $resIcon.setAttribute('villager-name', firstVillager.name);
   var $p = document.createElement('p');
   $p.textContent = firstVillager.name;
+  $p.setAttribute('villager-name', firstVillager.name);
+  $p.classList.add('clickable');
 
   $slidesRow.appendChild($resColImg);
   $resColImg.appendChild($resMainImg);
@@ -309,18 +331,20 @@ function renderSlide(firstVillager, secondVillager) {
     var $resColImgBelow = document.createElement('div');
     $resColImgBelow.setAttribute('class', 'column-full resident');
     var $resMainImgBelow = document.createElement('img');
+    $resMainImgBelow.addEventListener('error', errorImageBelow);
     $resMainImgBelow.setAttribute('src', secondVillager.image);
-    $resMainImgBelow.setAttribute('class', ' res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
+    $resMainImgBelow.setAttribute('class', 'button res-img-below residents-main-image-slide margin-zero align-items-center border-radius-all display-flex clickable');
     $resMainImgBelow.setAttribute('villager-name', secondVillager.name);
     var $resColIconBelow = document.createElement('div');
     $resColIconBelow.setAttribute('class', ' res-icon-below column-full display-flex');
     var $resIconBelow = document.createElement('img');
     $resIconBelow.setAttribute('src', secondVillager.icon);
-    $resIconBelow.setAttribute('class', 'icon  resident-icon-mobile-slide clickable');
+    $resIconBelow.setAttribute('class', 'button icon  resident-icon-mobile-slide clickable');
     $resIconBelow.setAttribute('villager-name', secondVillager.name);
     var $pBelow = document.createElement('p');
     $pBelow.textContent = secondVillager.name;
-    $pBelow.setAttribute('class', 'res-p-below');
+    $pBelow.setAttribute('villager-name', secondVillager.name);
+    $pBelow.setAttribute('class', 'res-p-below clickable');
 
     $slidesRow.appendChild($resColImgBelow);
     $resColImgBelow.appendChild($resMainImgBelow);
@@ -348,6 +372,9 @@ function renderSlide(firstVillager, secondVillager) {
     $resColIconBelow.appendChild($resIconBelow);
     $resColIconBelow.appendChild($pBelow);
   }
+  function errorImageBelow(event) {
+    $resMainImgBelow.setAttribute('src', 'images/rover.webp');
+  }
   return $slidesRow;
 }
 
@@ -369,7 +396,6 @@ function generateDomTree(event) {
   toggleNoEntries();
 }
 
-window.addEventListener('DOMContentLoaded', hideLoadingOverlay);
 function hideLoadingOverlay(event) {
   $loadingOverlay.classList.add('hidden');
 }
@@ -407,12 +433,18 @@ var $individualPersonality = document.querySelector('.individual-personality');
 var $individualSaying = document.querySelector('.individual-saying');
 
 function openVillagerCard(event) {
+  function errorImage(event) {
+    $individualMainImg.setAttribute('src', 'images/rover.webp');
+  }
   if (event.target.matches('.clickable')) {
     $overlay.classList.remove('hidden');
+
     for (var i = 0; i < data.liked.length; i++) {
       if (event.target.getAttribute('villager-name') === data.liked[i].name) {
         $individualMainImg.setAttribute('src', data.liked[i].image);
+        $individualMainImg.addEventListener('error', errorImage);
         $individualIconImg.setAttribute('src', data.liked[i].icon);
+        $individualIconImg.classList.remove('hidden');
         $individualName.textContent = data.liked[i].name;
         $individualBirthday.textContent = data.liked[i].birthdayString;
         $individualHobby.textContent = data.liked[i].hobby;
@@ -506,8 +538,8 @@ function pauseButton(event) {
   $pausebutton.classList.add('was-paused');
 }
 
-var $rewind = document.querySelector('.fa-backward');
-var $next = document.querySelector('.fa-forward');
+var $rewind = document.querySelector('.fa-backward-step');
+var $next = document.querySelector('.fa-forward-step');
 $rewind.addEventListener('click', rewindSong);
 $next.addEventListener('click', nextSong);
 function nextSong(event) {
@@ -516,7 +548,7 @@ function nextSong(event) {
   $audio.setAttribute('src', intersectionArray[randomIndex]);
   $pauseParent.classList.remove('hidden');
   $playParent.classList.add('hidden');
-
+  $audio.play();
 }
 function rewindSong(event) {
   $audio.currentTime = 0;
@@ -634,6 +666,9 @@ var $weatherModalBox = document.querySelector('.weather-modal-card');
 var $timeModalBox = document.querySelector('.time-modal-card');
 var $footerButtons = document.querySelector('.footer-buttons-bar');
 var $searchBar = document.querySelector('.search-bar');
+
+var $overlayWeather = document.querySelector('.overlay-weather');
+var $overlayTime = document.querySelector('.overlay-time');
 $nightMode.addEventListener('click', nightMode);
 function nightMode(event) {
   if ($nightMode.classList.contains('fa-solid')) {
@@ -652,6 +687,12 @@ function nightMode(event) {
     $searchBar.classList.add('nightmode-bg-black-modals');
     $searchBar.classList.add('nightmode-text-white');
     $footerButtons.classList.add('nightmode-text-white');
+    $footerButtons.classList.add('nightmode-bg-black');
+
+    $overlay.classList.add('overlay-nightmode');
+    $overlayTrash.classList.add('overlay-nightmode');
+    $overlayWeather.classList.add('overlay-nightmode');
+    $overlayTime.classList.add('overlay-nightmode');
 
     $searchCard.classList.remove('bg-color-white-cards');
     $searchCard.classList.remove('text-black');
@@ -668,6 +709,12 @@ function nightMode(event) {
     $searchBar.classList.remove('bg-color-white-cards-modals');
     $searchBar.classList.remove('text-black');
     $footerButtons.classList.remove('text-black');
+    $footerButtons.classList.remove('bg-color-white-cards');
+
+    $overlay.classList.remove('overlay-white');
+    $overlayTrash.classList.remove('overlay-white');
+    $overlayWeather.classList.remove('overlay-white');
+    $overlayTime.classList.remove('overlay-white');
 
     $nightMode.classList.remove('fa-solid');
     $nightMode.classList.add('fa-regular');
@@ -687,6 +734,12 @@ function nightMode(event) {
     $searchBar.classList.add('bg-color-white-cards-modals');
     $searchBar.classList.add('text-black');
     $footerButtons.classList.add('text-black');
+    $footerButtons.classList.add('bg-color-white-cards');
+
+    $overlay.classList.add('overlay-white');
+    $overlayTrash.classList.add('overlay-white');
+    $overlayWeather.classList.add('overlay-white');
+    $overlayTime.classList.add('overlay-white');
 
     $searchCard.classList.remove('nightmode-bg-black');
     $searchCard.classList.remove('nightmode-text-white');
@@ -703,6 +756,12 @@ function nightMode(event) {
     $searchBar.classList.remove('nightmode-bg-black-modals');
     $searchBar.classList.remove('nightmode-text-white');
     $footerButtons.classList.remove('nightmode-text-white');
+    $footerButtons.classList.remove('nightmode-bg-black');
+
+    $overlay.classList.remove('overlay-nightmode');
+    $overlayTrash.classList.remove('overlay-nightmode');
+    $overlayWeather.classList.remove('overlay-nightmode');
+    $overlayTime.classList.remove('overlay-nightmode');
 
     $nightMode.classList.remove('fa-regular');
     $nightMode.classList.add('fa-solid');
