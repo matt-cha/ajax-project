@@ -10,12 +10,11 @@ input,
 .search-bar,
 .search-button,
 .long-button {
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
 }
 
 p {
   letter-spacing: 0.07rem;
-  margin-bottom: 0;
 }
 
 .container {
