@@ -608,12 +608,12 @@ button:hover {
 }
 
 .fa-sun:hover {
-  color: rgb(241, 248, 108);
+  color: rgb(249, 255, 130);
 }
 
 .fa-cloud-showers-heavy:hover,
 .fa-moon:hover {
-  color: rgb(40, 77, 210);
+  color: rgba(49, 53, 63, 0.482);
 }
 
 .fa-snowflake:hover {
