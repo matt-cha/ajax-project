@@ -12,7 +12,7 @@ https://matt-cha.github.io/villager-tunes/
 
 ## Preview
 
-s
+![Kapture 2023-03-11 at 13 20 14](https://user-images.githubusercontent.com/113474295/224512131-e44b4c81-4b3b-40ad-a794-98433f1b3399.gif)
 
 ## Technologies Used
 
