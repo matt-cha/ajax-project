@@ -28,3 +28,4 @@ https://user-images.githubusercontent.com/113474295/224512205-7330bedc-fa59-44cf
 - User can remove villagers
 - User can play background music
 - User can choose background music based on time of day and weather
+- User can switch to a dark mode
