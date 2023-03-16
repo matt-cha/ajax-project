@@ -1,6 +1,6 @@
 # villager-tunes
 
-A web application for animal crossing video game enthusiasts who want to view thier favorite characters and listen to the in-game music according to the weather reflecting the game's clock and weather patterns.
+A web application for animal crossing video game players who want to view their favorite characters and listen to the in-game music according to the weather, which reflects the game's clock and weather patterns.
 
 ## Why I Built This
 
