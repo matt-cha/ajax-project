@@ -30,5 +30,5 @@ https://user-images.githubusercontent.com/113474295/224512205-7330bedc-fa59-44cf
 - User can remove villagers
 - User can play background music
 - User can change the background's time of day and weather based on the game
-- User can change the music according to the specific set of music played during the specific time of day and weather
+- User can change the music according to the specific set of music played in game during the specific time of day and weather
 - User can switch to a dark mode
