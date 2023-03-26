@@ -6,7 +6,7 @@ A web application for animal crossing video game players who want to view their 
 
 ## Why I Built This
 
-As a fan of the game in my spare time and growing up playing this game, I wanted to build an application that would let me easily and quickly display and view information about my favorite characters from the game and at a moment's notice, listen to the music from the game that I often listen to while I study and work daily. If you enjoy listening to animal crossing music, feel free to try it out!
+As a fan of the game in my spare time and growing up playing this game, I wanted to build an application that would let me easily and quickly display and view information about my favorite characters from the game and at a moment's notice, listen to the music from the game that I often listen to while I study and work daily. If you enjoy listening to animal crossing music, feel free to try it out and use it for backgroumd music like I do!
 
 ## Live Demo
 
